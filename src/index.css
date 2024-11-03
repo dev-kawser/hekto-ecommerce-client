@@ -38,6 +38,13 @@ body {
     }
 }
 
+@layer components {
+
+    .container {
+        @apply max-w-screen-xl mx-auto px-3 sm:px-4 md:px-6 lg:px-11 xl:px-16;
+    }
+}
+
 @layer utilities {
 
     .bg-sky-blue-gradient {
