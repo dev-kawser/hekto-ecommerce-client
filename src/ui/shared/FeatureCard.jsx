@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const FeatureCard = ({product}) => {
     return (
-        <div className="flex flex-col p-3 shadow-md relative group">
-            <div className="bg-lightPurple px-5 py-7">
+        <div className="flex flex-col p-3 shadow-md outline-none relative group">
+            <div className="bg-lightPurple px-5 py-10">
                 <img className="w-[180px] h-[180px]" src={product?.image} alt="" />
             </div>
             <div className="text-center px-3 py-4 space-y-2 group-hover:bg-blue transition-all duration-500">
