@@ -1,80 +1,37 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef, useEffect } from "react";
-import { FiChevronDown } from "react-icons/fi";
+import { useEffect, useRef, useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
-const Dropdown = ({
-    dynamicOptions,
-    placeholderData,
-    onOptionSelect,
-}) => {
-    const [selectedOption, setSelectedOption] = useState(
-        dynamicOptions.find((option) => option.label === placeholderData) ||
-        dynamicOptions[0]
-    );
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef(null);
-
-    const toggleDropdown = () => {
-        setIsOpen((prev) => !prev);
-    };
-
-    const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
+export default function DropDown({ items, to }) {
+    const [open, setOpen] = useState(false);
+    const dropDownRef = useRef(null);
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+        const close = (e) => {
+            if (dropDownRef.current && !dropDownRef.current.contains(e.target)) setOpen(false);
         };
+        document.addEventListener('mousedown', close);
+        return () => document.removeEventListener('mousedown', close);
     }, []);
 
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-
-        if (onOptionSelect) {
-            onOptionSelect(option.label);
-        }
-
-        setIsOpen(false);
-    };
-
     return (
-        <div className="relative inline-block text-left z-50" ref={dropdownRef}>
-            <button
-                onClick={toggleDropdown}
-                className="flex items-center justify-center w-full py-2 text-16 font-medium rounded-md"
-                aria-haspopup="true"
-                aria-expanded={isOpen}
-            >
-                <img className="w-6 mr-2" src={selectedOption.icon} alt="" />
-                <span>{selectedOption.label}</span>
-                <FiChevronDown
-                    className={`ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                />
+        <div ref={dropDownRef} className="relative w-fit">
+            <button onClick={() => setOpen((prev) => !prev)} className="flex items-center gap-1">
+                Pages <IoIosArrowDown />
             </button>
-
-            {isOpen && (
-                <div className="absolute z-10 w-48 bg-white mt-2 origin-top-right rounded-md shadow-lg">
-                    <div className="py-1">
-                        {dynamicOptions.map((option) => (
-                            <button
-                                key={option.label}
-                                onClick={() => handleOptionClick(option)}
-                                className={`flex gap-1 items-center w-full text-left px-4 py-2 text-16 text-darkBlue ${option.label === selectedOption.label ? "bg-blue-200" : ""
-                                    }`}
-                            >
-                                <img className="w-6" src={option.icon} alt="" />
-                                {option.label}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
+            <ul className={`${open ? 'visible translate-y-0 duration-300' : 'invisible translate-y-4'} absolute top-10 z-50 w-full mt-1 space-y-3`}>
+                {items?.map((item, idx) => (
+                    <li key={idx}>
+                        <Link
+                            to={to[idx]}
+                            className={`rounded-sm p-2 ${open ? 'opacity-100 duration-300' : 'opacity-0'} hover:bg-pink hover:text-white`}>
+                            {item}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
-    );
-};
 
-export default Dropdown;
+    );
+}

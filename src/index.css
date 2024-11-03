@@ -19,10 +19,12 @@ body {
 
     h2 {
         @apply text-[42px];
+        @apply text-navyBlue;
     }
 
     h3 {
         @apply text-[35px];
+        @apply font-bold;
     }
 
     h4 {
@@ -35,6 +37,10 @@ body {
 
     h6 {
         @apply text-[14px];
+    }
+
+    li {
+        @apply text-[16px];
     }
 }
 
