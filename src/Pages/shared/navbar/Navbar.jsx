@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import DropDown from "../../../ui/shared/Dropdown";
 import SubNavbar from "./SubNavbar";
 import { IoMdMenu } from "react-icons/io";
@@ -12,10 +12,10 @@ const Navbar = () => {
     return (
         <div>
             <SubNavbar />
-            <div className="container my-4 py-2 flex items-center justify-between">
-                <div>
+            <div className="container my-4 py-1 flex items-center justify-between">
+                <Link to={"/"}>
                     <h3>Hekto</h3>
-                </div>
+                </Link>
                 <div className="hidden xl:block lg:block">
                     <ul className="flex items-center gap-7">
                         <li>
