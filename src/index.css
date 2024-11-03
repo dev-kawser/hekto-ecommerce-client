@@ -1,3 +1,46 @@
+/* Josefin Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Essential components from the Tailwind CSS  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* font size */
+@layer base {
+    h1 {
+        @apply text-[53px];
+    }
+
+    h2 {
+        @apply text-[42px];
+    }
+
+    h3 {
+        @apply text-[35px];
+    }
+
+    h4 {
+        @apply text-[20px];
+    }
+
+    h5 {
+        @apply text-[16px];
+    }
+
+    h6 {
+        @apply text-[14px];
+    }
+}
+
+@layer utilities {
+
+    .bg-sky-blue-gradient {
+        background-image: linear-gradient(122deg, #F3F9FF 0%, #F1F0FF 100%);
+    }
+}
