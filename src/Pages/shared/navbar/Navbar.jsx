@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <div>
             <SubNavbar />
-            <div className="container my-4 py-1 flex items-center justify-between">
+            <div className="container my-4 py-1 flex items-center justify-between sticky top-0 z-50">
                 <Link to={"/"}>
                     <h3>Hekto</h3>
                 </Link>
