@@ -12,7 +12,7 @@ import { Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <div className="bg-sky-blue-gradient min-h-screen relative">
+        <div className="bg-sky-blue-gradient h-full relative lg:pb-5 pb-3">
             <Swiper
                 pagination={{
                     dynamicBullets: true,

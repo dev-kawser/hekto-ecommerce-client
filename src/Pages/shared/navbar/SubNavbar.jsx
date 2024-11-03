@@ -46,7 +46,9 @@ const SubNavbar = () => {
                     </div>
                     <div>
                         <h5>
-                            <Link><FiShoppingCart /></Link>
+                            <Link>
+                                <FiShoppingCart />
+                            </Link>
                         </h5>
                     </div>
                 </div>

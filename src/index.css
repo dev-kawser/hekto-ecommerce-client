@@ -19,7 +19,7 @@ body {
     }
 
     h2 {
-        @apply text-[42px];
+        @apply lg:text-[42px] md:text-[35px] text-[30px];
         @apply text-navyBlue;
         @apply font-bold;
     }
@@ -39,6 +39,7 @@ body {
 
     h6 {
         @apply text-[14px];
+        @apply text-navyBlue;
     }
 
 }

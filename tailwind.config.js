@@ -15,21 +15,10 @@ export default {
         purple: "#7E33E0",
         offPurple: "#9F63B5",
         pantonePurple: "#E0D3F5",
+        lightPurple: "#F6F7FB",
 
         red: "#FB2448",
         blue: "#2F1AC4",
-
-        // dark mode colors
-        darkPink: "#D5005D",
-        darkOffNavyBlue: "#2C3A6A",
-        darkNavyBlue: "#0A0F3B",
-
-        darkPurple: "#5C25B5",
-        darkOffPurple: "#7A4F91",
-        darkPantonePurple: "#B2A4D7",
-
-        darkRed: "#C60D31",
-        darkBlue: "#1E158D",
       },
 
     },
