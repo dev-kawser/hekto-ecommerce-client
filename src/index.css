@@ -25,8 +25,9 @@ body {
     }
 
     h3 {
-        @apply text-[35px];
+        @apply lg:text-[35px] md:text-[30px] text-[25px];
         @apply font-bold;
+        @apply text-navyBlue;
     }
 
     h4 {
