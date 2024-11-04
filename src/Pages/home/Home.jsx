@@ -6,6 +6,7 @@ import LatestAndTrending from "../../components/forHome/LatestAndTrending";
 import LatestProducts from "../../components/forHome/LatestProducts";
 import TopCategories from "../../components/forHome/TopCategories";
 import TrendingProducts from "../../components/forHome/TrendingProducts";
+import Newsletter from "../../components/Newsletter";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <TrendingProducts />
             <DiscountItem />
             <TopCategories />
+            <Newsletter />
         </div>
     );
 };
