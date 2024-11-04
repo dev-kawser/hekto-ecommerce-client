@@ -19,6 +19,8 @@ export default {
 
         red: "#FB2448",
         blue: "#2F1AC4",
+
+        lightGray: "rgba(26, 11, 91, 0.30)"
       },
 
     },

@@ -24,7 +24,7 @@ const LatestProducts = () => {
                 </button>
             </div>
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-20">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {filteredProducts?.map((product, index) => (
                     <LatestCard key={index} product={product} />
                 ))}
