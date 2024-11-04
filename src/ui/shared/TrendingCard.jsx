@@ -3,7 +3,7 @@
 const TrendingCard = ({ product }) => {
     return (
         <div className="shadow-md px-2 text-center">
-            <div className="card-img-bg px-5 py-10 flex items-center justify-center">
+            <div className="bg-lightPurple px-5 py-10 flex items-center justify-center">
                 <img src={product.image} alt={product.name} />
             </div>
             <div className="my-3">
