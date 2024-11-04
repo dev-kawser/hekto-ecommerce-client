@@ -1,4 +1,5 @@
 import Banner from "../../components/forHome/Banner";
+import DiscountItem from "../../components/forHome/DiscountItem";
 import FeaturedProducts from "../../components/forHome/FeaturedProducts";
 import HektoOffer from "../../components/forHome/HektoOffer";
 import LatestAndTrending from "../../components/forHome/LatestAndTrending";
@@ -15,6 +16,7 @@ const Home = () => {
             <HektoOffer />
             <LatestAndTrending />
             <TrendingProducts />
+            <DiscountItem />
         </div>
     );
 };

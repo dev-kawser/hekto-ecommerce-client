@@ -12,7 +12,7 @@ const LatestProducts = () => {
             <SectionTitle title={"Latest Products"} />
 
             {/* Tabs */}
-            <div className="flex justify-center items-center space-x-14 mb-5 lato">
+            <div className="flex justify-center items-center lg:space-x-14 space-x-10 mb-5 lato">
                 <button onClick={() => setActiveTab("new arrival")} className={`tab ${activeTab === "new arrival" ? "text-pink underline" : ""}`}>
                     New Arrival
                 </button>

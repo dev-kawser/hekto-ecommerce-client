@@ -12,7 +12,7 @@ const TrendingProducts = () => {
                 ))}
             </div>
 
-            <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-10">
+            <div className="xl:grid lg:grid md:grid hidden xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-10">
 
                 <div className="flex lg:flex-row md:flex-row flex-col items-center col-span-3 gap-5">
                     {underProducts.slice(0, 2).map((item, index) => (
