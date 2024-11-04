@@ -1,11 +1,11 @@
 import PrimaryButton from "../../ui/shared/PrimaryButton";
 
 
-const LatestAndTending = () => {
+const LatestAndTrending = () => {
     return (
         <div className="mt-10 lg:mt-20 bg-sky-blue-gradient">
             <div className="container flex lg:flex-row md:flex-row flex-col gap-5 items-center justify-between xl:px-20 lg:px-20 md:px-5 py-10">
-                <div className="banner-img-bg rounded-full">
+                <div className="card-img-bg rounded-full">
                     <img
                         className="xl:w-[500px] xl:h-[500px] lg:w-[400px] lg:h-[400px] md:w-[300px] md:h-[300px] w-[260px] h-[260px]"
                         src="https://i.ibb.co.com/543xPJD/Home-Stylish-Club-Sofa-Chair-Pleated-Sofa-Armchair-with-Golden-Legs-1.png" alt="" />
@@ -48,4 +48,4 @@ const LatestAndTending = () => {
     );
 };
 
-export default LatestAndTending;
+export default LatestAndTrending;

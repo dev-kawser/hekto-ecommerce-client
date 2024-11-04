@@ -1,8 +1,9 @@
 import Banner from "../../components/forHome/Banner";
 import FeaturedProducts from "../../components/forHome/FeaturedProducts";
 import HektoOffer from "../../components/forHome/HektoOffer";
-import LatestAndTending from "../../components/forHome/LatestAndTending";
+import LatestAndTrending from "../../components/forHome/LatestAndTrending";
 import LatestProducts from "../../components/forHome/LatestProducts";
+import TrendingProducts from "../../components/forHome/TrendingProducts";
 
 
 const Home = () => {
@@ -12,7 +13,8 @@ const Home = () => {
             <FeaturedProducts />
             <LatestProducts />
             <HektoOffer />
-            <LatestAndTending />
+            <LatestAndTrending />
+            <TrendingProducts />
         </div>
     );
 };

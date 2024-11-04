@@ -36,7 +36,7 @@ const Banner = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className="banner-img-bg rounded-full">
+                                <div className="card-img-bg rounded-full">
                                     <img
                                         className="xl:w-[400px] lg:w-[350px] md:w-[280px] w-[260px] xl:h-[400px] lg:h-[350px] md:h-[280px] h-[260px] pb-4"
                                         src={item.image}

@@ -29,7 +29,7 @@ const LatestCard = ({ product }) => {
             </div>
             {/* Icons */}
             <div className="absolute bottom-24 left-4 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-navyBlue">
-                <h5 className="banner-img-bg rounded-full p-2">
+                <h5 className="card-img-bg rounded-full p-2">
                     <Link><FiShoppingCart /></Link>
                 </h5>
                 <h5>
