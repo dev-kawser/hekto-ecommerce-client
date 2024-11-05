@@ -24,7 +24,7 @@ const FeatureCard = ({product}) => {
             </div>
 
             {/* icons */}
-            <div className="absolute top-4 left-4 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute top-4 left-4 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <h5 className="card-img-bg rounded-full p-2">
                     <Link><FiShoppingCart /></Link>
                 </h5>

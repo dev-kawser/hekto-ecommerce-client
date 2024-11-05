@@ -6,7 +6,7 @@ const UnderlineButton = ({ title, to }) => {
     return (
         <Link
             to={to}
-            className="underline text-pink">
+            className="underline text-navyBlue hover:text-pink group-hover:text-pink transition-all duration-300">
             {title}
         </Link>
     );
