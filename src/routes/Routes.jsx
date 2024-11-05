@@ -4,12 +4,13 @@ import {
 import Root from "../layout/Root";
 import Home from "../Pages/home/Home";
 import Blogs from "../Pages/blogs/Blogs";
+import ErrorPage from "../Pages/shared/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-        errorElement: <h1>Still Working</h1>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",

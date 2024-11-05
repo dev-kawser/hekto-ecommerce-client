@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 
-const TinnyBanner = ({ title, currentPath }) => {
+const TinnyBanner = ({ title }) => {
     return (
         <div className="bg-sky-blue-gradient">
             <div className="container xl:py-20 lg:py-16 md:py-12 py-8">
@@ -14,14 +14,12 @@ const TinnyBanner = ({ title, currentPath }) => {
                         <Link
                             to={"/"}
                         >
-                            Hekto .
+                            Home .
                         </Link>
                     </h5>
                     <h5>Pages .</h5>
-                    <h5>
-                        <Link className="flex items-center gap-[2px] text-pink">
-                            {currentPath}
-                        </Link>
+                    <h5 className="text-pink">
+                        {title}
                     </h5>
                 </div>
             </div>
