@@ -64,4 +64,8 @@ body {
     .card-img-bg {
         background: rgba(236, 210, 250, 0.35);
     }
+
+    .text-12 {
+        size: 12px;
+    }
 }

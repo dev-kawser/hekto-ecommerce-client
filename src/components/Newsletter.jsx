@@ -12,7 +12,7 @@ const Newsletter = () => {
                     <input
                         type="text"
                         placeholder="Email..."
-                        className="border rounded-l lg:p-3 p-2 outline-none lg:w-96 w-52"
+                        className="border border-white rounded-l lg:p-3 p-2 outline-none lg:w-96 w-52"
                     />
                     <button className="bg-pink text-white rounded-r lg:p-3 p-2">
                         Subscribe

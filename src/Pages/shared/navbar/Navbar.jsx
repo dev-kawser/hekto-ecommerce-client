@@ -42,6 +42,14 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
+                                to="/offers"
+                                className={({ isActive }) => (isActive ? 'text-pink' : '')}
+                            >
+                                Offers
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
                                 to="/blog"
                                 className={({ isActive }) => (isActive ? 'text-pink' : '')}
                             >
@@ -62,7 +70,7 @@ const Navbar = () => {
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="border rounded-l p-3 outline-none"
+                        className="border border-r-0 text-lightGray rounded-l p-3 outline-none"
                     />
                     <button className="bg-pink text-white rounded-r p-3">
                         <IoSearchOutline />
@@ -98,6 +106,14 @@ const Navbar = () => {
                                 className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
                             >
                                 Products
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/products"
+                                className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
+                            >
+                                Offers
                             </NavLink>
                         </li>
                         <li>
