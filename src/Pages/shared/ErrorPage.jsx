@@ -9,7 +9,7 @@ const ErrorPage = () => {
                 <Lottie animationData={errorAnimation}></Lottie>
             </div>
             <div className="text-center">
-                <h4 className="font-bold mb-4">The page you requested was not found!</h4>
+                <h4 className="font-bold mb-4 text-offNavyBlue">The page you requested was not found!</h4>
                 <Link
                     to="/"
                     className="px-8 py-3 rounded bg-pink text-white">

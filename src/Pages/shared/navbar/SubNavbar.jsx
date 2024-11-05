@@ -33,7 +33,7 @@ const SubNavbar = () => {
                             <span>
                                 <LuUser2 />
                             </span>
-                            <Link>Login</Link>
+                            <Link to={"login"}>Login</Link>
                         </h5>
                     </div>
                     <div>

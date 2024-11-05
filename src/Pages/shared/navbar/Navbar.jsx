@@ -10,9 +10,9 @@ const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <div>
+        <div className="shadow">
             <SubNavbar />
-            <div className="container my-4 py-1 flex items-center justify-between">
+            <div className="container py-4 flex items-center justify-between">
                 <Link to={"/"}>
                     <h3>Hekto</h3>
                 </Link>
