@@ -22,7 +22,26 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    
+    const handleImageUpload = async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "ml_default");
+        formData.append("cloud_name", import.meta.env.VITE_CLOUD_NAME);
+
+        setIsUploading(true);
+        try {
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME
+                }/image/upload`,
+                formData
+            );
+            setImageUrl(response.data.secure_url);
+        } catch (error) {
+            console.error("Image upload failed", error);
+        } finally {
+            setIsUploading(false);
+        }
+    };
 
     const onSubmit = async (data) => {
         const email = data.email;
@@ -37,7 +56,48 @@ const Register = () => {
 
         console.log(userInfo, password);
 
-        
+        //   try {
+        //     const result = await registerUser(email, password);
+        //     await updateProfile(result.user, {
+        //       displayName: name,
+        //       photoURL: imageUrl,
+        //     })
+        //       .then(() => {
+        //         axiosInstance.post("/users", userInfo).then((res) => {
+        //           if (res.data.insertedId) {
+        //             toast.success("Successfully registered!");
+        //             navigate(location?.state ? location.state : "/");
+        //           }
+        //         });
+        //       })
+        //       .catch((error) => {
+        //         toast.error(error.message);
+        //       });
+        //   } catch (error) {
+        //     toast.error(error.message);
+        //   }
+        // };
+
+        // Sign in with Google authentication
+        // const handleGoogleRegister = () => {
+        //   googleSignIn()
+        //     .then((result) => {
+        //       const userInfo = {
+        //         email: result.user?.email,
+        //         name: result.user?.displayName,
+        //         photo: result.user?.photoURL,
+        //       };
+        //       axiosInstance.post("/users", userInfo).then((res) => {
+        //         if (res.data.insertedId) {
+        //           toast.success("Successfully Google Login");
+        //           navigate(location?.state ? location.state : "/");
+        //         }
+        //       });
+        //     })
+        //     .catch(() => {
+        //       toast.error("Google Sign-In failed");
+        //     });
+        // };
 
     }
 
@@ -119,12 +179,12 @@ const Register = () => {
                                 onChange={(e) => handleImageUpload(e.target.files[0])}
                                 className="input input-bordered border rounded py-2 px-2 w-full"
                             />
-                            {isUploading && <p>Uploading...</p>}
+                            {isUploading && <div className="mt-2 w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>}
                             {imageUrl && (
                                 <img
                                     src={imageUrl}
                                     alt="Uploaded"
-                                    className="mt-2 w-16 h-20 rounded"
+                                    className="mt-3 size-24 rounded"
                                 />
                             )}
                         </div>
