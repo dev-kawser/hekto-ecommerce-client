@@ -50,10 +50,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/blog"
+                                to="/blogs"
                                 className={({ isActive }) => (isActive ? 'text-pink' : '')}
                             >
-                                Blog
+                                Blogs
                             </NavLink>
                         </li>
                         <li>
@@ -126,10 +126,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/blog"
+                                to="/blogs"
                                 className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
                             >
-                                Blog
+                                Blogs
                             </NavLink>
                         </li>
                         <li>

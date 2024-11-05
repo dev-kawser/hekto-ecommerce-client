@@ -3,17 +3,22 @@ import PrimaryButton from "../../ui/shared/PrimaryButton";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
 const Banner = () => {
 
     return (
         <div className="bg-sky-blue-gradient h-full relative lg:pb-5 pb-3">
             <Swiper
-                pagination={{
-                    dynamicBullets: true,
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
                 }}
-                modules={[Pagination]}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
                 {data.map((item, index) => (

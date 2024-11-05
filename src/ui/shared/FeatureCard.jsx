@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { GrSearch } from "react-icons/gr";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { IoEyeOutline } from "react-icons/io5";
 
-const FeatureCard = ({product}) => {
+const FeatureCard = ({ product }) => {
     return (
         <div className="flex flex-col p-3 shadow-md outline-none relative group">
             <div className="bg-lightPurple px-5 py-10">
@@ -32,7 +32,7 @@ const FeatureCard = ({product}) => {
                     <Link><IoIosHeartEmpty /></Link>
                 </h5>
                 <h5>
-                    <Link><GrSearch /></Link>
+                    <Link><IoEyeOutline /></Link>
                 </h5>
             </div>
         </div>
