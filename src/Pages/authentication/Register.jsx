@@ -1,15 +1,20 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../ui/shared/PrimaryButton";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-const Login = () => {
 
-    const navigate = useNavigate()
+const Register = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const [showPassword, setShowPassword] = useState(false);
+    const [imageUrl, setImageUrl] = useState(null);
+    const [isUploading, setIsUploading] = useState(false);
 
     const {
         register,
@@ -17,51 +22,33 @@ const Login = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
+    
 
+    const onSubmit = async (data) => {
         const email = data.email;
         const password = data.password;
+        const name = data.fullName;
 
-        console.log(email, password);
+        const userInfo = {
+            name: name,
+            email: email,
+            image: imageUrl,
+        };
 
-        // signInUser(email, password)
-        //     .then(() => {
-        //         toast.success("Successfully Login !");
-        //         navigate(location?.state ? location.state : "/");
-        //     })
-        //     .catch(() => {
-        //         toast.error("User not found. Please check your password");
-        //     });
-    };
+        console.log(userInfo, password);
 
-    // Sign in with Google authentication
-    // const handleGoogleLogin = () => {
-    //     googleSignIn().then((result) => {
+        
 
-    //         const userInfo = {
-    //             email: result.user?.email,
-    //             name: result.user?.displayName,
-    //             photo: result.user?.photoURL,
-    //         };
-    //         console.log(userInfo);
-
-    //     });
-    // };
-
-    // useEffect(() => {
-    //   if (user) {
-    //     navigate(location.state || "/dashboard/dashboard-main");
-    //   }
-    // }, [location.state, navigate, user]);
+    }
 
     return (
         <div>
             <div className="container">
-                <div className="max-w-lg rounded-lg shadow-lg mx-auto text-center mt-10 lg:mt-20 lg:p-10 p-7">
+                <div className="max-w-xl rounded-lg shadow-lg mx-auto text-center mt-10 lg:mt-20 lg:p-10 p-7">
                     <div className="space-y-3">
-                        <p className="text-navyBlue">Login</p>
-                        <h3>Welcome Back!</h3>
-                        <p>Access your account by signing in</p>
+                        <p className="text-navyBlue">Register</p>
+                        <h3>Start For Free Today</h3>
+                        <p>Access to all features, no credit card required</p>
                         <button
                             // onClick={handleGoogleLogin}
                             className="flex items-center gap-2 justify-center font-medium py-2 w-full border rounded-lg hover:scale-95 transition-all duration-500"
@@ -82,6 +69,25 @@ const Login = () => {
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div>
+                            <label
+                                htmlFor="fullName"
+                                className="block text-left font-medium pb-1"
+                            >
+                                Full Name*
+                            </label>
+                            <input
+                                id="fullName"
+                                type="text"
+                                placeholder="Full Name"
+                                {...register("fullName", { required: "Full name is required" })}
+                                className="input input-bordered border rounded py-2 px-2 w-full"
+                            />
+                            {errors.fullName && (
+                                <p className="text-red text-sm">{errors.fullName.message}</p>
+                            )}
+                        </div>
+
+                        <div>
                             <label htmlFor="email" className="block text-left font-medium pb-1">
                                 Email*
                             </label>
@@ -99,7 +105,27 @@ const Login = () => {
                                 className="input input-bordered border rounded py-2 px-2 w-full"
                             />
                             {errors.email && (
-                                <p className="text-red mt-1 text-sm">{errors.email.message}</p>
+                                <p className="text-red text-sm">{errors.email.message}</p>
+                            )}
+                        </div>
+
+                        <div>
+                            <label htmlFor="photo" className="block text-left font-medium pb-1">
+                                Upload Photo*
+                            </label>
+                            <input
+                                type="file"
+                                id="photo"
+                                onChange={(e) => handleImageUpload(e.target.files[0])}
+                                className="input input-bordered border rounded py-2 px-2 w-full"
+                            />
+                            {isUploading && <p>Uploading...</p>}
+                            {imageUrl && (
+                                <img
+                                    src={imageUrl}
+                                    alt="Uploaded"
+                                    className="mt-2 w-16 h-20 rounded"
+                                />
                             )}
                         </div>
 
@@ -119,8 +145,7 @@ const Login = () => {
                                     pattern: {
                                         value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}[\]:;"'<>,.?/\\|`~_-]).+$/,
                                         message: "Password must contain at least one uppercase letter, one number, and one special character (@, #, $, %, etc.)",
-                                      }
-                                      
+                                    }
                                 })}
                                 className="input input-bordered border rounded py-2 px-2 w-full"
                             />
@@ -131,22 +156,16 @@ const Login = () => {
                                 {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                             </span>
                             {errors.password && (
-                                <p className="text-red mt-1 text-sm">{errors.password.message}</p>
+                                <p className="text-red text-sm">{errors.password.message}</p>
                             )}
                         </div>
 
-                        <div className="flex justify-end">
-                            <Link to="/reset-password" className="text-navyBlue underline text-sm">
-                                Forgot password?
-                            </Link>
-                        </div>
-
-                        <PrimaryButton formSubmit={true} title={"Login"} />
+                        <PrimaryButton title={"Register"} />
 
                         <p className="mt-4 text-sm">
-                            Don’t have an Account? Create account{" "}
-                            <Link to="/register" className="text-navyBlue underline">
-                                Register
+                            Already have an account?{" "}
+                            <Link to="/login" className="text-navyBlue underline">
+                                Sign In
                             </Link>
                         </p>
                     </form>
@@ -156,4 +175,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
