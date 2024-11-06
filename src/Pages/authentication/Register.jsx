@@ -5,9 +5,15 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import SocialLogin from "../../ui/shared/SocialLogin";
 
 
 const Register = () => {
+
+    const { emailRegister } = useAuth()
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,6 +49,7 @@ const Register = () => {
         }
     };
 
+    // Register with email password authentication
     const onSubmit = async (data) => {
         const email = data.email;
         const password = data.password;
@@ -56,50 +63,23 @@ const Register = () => {
 
         console.log(userInfo, password);
 
-        //   try {
-        //     const result = await registerUser(email, password);
-        //     await updateProfile(result.user, {
-        //       displayName: name,
-        //       photoURL: imageUrl,
-        //     })
-        //       .then(() => {
-        //         axiosInstance.post("/users", userInfo).then((res) => {
-        //           if (res.data.insertedId) {
-        //             toast.success("Successfully registered!");
-        //             navigate(location?.state ? location.state : "/");
-        //           }
-        //         });
-        //       })
-        //       .catch((error) => {
-        //         toast.error(error.message);
-        //       });
-        //   } catch (error) {
-        //     toast.error(error.message);
-        //   }
-        // };
+        try {
+            const result = await emailRegister(email, password);
+            await updateProfile(result.user, {
+                displayName: name,
+                photoURL: imageUrl,
+            })
+                .then(() => {
+                    toast.success("Successfully Register");
+                })
+                .catch((error) => {
+                    toast.error(error.message);
+                });
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
 
-        // Sign in with Google authentication
-        // const handleGoogleRegister = () => {
-        //   googleSignIn()
-        //     .then((result) => {
-        //       const userInfo = {
-        //         email: result.user?.email,
-        //         name: result.user?.displayName,
-        //         photo: result.user?.photoURL,
-        //       };
-        //       axiosInstance.post("/users", userInfo).then((res) => {
-        //         if (res.data.insertedId) {
-        //           toast.success("Successfully Google Login");
-        //           navigate(location?.state ? location.state : "/");
-        //         }
-        //       });
-        //     })
-        //     .catch(() => {
-        //       toast.error("Google Sign-In failed");
-        //     });
-        // };
-
-    }
 
     return (
         <div>
@@ -109,15 +89,7 @@ const Register = () => {
                         <p className="text-navyBlue">Register</p>
                         <h3>Start For Free Today</h3>
                         <p>Access to all features, no credit card required</p>
-                        <button
-                            // onClick={handleGoogleLogin}
-                            className="flex items-center gap-2 justify-center font-medium py-2 w-full border rounded-lg hover:scale-95 transition-all duration-500"
-                        >
-                            <span className="text-xl">
-                                <FcGoogle />
-                            </span>{" "}
-                            Sign in with Google
-                        </button>
+                        <SocialLogin />
                     </div>
 
                     <div className="flex items-center my-7">

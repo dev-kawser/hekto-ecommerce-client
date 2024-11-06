@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import PrimaryButton from "../../ui/shared/PrimaryButton";
-import { FcGoogle } from "react-icons/fc";
+import SocialLogin from "../../ui/shared/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
 
+    const { googleSignIn, emailRegister } = useAuth()
+
+    const location = useLocation();
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
 
@@ -34,25 +38,12 @@ const Login = () => {
         //     });
     };
 
-    // Sign in with Google authentication
-    // const handleGoogleLogin = () => {
-    //     googleSignIn().then((result) => {
-
-    //         const userInfo = {
-    //             email: result.user?.email,
-    //             name: result.user?.displayName,
-    //             photo: result.user?.photoURL,
-    //         };
-    //         console.log(userInfo);
-
-    //     });
-    // };
-
-    // useEffect(() => {
-    //   if (user) {
-    //     navigate(location.state || "/dashboard/dashboard-main");
-    //   }
-    // }, [location.state, navigate, user]);
+    
+    useEffect(() => {
+      if (user) {
+        navigate(location.state || "/dashboard/dashboard-main");
+      }
+    }, [location.state, navigate, user]);
 
     return (
         <div>
@@ -62,15 +53,7 @@ const Login = () => {
                         <p className="text-navyBlue">Login</p>
                         <h3>Welcome Back!</h3>
                         <p>Access your account by signing in</p>
-                        <button
-                            // onClick={handleGoogleLogin}
-                            className="flex items-center gap-2 justify-center font-medium py-2 w-full border rounded-lg hover:scale-95 transition-all duration-500"
-                        >
-                            <span className="text-xl">
-                                <FcGoogle />
-                            </span>{" "}
-                            Sign in with Google
-                        </button>
+                        <SocialLogin />
                     </div>
 
                     <div className="flex items-center my-7">
