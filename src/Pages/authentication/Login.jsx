@@ -128,9 +128,11 @@ const Login = () => {
                             </Link>
                         </div>
 
-                        <PrimaryButton
-                            icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
-                            title={"Login"} />
+                        <div className="flex items-center justify-center">
+                            <PrimaryButton
+                                icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
+                                title={"Login"} />
+                        </div>
 
                         <p className="mt-4 text-sm">
                             Don’t have an Account? Create account{" "}

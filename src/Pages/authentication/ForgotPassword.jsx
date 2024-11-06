@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-// import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import PrimaryButton from "../../ui/shared/PrimaryButton";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import { IoIosLogIn } from "react-icons/io";
 
 const ForgotPassword = () => {
 
-    // const { resetPassword } = useAuth()
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { forgotPassword } = useAuth();
 
 
     const {
@@ -20,15 +23,17 @@ const ForgotPassword = () => {
 
         const email = (data.email)
 
+        setIsSubmitting(true)
+
         console.log(email);
 
-        // resetPassword(email)
-        //     .then(() => {
+        forgotPassword(email)
+            .then(() => {
+                setIsSubmitting(false)
+                toast.success("Please check you email for reset password")
+                reset()
 
-        //         toast.success("Please check you email for reset password")
-        //         reset()
-
-        //     })
+            })
 
     };
 
@@ -63,7 +68,11 @@ const ForgotPassword = () => {
                         )}
                     </div>
 
-                    <PrimaryButton title={"Send Reset Link"} />
+                    <div className="flex items-center justify-center">
+                        <PrimaryButton
+                            icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
+                            title={"Send Reset Link"} />
+                    </div>
 
                     <p className="mt-4 text-sm">
                         Remember your password?{" "}

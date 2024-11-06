@@ -197,9 +197,11 @@ const Register = () => {
                             )}
                         </div>
 
-                        <PrimaryButton
-                            icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
-                            title={"Register"} />
+                        <div className="flex items-center justify-center">
+                            <PrimaryButton
+                                icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
+                                title={"Register"} />
+                        </div>
 
                         <p className="mt-4 text-sm">
                             Already have an account?{" "}
