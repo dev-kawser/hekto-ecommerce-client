@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,14 +6,16 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import PrimaryButton from "../../ui/shared/PrimaryButton";
 import SocialLogin from "../../ui/shared/SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import { IoIosLogIn } from "react-icons/io";
 
 const Login = () => {
 
-    const { googleSignIn, emailRegister } = useAuth()
+    const { user, emailSignIn } = useAuth()
 
     const location = useLocation();
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const {
         register,
@@ -26,23 +28,25 @@ const Login = () => {
         const email = data.email;
         const password = data.password;
 
-        console.log(email, password);
+        setIsSubmitting(true)
 
-        // signInUser(email, password)
-        //     .then(() => {
-        //         toast.success("Successfully Login !");
-        //         navigate(location?.state ? location.state : "/");
-        //     })
-        //     .catch(() => {
-        //         toast.error("User not found. Please check your password");
-        //     });
+        emailSignIn(email, password)
+            .then(() => {
+                setIsSubmitting(false)
+                toast.success("Successfully Login!");
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch((error) => {
+                setIsSubmitting(false)
+                toast.error(error.message);
+            });
     };
 
-    
+
     useEffect(() => {
-      if (user) {
-        navigate(location.state || "/dashboard/dashboard-main");
-      }
+        if (user) {
+            navigate(location.state || "/");
+        }
     }, [location.state, navigate, user]);
 
     return (
@@ -102,8 +106,8 @@ const Login = () => {
                                     pattern: {
                                         value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}[\]:;"'<>,.?/\\|`~_-]).+$/,
                                         message: "Password must contain at least one uppercase letter, one number, and one special character (@, #, $, %, etc.)",
-                                      }
-                                      
+                                    }
+
                                 })}
                                 className="input input-bordered border rounded py-2 px-2 w-full"
                             />
@@ -124,7 +128,9 @@ const Login = () => {
                             </Link>
                         </div>
 
-                        <PrimaryButton formSubmit={true} title={"Login"} />
+                        <PrimaryButton
+                            icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
+                            title={"Login"} />
 
                         <p className="mt-4 text-sm">
                             Don’t have an Account? Create account{" "}

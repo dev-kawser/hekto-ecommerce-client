@@ -4,11 +4,13 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import { IoLogOutOutline } from "react-icons/io5";
 
 
 const SubNavbar = () => {
 
-
+    const { user, logout } = useAuth()
 
     return (
         <div className="bg-purple text-white xl:block lg:block hidden">
@@ -29,12 +31,23 @@ const SubNavbar = () => {
                 </div>
                 <div className="flex items-center gap-5">
                     <div>
-                        <h5 className="flex items-center gap-1">
-                            <span>
-                                <LuUser2 />
-                            </span>
-                            <Link to={"login"}>Login</Link>
-                        </h5>
+                        {
+                            user ?
+                                <h5 className="flex items-center gap-1 text-[#D1A6FF]">
+                                    <span>
+                                        <IoLogOutOutline />
+                                    </span>
+                                    <button onClick={() => logout()}>Logout</button>
+                                </h5>
+                                :
+                                <h5 className="flex items-center gap-1">
+                                    <span>
+                                        <LuUser2 />
+                                    </span>
+                                    <Link to={"login"}>Login</Link>
+                                </h5>
+                        }
+
                     </div>
                     <div>
                         <h5 className="flex items-center gap-1">

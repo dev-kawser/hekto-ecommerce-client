@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../ui/shared/PrimaryButton";
-import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -9,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import SocialLogin from "../../ui/shared/SocialLogin";
+import { IoIosLogIn } from "react-icons/io";
 
 
 const Register = () => {
@@ -21,6 +21,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [imageUrl, setImageUrl] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const {
         register,
@@ -61,6 +62,7 @@ const Register = () => {
             image: imageUrl,
         };
 
+        setIsSubmitting(true)
         console.log(userInfo, password);
 
         try {
@@ -70,9 +72,12 @@ const Register = () => {
                 photoURL: imageUrl,
             })
                 .then(() => {
+                    setIsSubmitting(false)
                     toast.success("Successfully Register");
+                    navigate(location?.state ? location.state : "/");
                 })
                 .catch((error) => {
+                    setIsSubmitting(false)
                     toast.error(error.message);
                 });
         } catch (error) {
@@ -192,7 +197,9 @@ const Register = () => {
                             )}
                         </div>
 
-                        <PrimaryButton title={"Register"} />
+                        <PrimaryButton
+                            icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
+                            title={"Register"} />
 
                         <p className="mt-4 text-sm">
                             Already have an account?{" "}
