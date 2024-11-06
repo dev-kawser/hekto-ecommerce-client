@@ -66,7 +66,7 @@ export default DiscountItem;
 const productsData = {
     woodenChair: [
         {
-            title: "20% Discount On Wooden Chairs",
+            title: "20% Discount On Modern Wooden Chairs",
             description: "Stylish and comfortable wooden chairs for your home.",
             features: [
                 "Natural wood finish",
