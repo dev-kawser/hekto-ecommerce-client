@@ -3,11 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import DropDown from "../../../ui/shared/Dropdown";
 import SubNavbar from "./SubNavbar";
 import { IoMdMenu } from "react-icons/io";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoLogOutOutline, IoSearchOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
+import useAuth from "../../../hooks/useAuth";
+import { LuUser2 } from "react-icons/lu";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { user, logout } = useAuth()
 
     return (
         <div className="shadow">
@@ -34,10 +37,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/products"
+                                to="/shop"
                                 className={({ isActive }) => (isActive ? 'text-pink' : '')}
                             >
-                                Products
+                                Shop
                             </NavLink>
                         </li>
                         <li>
@@ -56,32 +59,54 @@ const Navbar = () => {
                                 Blogs
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to="/account"
-                                className={({ isActive }) => (isActive ? 'text-pink' : '')}
-                            >
-                                Account
-                            </NavLink>
-                        </li>
+                        {
+                            user && <li>
+                                <NavLink
+                                    to="/account"
+                                    className={({ isActive }) => (isActive ? 'text-pink' : '')}
+                                >
+                                    Account
+                                </NavLink>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div className="hidden xl:flex lg:flex">
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="border border-r-0 text-lightGray rounded-l p-3 outline-none"
+                        className="border border-r-0 border-lightGray rounded-l p-3 outline-none"
                     />
                     <button className="bg-pink text-white rounded-r p-3">
                         <IoSearchOutline />
                     </button>
                 </div>
-                <button
-                    className="xl:hidden lg:hidden"
-                    onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <MdClose size={24} /> : <IoMdMenu size={24} />}
-                </button>
+
+                <div className="xl:hidden lg:hidden flex items-center gap-3">
+                    {
+                        user ?
+                            <h5 className="flex items-center gap-1 font-medium bg-red text-white px-2 py-1 rounded">
+                                <span>
+                                    <IoLogOutOutline />
+                                </span>
+                                <button onClick={() => logout()}>Logout</button>
+                            </h5>
+                            :
+                            <h4 className="flex items-center gap-1 font-semibold">
+                                <span>
+                                    <LuUser2 />
+                                </span>
+                                <Link to={"login"}>Login</Link>
+                            </h4>
+                    }
+                    <button
+                        onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <MdClose size={30} /> : <IoMdMenu size={30} />}
+                    </button>
+                </div>
+
+
             </div>
 
             {isMobileMenuOpen && (
@@ -89,9 +114,9 @@ const Navbar = () => {
                     data-aos="fade-down"
                     data-aos-offset="200"
                     data-aos-duration="700"
-                    className="xl:hidden lg:hidden bg-pink text-white p-7"
+                    className="xl:hidden lg:hidden bg-purple font-semibold p-7"
                 >
-                    <ul className="flex flex-col gap-4">
+                    <ul className="flex flex-col gap-4 lato uppercase">
                         <li>
                             <NavLink
                                 to="/"
@@ -102,10 +127,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/products"
+                                to="/shop"
                                 className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
                             >
-                                Products
+                                Shop
                             </NavLink>
                         </li>
                         <li>
@@ -132,30 +157,16 @@ const Navbar = () => {
                                 Blogs
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to="/account"
-                                className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
-                            >
-                                Account
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/contact"
-                                className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
-                            >
-                                Contact
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/faq"
-                                className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
-                            >
-                                FAQ
-                            </NavLink>
-                        </li>
+                        {
+                            user && <li>
+                                <NavLink
+                                    to="/account"
+                                    className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
+                                >
+                                    Account
+                                </NavLink>
+                            </li>
+                        }
                     </ul>
                 </div>
             )}

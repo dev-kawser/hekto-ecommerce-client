@@ -25,7 +25,7 @@ body {
     }
 
     h3 {
-        @apply lg:text-[35px] md:text-[30px] text-[25px];
+        @apply lg:text-[35px] text-[30px];
         @apply font-bold;
     }
 

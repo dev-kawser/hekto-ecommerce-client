@@ -8,6 +8,7 @@ import ErrorPage from "../Pages/shared/ErrorPage";
 import Login from "../Pages/authentication/Login";
 import Register from "../Pages/authentication/Register";
 import ForgotPassword from "../Pages/authentication/ForgotPassword";
+import Shop from "../Pages/shop/Shop";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: "/forgot-password",
                 element: <ForgotPassword />
+            },
+            {
+                path: "/shop",
+                element: <Shop />
             },
             {
                 path: "/blogs",
