@@ -6,7 +6,7 @@ const TrendingProducts = () => {
     return (
         <div className="container lg:mb-10 mb-5">
             <SectionTitle title={"Trending Products"} />
-            <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5">
                 {products.map(product => (
                     <TrendingCard key={product.id} product={product} />
                 ))}

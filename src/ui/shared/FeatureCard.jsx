@@ -8,7 +8,7 @@ const FeatureCard = ({ product }) => {
     return (
         <div className="flex flex-col p-3 shadow-md outline-none relative group">
             <div className="bg-lightPurple px-5 py-10">
-                <img className="w-[180px] h-[180px] mx-auto" src={product?.image} alt="" />
+                <img className="lg:w-[180px] lg:h-[180px] w-[100px] h-[100px] mx-auto" src={product?.image} alt="" />
             </div>
             <div className="text-center px-3 py-4 space-y-2 group-hover:bg-blue transition-all duration-500">
                 <h4 className="text-pink group-hover:text-white">

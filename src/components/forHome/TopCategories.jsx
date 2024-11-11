@@ -6,7 +6,7 @@ const TopCategories = () => {
     return (
         <div className="container">
             <SectionTitle title={"Top Categories"} />
-            <div className="grid gap-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2">
                 {categoriesData.map((category, index) => (
                     <TopCategoryCard key={index} category={category} />
                 ))}

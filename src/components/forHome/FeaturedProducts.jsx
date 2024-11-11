@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
     return (
         <div className="container">
             <SectionTitle title={"Featured Products"} />
-            <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5">
                 {data?.map((product) => (
                     <FeatureCard key={product.code} product={product} />
                 ))}
@@ -27,7 +27,7 @@ const data = [
         "price": 199.99
     },
     {
-        "name": "Headphone",
+        "name": "Stylish Headphone",
         "image": "https://i.ibb.co.com/f9M8BK4/purepng-1.png",
         "code": "H456",
         "price": 299.99
