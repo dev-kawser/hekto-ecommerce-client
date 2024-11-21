@@ -1,5 +1,5 @@
+import ShopCard from "../../components/forShop/ShopCard";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
-import { Link } from "react-router-dom";
 
 const Shop = () => {
     return (
@@ -85,67 +85,9 @@ const Shop = () => {
 
                         {/* Product List */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {/* Example Product Card */}
-                            <div className="bg-white shadow-md rounded-lg p-5">
-                                <img
-                                    src="https://via.placeholder.com/150"
-                                    alt="Product"
-                                    className="w-full h-40 object-cover rounded-md mb-4"
-                                />
-                                <Link className="text-lg font-bold mb-2">Product Title</Link>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                                <div className="flex justify-between items-center mb-3">
-                                    <span className="text-lg font-bold text-blue-600">$30.00</span>
-                                    <span className="line-through text-sm text-gray-400">$50.00</span>
-                                </div>
-                                <Link className="">
-                                    <button className="bg-purple hover:bg-offPurple transition-all duration-300  text-white py-2 px-8 rounded gap-2 w-full">
-                                        Add To Cart
-                                    </button>
-                                </Link>
-                            </div>
-                            <div className="bg-white shadow-md rounded-lg p-5">
-                                <img
-                                    src="https://via.placeholder.com/150"
-                                    alt="Product"
-                                    className="w-full h-40 object-cover rounded-md mb-4"
-                                />
-                                <Link className="text-lg font-bold mb-2">Product Title</Link>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                                <div className="flex justify-between items-center mb-3">
-                                    <span className="text-lg font-bold text-blue-600">$30.00</span>
-                                    <span className="line-through text-sm text-gray-400">$50.00</span>
-                                </div>
-                                <Link className="">
-                                    <button className="bg-purple hover:bg-offPurple transition-all duration-300  text-white py-2 px-8 rounded gap-2 w-full">
-                                        Add To Cart
-                                    </button>
-                                </Link>
-                            </div>
-                            <div className="bg-white shadow-md rounded-lg p-5">
-                                <img
-                                    src="https://via.placeholder.com/150"
-                                    alt="Product"
-                                    className="w-full h-40 object-cover rounded-md mb-4"
-                                />
-                                <Link className="text-lg font-bold mb-2">Product Title</Link>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                                <div className="flex justify-between items-center mb-3">
-                                    <span className="text-lg font-bold text-blue-600">$30.00</span>
-                                    <span className="line-through text-sm text-gray-400">$50.00</span>
-                                </div>
-                                <Link className="">
-                                    <button className="bg-purple hover:bg-offPurple transition-all duration-300  text-white py-2 px-8 rounded gap-2 w-full">
-                                        Add To Cart
-                                    </button>
-                                </Link>
-                            </div>
+                            <ShopCard />
+                            <ShopCard />
+                            <ShopCard />
                         </div>
                     </div>
                 </div>
