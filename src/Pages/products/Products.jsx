@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductsCard from "../../components/forProducts/ProductsCard";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import { IoMdClose } from "react-icons/io";
+import Newsletter from "../../components/Newsletter";
 
 const Shop = () => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -257,6 +258,8 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
+
+            <Newsletter />
         </div>
     );
 };

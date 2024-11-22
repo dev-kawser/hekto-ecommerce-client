@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductDetailsSection from "../../components/forProducts/ProductDetailsSection"
+import Newsletter from "../../components/Newsletter";
 
 const ProductDetails = () => {
 
@@ -30,42 +31,45 @@ const ProductDetails = () => {
     const { name, price, originalPrice, description, imageUrl, brand, category, discount, color } = product;
 
     return (
-        <div className="container mt-10">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-                {/* Product Image */}
-                <div className="w-full md:w-1/2">
-                    <img
-                        src={imageUrl}
-                        alt={name}
-                        className="rounded-lg shadow-lg object-cover w-full"
-                    />
+        <>
+            <div className="container mt-10">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                    {/* Product Image */}
+                    <div className="w-full md:w-1/2">
+                        <img
+                            src={imageUrl}
+                            alt={name}
+                            className="rounded-lg shadow-lg object-cover w-full"
+                        />
+                    </div>
+
+                    {/* Product Info */}
+                    <div className="w-full md:w-1/2 space-y-4">
+                        <h1 className="text-2xl font-bold">{name}</h1>
+                        <p className="text-sm text-navyBlue">Brand: {brand}</p>
+                        <p className="text-sm text-navyBlue">Category: {category}</p>
+                        <p className="text-sm text-navyBlue">Color: {color}</p>
+                        <p className="text-lg font-medium text-navyBlue">
+                            Price: <span className="text-green-500">${price.toFixed(2)}</span>{" "}
+                            <span className="line-through text-gray">
+                                ${originalPrice.toFixed(2)}
+                            </span>
+                            <span className="text-red ml-2">-{discount}%</span>
+                        </p>
+                        <p className="text-navyBlue lato">{description}</p>
+
+                        {/* Call to Action */}
+                        <button className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
 
-                {/* Product Info */}
-                <div className="w-full md:w-1/2 space-y-4">
-                    <h1 className="text-2xl font-bold">{name}</h1>
-                    <p className="text-sm text-navyBlue">Brand: {brand}</p>
-                    <p className="text-sm text-navyBlue">Category: {category}</p>
-                    <p className="text-sm text-navyBlue">Color: {color}</p>
-                    <p className="text-lg font-medium text-navyBlue">
-                        Price: <span className="text-green-500">${price.toFixed(2)}</span>{" "}
-                        <span className="line-through text-gray">
-                            ${originalPrice.toFixed(2)}
-                        </span>
-                        <span className="text-red ml-2">-{discount}%</span>
-                    </p>
-                    <p className="text-navyBlue lato">{description}</p>
+                <ProductDetailsSection />
 
-                    {/* Call to Action */}
-                    <button className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300">
-                        Add to Cart
-                    </button>
-                </div>
             </div>
-
-            <ProductDetailsSection />
-
-        </div>
+            <Newsletter />
+        </>
 
     );
 };
