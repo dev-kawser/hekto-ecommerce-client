@@ -11,6 +11,7 @@ import ForgotPassword from "../Pages/authentication/ForgotPassword";
 import Products from "../Pages/products/Products";
 import ProductDetails from "../Pages/products/ProductDetails";
 import Account from "../Pages/account/Account";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -48,7 +49,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/account",
-                element: <Account />
+                element: <PrivateRoute>
+                    <Account />
+                </PrivateRoute>
             },
         ],
     },

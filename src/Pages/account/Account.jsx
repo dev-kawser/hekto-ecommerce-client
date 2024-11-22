@@ -2,8 +2,12 @@ import Lottie from "lottie-react";
 import Newsletter from "../../components/Newsletter";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import worldAnimation from "../../../public/worldAnimation.json"
+import useAuth from "../../hooks/useAuth";
 
 const Account = () => {
+
+    const { user } = useAuth()
+
     return (
         <div>
             <TinnyBanner title={"My Account"} />
@@ -21,7 +25,7 @@ const Account = () => {
                     <div className="mb-6">
                         <input
                             type="text"
-                            value="Email"
+                            value={user?.email}
                             readOnly
                             className="w-full p-3 border border-gray-300 bg-gray-200 text-gray-600 rounded-lg cursor-not-allowed focus:outline-none"
                         />
@@ -49,18 +53,12 @@ const Account = () => {
                         Shipping Address
                     </h2>
                     <div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                            <input
-                                type="text"
-                                placeholder="First name (optional)"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Last name"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            />
-                        </div>
+                        <input
+                            type="text"
+                            placeholder="Your name"
+                            defaultValue={user?.displayName}
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4"
+                        />
                         <input
                             type="text"
                             placeholder="Address"
@@ -78,7 +76,7 @@ const Account = () => {
                                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
                             />
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="Postal Code"
                                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
                             />
