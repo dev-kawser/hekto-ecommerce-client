@@ -8,7 +8,8 @@ import ErrorPage from "../Pages/shared/ErrorPage";
 import Login from "../Pages/authentication/Login";
 import Register from "../Pages/authentication/Register";
 import ForgotPassword from "../Pages/authentication/ForgotPassword";
-import Shop from "../Pages/shop/Shop";
+import Products from "../Pages/products/Products";
+import ProductDetails from "../Pages/products/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -33,8 +34,12 @@ const router = createBrowserRouter([
                 element: <ForgotPassword />
             },
             {
-                path: "/shop",
-                element: <Shop />
+                path: "/products",
+                element: <Products />
+            },
+            {
+                path: "/product/:id",
+                element: <ProductDetails />
             },
             {
                 path: "/blogs",

@@ -37,10 +37,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/shop"
+                                to="/products"
                                 className={({ isActive }) => (isActive ? 'text-pink' : '')}
                             >
-                                Shop
+                                Products
                             </NavLink>
                         </li>
                         <li>
@@ -127,10 +127,10 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/shop"
+                                to="/products"
                                 className={({ isActive }) => (isActive ? 'text-white' : 'text-black')}
                             >
-                                Shop
+                                Products
                             </NavLink>
                         </li>
                         <li>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ShopCard from "../../components/forShop/ShopCard";
+import ProductsCard from "../../components/forProducts/ProductsCard";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import { IoMdClose } from "react-icons/io";
 
@@ -230,7 +230,7 @@ const Shop = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {currentProducts.length > 0 ? (
                                 currentProducts.map((product) => (
-                                    <ShopCard key={product.id} product={product} />
+                                    <ProductsCard key={product.id} product={product} />
                                 ))
                             ) : (
                                 <p>No products found.</p>
@@ -272,6 +272,7 @@ const sampleProducts = [
         price: 120,
         originalPrice: 150,
         color: "blue",
+        discount: 10,
         description: "A comfortable and stylish sofa.",
         imageUrl: "https://via.placeholder.com/150",
     },
@@ -283,6 +284,7 @@ const sampleProducts = [
         price: 80,
         originalPrice: 100,
         color: "blue",
+        discount: 20,
         description: "Elegant chair for your living room.",
         imageUrl: "https://via.placeholder.com/150",
     },
@@ -293,6 +295,7 @@ const sampleProducts = [
         category: "Dining",
         price: 250,
         color: "pink",
+        discount: 10,
         originalPrice: 300,
         description: "A luxurious dining table made from solid oak.",
         imageUrl: "https://via.placeholder.com/150",
@@ -304,6 +307,7 @@ const sampleProducts = [
         category: "Office",
         price: 150,
         color: "blue",
+        discount: 10,
         originalPrice: 180,
         description: "Sleek and minimalistic office desk for your workspace.",
         imageUrl: "https://via.placeholder.com/150",
@@ -315,6 +319,7 @@ const sampleProducts = [
         category: "Bedroom",
         price: 450,
         color: "purple",
+        discount: 30,
         originalPrice: 600,
         description: "Comfortable and adjustable bed frame for ultimate relaxation.",
         imageUrl: "https://via.placeholder.com/150",
@@ -326,6 +331,7 @@ const sampleProducts = [
         category: "Chair",
         price: 45,
         color: "blue",
+        discount: 10,
         originalPrice: 60,
         description: "Cozy bean bag chair for lounging.",
         imageUrl: "https://via.placeholder.com/150",
@@ -337,6 +343,7 @@ const sampleProducts = [
         category: "Chair",
         price: 180,
         color: "blue",
+        discount: 30,
         originalPrice: 220,
         description: "Comfortable and ergonomic chair for long hours of work.",
         imageUrl: "https://via.placeholder.com/150",
@@ -348,6 +355,7 @@ const sampleProducts = [
         category: "Furniture",
         price: 60,
         color: "purple",
+        discount: 10,
         originalPrice: 80,
         description: "Compact folding table for outdoor or small spaces.",
         imageUrl: "https://via.placeholder.com/150",
@@ -359,6 +367,7 @@ const sampleProducts = [
         category: "Storage",
         price: 70,
         color: "pink",
+        discount: 20,
         originalPrice: 100,
         description: "Space-saving wall-mounted bookshelf for your home office or living room.",
         imageUrl: "https://via.placeholder.com/150",
@@ -370,6 +379,7 @@ const sampleProducts = [
         category: "Chair",
         price: 180,
         color: "red",
+        discount: 20,
         originalPrice: 230,
         description: "Classic vintage armchair with plush cushions.",
         imageUrl: "https://via.placeholder.com/150",
@@ -381,6 +391,7 @@ const sampleProducts = [
         category: "Outdoor",
         price: 500,
         color: "purple",
+        discount: 10,
         originalPrice: 600,
         description: "Stylish outdoor patio set for your garden or balcony.",
         imageUrl: "https://via.placeholder.com/150",
@@ -392,6 +403,7 @@ const sampleProducts = [
         category: "Bedroom",
         price: 350,
         color: "pink",
+        discount: 10,
         originalPrice: 450,
         description: "A luxurious king-size mattress for restful sleep.",
         imageUrl: "https://via.placeholder.com/150",
@@ -403,6 +415,7 @@ const sampleProducts = [
         category: "Living Room",
         price: 120,
         color: "pink",
+        discount: 40,
         originalPrice: 150,
         description: "A simple, minimalist coffee table to enhance your living room.",
         imageUrl: "https://via.placeholder.com/150",
@@ -414,6 +427,7 @@ const sampleProducts = [
         category: "Bedroom",
         price: 50,
         color: "pink",
+        discount: 30,
         originalPrice: 75,
         description: "Compact nightstand with two drawers for extra storage.",
         imageUrl: "https://via.placeholder.com/150",
@@ -425,6 +439,7 @@ const sampleProducts = [
         category: "Dining",
         price: 500,
         color: "blue",
+        discount: 20,
         originalPrice: 600,
         description: "Complete dining room set with table and six chairs.",
         imageUrl: "https://via.placeholder.com/150",
@@ -436,6 +451,7 @@ const sampleProducts = [
         category: "Chair",
         price: 250,
         color: "purple",
+        discount: 20,
         originalPrice: 300,
         description: "Modern recliner with adjustable headrest and footrest.",
         imageUrl: "https://via.placeholder.com/150",
@@ -447,6 +463,7 @@ const sampleProducts = [
         category: "Living Room",
         price: 150,
         color: "red",
+        discount: 10,
         originalPrice: 180,
         description: "Sleek and modern TV stand for your home entertainment setup.",
         imageUrl: "https://via.placeholder.com/150",
@@ -458,6 +475,7 @@ const sampleProducts = [
         category: "Outdoor",
         price: 100,
         color: "purple",
+        discount: 30,
         originalPrice: 120,
         description: "Comfortable outdoor hammock for lounging in your garden.",
         imageUrl: "https://via.placeholder.com/150",
@@ -469,6 +487,7 @@ const sampleProducts = [
         category: "Storage",
         price: 350,
         color: "red",
+        discount: 40,
         originalPrice: 400,
         description: "Sturdy wooden wardrobe for storing your clothes.",
         imageUrl: "https://via.placeholder.com/150",
@@ -480,6 +499,7 @@ const sampleProducts = [
         category: "Lighting",
         price: 30,
         color: "blue",
+        discount: 40,
         originalPrice: 40,
         description: "Energy-efficient LED desk lamp with adjustable brightness.",
         imageUrl: "https://via.placeholder.com/150",
