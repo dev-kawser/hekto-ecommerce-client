@@ -1,5 +1,7 @@
+import Lottie from "lottie-react";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
+import contactAnimation from "../../../public/contactAnimation.json"
 
 const Contact = () => {
     return (
@@ -95,11 +97,14 @@ const Contact = () => {
 
                     {/* Right - Illustration */}
                     <div className="relative">
-                        <img
+                        {/* <img
                             src="https://via.placeholder.com/500x400"
                             alt="Contact Illustration"
                             className="rounded-lg shadow-lg"
-                        />
+                        /> */}
+                        <div className="w-72 lg:w-[500px] md:hidden lg:block mx-auto flex-shrink-0">
+                            <Lottie animationData={contactAnimation} loop={true} />
+                        </div>
                     </div>
                 </div>
             </div>
