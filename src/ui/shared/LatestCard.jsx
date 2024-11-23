@@ -6,7 +6,8 @@ import { IoEyeOutline } from "react-icons/io5";
 
 const LatestCard = ({ product }) => {
     return (
-        <div className="flex flex-col p-3 shadow-md outline-none relative group">
+        <div
+            className="flex flex-col p-3 shadow-md outline-none relative group">
             <div className="bg-lightPurple group-hover:bg-white px-5 py-10">
                 <img className="w-[250px] h-[250px] mx-auto" src={product?.image} alt={product?.name} />
             </div>

@@ -6,8 +6,12 @@ const HektoOffer = () => {
     return (
         <div className="container">
             <SectionTitle title={"What Hekto Offer!"} />
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
-                <div className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
+            <div
+                data-aos="fade-up"
+                data-aos-duration="900"
+                className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
+                <div
+                    className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
                     <div className="lg:p-5 md:p-4 p-2 flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
                             <g clipPath="url(#clip0_146_3034)">
@@ -45,7 +49,8 @@ const HektoOffer = () => {
                         </p>
                     </div>
                 </div>
-                <div className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
+                <div
+                    className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
                     <div className="lg:p-5 md:p-4 p-2 flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
                             <g clipPath="url(#clip0_146_3093)">
@@ -81,7 +86,8 @@ const HektoOffer = () => {
                         </p>
                     </div>
                 </div>
-                <div className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
+                <div
+                    className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
                     <div className="lg:p-5 md:p-4 p-2 flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
                             <g clipPath="url(#clip0_146_3060)">
@@ -114,7 +120,8 @@ const HektoOffer = () => {
                         </p>
                     </div>
                 </div>
-                <div className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
+                <div
+                    className="shadow-md lg:p-7 md:p-5 p-3 text-center flex flex-col justify-center gap-2">
                     <div className="lg:p-5 md:p-4 p-2 flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
                             <g clipPath="url(#clip0_146_3080)">

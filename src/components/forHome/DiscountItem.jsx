@@ -11,7 +11,10 @@ const DiscountItem = () => {
             <SectionTitle title={"Discount Items"} />
 
             {/* Tabs */}
-            <div className="flex justify-center items-center lg:space-x-14 space-x-10 mb-5 lato">
+            <div
+                data-aos="fade-up"
+                data-aos-duration="900"
+                className="flex justify-center items-center lg:space-x-14 space-x-10 mb-5 lato">
                 <button
                     onClick={() => setActiveTab("woodenChair")}
                     className={`tab ${activeTab === "woodenChair" ? "text-pink underline" : ""}`}
@@ -35,12 +38,16 @@ const DiscountItem = () => {
             <div className="flex lg:flex-row md:flex-row flex-col-reverse gap-5 items-center justify-between">
                 {productsData[activeTab].map((product, index) => (
                     <div key={index} className="max-w-xl">
-                        <div className="space-y-2">
+                        <div
+                            data-aos="fade-up"
+                            data-aos-duration="500" className="space-y-2">
                             <h3 className="text-navyBlue xl:max-w-xl max-w-md">{product.title}</h3>
                             <h5 className="text-pink">{product.title}</h5>
                             <p className="lato">{product.description}</p>
                         </div>
-                        <div className="lato flex items-center gap-7 lg:my-5 my-3">
+                        <div
+                            data-aos="fade-up"
+                            data-aos-duration="700" className="lato flex items-center gap-7 lg:my-5 my-3">
                             <div className="space-y-1">
                                 {product.features.map((feature, index) => (
                                     <p key={index} className="flex items-center gap-1">

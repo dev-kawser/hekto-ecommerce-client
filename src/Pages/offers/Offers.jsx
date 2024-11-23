@@ -33,7 +33,7 @@ const Offers = () => {
             <div className="container mt-10 lg:mt-20">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
                     {currentProducts.map((product) => (
-                        <Link
+                        <div
                             key={product.id}
                             className="bg-white hover:bg-softGreen p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative group"
                         >
@@ -45,9 +45,9 @@ const Offers = () => {
                             />
                             {/* Product Info */}
                             <div className="mt-4 text-center">
-                                <h3 className="text-lg font-bold text-gray-800 line-clamp-1">
+                                <Link className="text-lg group-hover:text-pink group-hover:underline font-bold text-gray-800 line-clamp-1 transition-all duration-150">
                                     {product.name}
-                                </h3>
+                                </Link>
                                 <div className="flex items-center justify-center gap-2">
                                     <p className="text-pink-500 font-bold mt-1">{product.price}</p>
                                     <p className="text-gray-400 line-through text-red">{product.oldPrice}</p>
@@ -66,7 +66,7 @@ const Offers = () => {
                                     <Link><IoEyeOutline /></Link>
                                 </h5>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
 

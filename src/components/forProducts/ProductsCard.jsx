@@ -14,7 +14,7 @@ const ShopCard = ({ product }) => {
 
             <Link
                 to={`/product/${id}`}
-                className="text-lg font-bold mb-2 group-hover:text-pink group-hover:underline transition-all duration-300 line-clamp-1"
+                className="text-lg font-bold mb-2 group-hover:text-pink group-hover:underline transition-all duration-150 line-clamp-1"
             >
                 {name}
             </Link>

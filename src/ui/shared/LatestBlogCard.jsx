@@ -5,8 +5,8 @@ import UnderlineButton from "./UnderlineButton";
 const LatestBlogCard = ({ blog }) => {
     return (
         <div className="flex flex-col gap-4 rounded-md shadow-md group">
-            <div>
-                <img className="h-[255px] w-[370px] p-1 rounded-md" src={blog?.image} alt="" />
+            <div className="rounded-xl">
+                <img className="h-[255px] w-[370px] p-4" src={blog?.image} alt="" />
             </div>
             <div className="p-4">
                 <div className="flex items-center justify-between">

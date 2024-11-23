@@ -6,7 +6,7 @@ const Blogs = () => {
     return (
         <div>
             <TinnyBanner title={"Blog Page"} currentPath={"blogs"} />
-            <div>
+            <div className="container">
 
             </div>
 

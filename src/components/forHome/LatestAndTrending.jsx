@@ -7,17 +7,26 @@ const LatestAndTrending = () => {
             <div className="container flex lg:flex-row md:flex-row flex-col gap-5 items-center justify-between xl:px-20 lg:px-20 md:px-5 py-10">
                 <div className="card-img-bg rounded-full">
                     <img
+                        data-aos="flip-down"
+                        data-aos-duration="900"
+                        data-aos-offset="400"
                         className="xl:w-[500px] xl:h-[500px] lg:w-[400px] lg:h-[400px] md:w-[300px] md:h-[300px] w-[260px] h-[260px]"
                         src="https://i.ibb.co.com/543xPJD/Home-Stylish-Club-Sofa-Chair-Pleated-Sofa-Armchair-with-Golden-Legs-1.png" alt="" />
                 </div>
                 <div className="xl:max-w-xl lg:max-w-md md:max-w-sm px-2">
                     <div>
-                        <h3>
+                        <h3
+                            data-aos="fade-up"
+                            data-aos-duration="300"
+                        >
                             Unique Features Of latest &
                             Trending Products
                         </h3>
                     </div>
-                    <div className="my-7 space-y-1 lato">
+                    <div
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                        className="my-7 space-y-1 lato">
                         <p className="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                                 <circle cx="5.5" cy="5.5" r="5.5" fill="#2BF5CC" />
@@ -35,7 +44,10 @@ const LatestAndTrending = () => {
                             </svg>
                             Arms, backs and seats are structurally reinforced</p>
                     </div>
-                    <div className="flex items-center gap-7">
+                    <div
+                        data-aos="fade-up"
+                        data-aos-duration="700"
+                        className="flex items-center gap-7">
                         <PrimaryButton title={"Add To Cart"} />
                         <div>
                             <h6 className="font-semibold">B&B Italian Sofa</h6>

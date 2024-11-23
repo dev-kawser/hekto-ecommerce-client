@@ -2,7 +2,10 @@
 
 const SectionTitle = ({ title }) => {
     return (
-        <div className="text-center mb-5 lg:mt-20 mt-10">
+        <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            className="text-center mb-5 lg:mt-20 mt-10">
             <h2>
                 {title}
             </h2>

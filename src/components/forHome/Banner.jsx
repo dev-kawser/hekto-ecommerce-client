@@ -26,12 +26,18 @@ const Banner = () => {
                         <div className="container xl:py-20 lg:py-16 md:py-14 py-8 flex xl:flex-row lg:flex-row md:flex-row flex-col-reverse items-center justify-between lg:gap-0 md:gap-0 gap-8">
                             <div className="xl:max-w-2xl lg:max-w-xl md:max-w-md">
                                 <div>
-                                    <p className="text-pink">{item.subTitle}</p>
+                                    <p
+                                        data-aos="fade-up"
+                                        data-aos-duration="500" className="text-pink">{item.subTitle}</p>
                                 </div>
-                                <div className="my-3">
+                                <div
+                                    data-aos="fade-up"
+                                    data-aos-duration="700" className="my-3">
                                     <h1>{item.title}</h1>
                                 </div>
-                                <div>
+                                <div
+                                    data-aos="fade-up"
+                                    data-aos-duration="900">
                                     <p>{item.description}</p>
                                 </div>
                                 <div className="mt-5">
