@@ -185,7 +185,7 @@ const Shop = () => {
 
     return (
         <div>
-            <TinnyBanner title={"Shop Page"} />
+            <TinnyBanner title={"Products Page"} />
             <div className="container mx-auto px-4">
                 <div className="mt-7 lg:mt-16 flex gap-10 flex-col md:flex-row relative">
                     {/* Mobile Sidebar */}

@@ -16,6 +16,8 @@ import Carts from "../Pages/carts/Carts";
 import OrderComplete from "../Pages/orderComplete/OrderComplete";
 import About from "../Pages/about/About";
 import Contact from "../Pages/contact/Contact";
+import Offers from "../Pages/offers/Offers";
+import Faq from "../Pages/faq/Faq";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
                 element: <ProductDetails />
             },
             {
+                path: "/offers",
+                element: <Offers />
+            },
+            {
                 path: "/blogs",
                 element: <Blogs />
             },
@@ -58,6 +64,10 @@ const router = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />
+            },
+            {
+                path: "/faq",
+                element: <Faq />
             },
             {
                 path: "/account",
