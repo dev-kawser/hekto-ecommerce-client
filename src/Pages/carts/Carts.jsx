@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
+import SecondaryButton from "../../ui/shared/SecondaryButton";
 
 const Carts = () => {
     return (
@@ -62,12 +63,8 @@ const Carts = () => {
                             </tbody>
                         </table>
                         <div className="flex justify-between mt-6">
-                            <button className="bg-pink hover:bg-purple transition-all duration-300 text-white px-6 py-2 rounded-md hover:bg-pink-600">
-                                Update Cart
-                            </button>
-                            <button className="bg-pink hover:bg-purple transition-all duration-300 text-white px-6 py-2 rounded-md hover:bg-pink-600">
-                                Clear Cart
-                            </button>
+                            <SecondaryButton title={"Update Cart"} />
+                            <SecondaryButton title={"Clear Cart"} />
                         </div>
                     </div>
 
@@ -89,7 +86,7 @@ const Carts = () => {
                             <p className="text-sm text-gray-500 mb-4">
                                 ✅ Shipping & taxes calculated at checkout
                             </p>
-                            <Link to={"checkout"}>
+                            <Link to={"/order-complete"}>
                                 <button className="w-full bg-green-500 text-white py-3 rounded-md font-medium hover:bg-green-600 transition">
                                     Proceed to Checkout
                                 </button>

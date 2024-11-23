@@ -35,7 +35,7 @@ const Banner = () => {
                                     <p>{item.description}</p>
                                 </div>
                                 <div className="mt-5">
-                                    <Link to={"products"}>
+                                    <Link to={"/products"}>
                                         <PrimaryButton title={"Shop Now"} />
                                     </Link>
                                 </div>

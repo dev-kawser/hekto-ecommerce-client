@@ -148,7 +148,7 @@ const Shop = () => {
                                     type="checkbox"
                                     className="mr-2"
                                     onChange={() => handleFilterChange("price", range)}
-                                    checked={filters.price.includes(range)} // Properly reflect the checked state
+                                    checked={filters.price.includes(range)}
                                 />
                                 ${range.replace("-", " - $")}
                             </label>

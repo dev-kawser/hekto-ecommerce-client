@@ -33,7 +33,7 @@ const SubNavbar = () => {
                     <div>
                         {
                             user ?
-                                <h5 className="flex items-center gap-1 text-[#D1A6FF]">
+                                <h5 className="flex items-center gap-1 font-medium bg-pink text-white px-2 py-1 rounded">
                                     <span>
                                         <IoLogOutOutline />
                                     </span>
@@ -44,7 +44,7 @@ const SubNavbar = () => {
                                     <span>
                                         <LuUser2 />
                                     </span>
-                                    <Link to={"login"}>Login</Link>
+                                    <Link to={"/login"}>Login</Link>
                                 </h5>
                         }
 
@@ -59,7 +59,7 @@ const SubNavbar = () => {
                     </div>
                     <div>
                         <h5>
-                            <Link to={"carts"}>
+                            <Link to={"/carts"}>
                                 <FiShoppingCart />
                             </Link>
                         </h5>

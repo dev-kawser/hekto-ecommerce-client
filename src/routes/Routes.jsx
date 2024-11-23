@@ -13,6 +13,7 @@ import ProductDetails from "../Pages/products/ProductDetails";
 import Account from "../Pages/account/Account";
 import PrivateRoute from "./PrivateRoute";
 import Carts from "../Pages/carts/Carts";
+import OrderComplete from "../Pages/orderComplete/OrderComplete";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,12 @@ const router = createBrowserRouter([
                 path: "/carts",
                 element: <PrivateRoute>
                     <Carts />
+                </PrivateRoute>
+            },
+            {
+                path: "/order-complete",
+                element: <PrivateRoute>
+                    <OrderComplete />
                 </PrivateRoute>
             },
         ],

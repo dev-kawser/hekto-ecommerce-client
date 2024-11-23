@@ -85,7 +85,7 @@ const Navbar = () => {
                 <div className="xl:hidden lg:hidden flex items-center gap-3">
                     {
                         user ?
-                            <h5 className="flex items-center gap-1 font-medium bg-red text-white px-2 py-1 rounded">
+                            <h5 className="flex items-center gap-1 font-medium bg-pink text-white px-2 py-1 rounded">
                                 <span>
                                     <IoLogOutOutline />
                                 </span>
@@ -96,7 +96,7 @@ const Navbar = () => {
                                 <span>
                                     <LuUser2 />
                                 </span>
-                                <Link to={"login"}>Login</Link>
+                                <Link to={"/login"}>Login</Link>
                             </h4>
                     }
                     <button
