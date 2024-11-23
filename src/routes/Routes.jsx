@@ -14,6 +14,7 @@ import Account from "../Pages/account/Account";
 import PrivateRoute from "./PrivateRoute";
 import Carts from "../Pages/carts/Carts";
 import OrderComplete from "../Pages/orderComplete/OrderComplete";
+import About from "../Pages/about/About";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs />
+            },
+            {
+                path: "/about",
+                element: <About />
             },
             {
                 path: "/account",
