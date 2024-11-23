@@ -20,6 +20,8 @@ export default {
         red: "#FB2448",
         blue: "#2F1AC4",
 
+        softGreen: "#EBF4F3",
+
         gray: "#8A8FB9",
         lightGray: "rgba(26, 11, 91, 0.30)"
       },
