@@ -12,6 +12,7 @@ import Products from "../Pages/products/Products";
 import ProductDetails from "../Pages/products/ProductDetails";
 import Account from "../Pages/account/Account";
 import PrivateRoute from "./PrivateRoute";
+import Carts from "../Pages/carts/Carts";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,12 @@ const router = createBrowserRouter([
                 path: "/account",
                 element: <PrivateRoute>
                     <Account />
+                </PrivateRoute>
+            },
+            {
+                path: "/carts",
+                element: <PrivateRoute>
+                    <Carts />
                 </PrivateRoute>
             },
         ],
