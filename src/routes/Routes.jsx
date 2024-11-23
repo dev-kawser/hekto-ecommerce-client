@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import Carts from "../Pages/carts/Carts";
 import OrderComplete from "../Pages/orderComplete/OrderComplete";
 import About from "../Pages/about/About";
+import Contact from "../Pages/contact/Contact";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About />
+            },
+            {
+                path: "/contact",
+                element: <Contact />
             },
             {
                 path: "/account",
