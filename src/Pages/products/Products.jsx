@@ -78,7 +78,6 @@ const Shop = () => {
         // Extract unique filter options dynamically from product data
         const brands = [...new Set(sampleProducts.map((product) => product.brand))];
         const categories = [...new Set(sampleProducts.map((product) => product.category))];
-        const colors = [...new Set(sampleProducts.map((product) => product.color))];
         const discounts = [10, 20, 30, 40]; // Example discount tiers
         const priceRanges = ["0-100", "101-200", "201-300"]; // Example price ranges
 
@@ -86,7 +85,7 @@ const Shop = () => {
             <>
                 {/* Brand Filter */}
                 <h3 className="lg:text-xl text-lg font-bold mb-4 underline">Product Brand</h3>
-                <ul className="space-y-2 lg:max-h-52 max-h-24 overflow-y-auto">
+                <ul className="space-y-2 lg:max-h-52 md:max-h-96 max-h-24 overflow-y-auto lato">
                     {brands.map((brand) => (
                         <li key={brand}>
                             <label>
@@ -104,7 +103,7 @@ const Shop = () => {
 
                 {/* Category Filter */}
                 <h3 className="lg:text-xl text-lg font-bold mt-6 mb-4 underline">Product Category</h3>
-                <ul className="space-y-2 lg:max-h-40 max-h-32 overflow-y-auto">
+                <ul className="space-y-2 lg:max-h-52 md:max-h-96 max-h-40 overflow-y-auto lato">
                     {categories.map((category) => (
                         <li key={category}>
                             <label>
@@ -122,7 +121,7 @@ const Shop = () => {
 
                 {/* Discount Filter */}
                 <h3 className="lg:text-xl text-lg font-bold mt-6 mb-4 underline">Discount Offer</h3>
-                <ul className="space-y-2 lg:max-h-32 max-h-20 overflow-y-auto">
+                <ul className="space-y-2 lg:max-h-32 md:max-h-32 max-h-20 overflow-y-auto lato">
                     {discounts.map((discount) => (
                         <li key={discount}>
                             <label>
@@ -140,7 +139,7 @@ const Shop = () => {
 
                 {/* Price Range Filter */}
                 <h3 className="lg:text-xl text-lg font-bold mt-6 mb-4 underline">Price Filter</h3>
-                <ul className="space-y-2 lg:max-h-32 max-h-20 overflow-y-auto">
+                <ul className="space-y-2 lg:max-h-36 md:max-h-36 max-h-20 overflow-y-auto lato">
                     {priceRanges.map((range) => (
                         <li key={range}>
                             <label>
@@ -155,18 +154,6 @@ const Shop = () => {
                         </li>
                     ))}
                 </ul>
-
-                {/* Color Filter */}
-                <h3 className="lg:text-xl text-lg font-bold mt-6 mb-4 underline">Filter By Color</h3>
-                <div className="flex flex-wrap gap-2 max-h-10 overflow-y-auto">
-                    {colors.map((color) => (
-                        <span
-                            key={color}
-                            className={`block w-6 h-6 rounded-full cursor-pointer bg-${color}`}
-                            onClick={() => handleFilterChange("color", color)}
-                        ></span>
-                    ))}
-                </div>
             </>
         );
     };

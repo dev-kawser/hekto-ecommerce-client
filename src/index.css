@@ -34,7 +34,7 @@ body {
     }
 
     h5 li p {
-        @apply text-[16px];
+        @apply text-[16px] font-medium;
     }
 
     h6 {
