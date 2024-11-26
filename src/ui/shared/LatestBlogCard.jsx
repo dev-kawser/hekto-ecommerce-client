@@ -34,7 +34,7 @@ const LatestBlogCard = ({ blog }) => {
                     <h4 className="text-navyBlue group-hover:text-pink transition-all duration-300 font-bold line-clamp-1">{blog?.title}</h4>
                     <p className="lato line-clamp-2">{blog?.description}</p>
                 </div>
-                <UnderlineButton title={"Read More"} />
+                <UnderlineButton to={"/blogs"} title={"Read More"} />
             </div>
         </div>
     );
