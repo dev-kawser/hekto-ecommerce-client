@@ -48,8 +48,8 @@ const Blogs = () => {
                                 </h3>
                                 {/* Blog Description */}
                                 <p className="line-clamp-3 lato">{blog.description}</p>
-                                {/* Read More */}
-                                <Link>
+                                {/* Read More (blog details) */}
+                                <Link to={`/blog/${blog.id}`}>
                                     <button className="group-hover:text-pink group-hover:underline transition-all duration-150 font-bold mt-4">
                                         Read More
                                     </button>
