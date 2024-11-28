@@ -3,10 +3,37 @@ import Newsletter from "../../components/Newsletter";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import worldAnimation from "../../../public/worldAnimation.json"
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import axios from "axios";
 
 const Account = () => {
 
     const { user } = useAuth()
+    const [imageUrl, setImageUrl] = useState(null);
+    const [isUploading, setIsUploading] = useState(false);
+
+    console.log(imageUrl);
+
+    const handleImageUpload = async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "ml_default");
+        formData.append("cloud_name", import.meta.env.VITE_CLOUD_NAME);
+
+        setIsUploading(true);
+        try {
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME
+                }/image/upload`,
+                formData
+            );
+            setImageUrl(response.data.secure_url);
+        } catch (error) {
+            console.error("Image upload failed", error);
+        } finally {
+            setIsUploading(false);
+        }
+    };
 
     return (
         <div>
@@ -88,7 +115,23 @@ const Account = () => {
                             className="w-full p-3 mb-6 border border-gray-300 bg-gray-200 text-gray-600 rounded-lg cursor-not-allowed focus:outline-none"
                         />
                     </div>
-                    <button className="w-full bg-purple text-white py-3 rounded-lg text-lg font-medium hover:bg-navyBlue transition">
+                    <div>
+                            <input
+                                type="file"
+                                id="photo"
+                                onChange={(e) => handleImageUpload(e.target.files[0])}
+                                className="w-full p-3 border border-gray-300 bg-gray-200 text-gray-600 rounded-lg cursor-not-allowed focus:outline-none"
+                            />
+                            {isUploading && <div className="mt-2 w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>}
+                            {imageUrl && (
+                                <img
+                                    src={imageUrl}
+                                    alt="Uploaded"
+                                    className="mt-3 size-24 rounded"
+                                />
+                            )}
+                        </div>
+                    <button className="w-full bg-purple text-white py-3 rounded-lg text-lg font-medium hover:bg-navyBlue transition mt-6">
                         Update Data
                     </button>
                 </div>
