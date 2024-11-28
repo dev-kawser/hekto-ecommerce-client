@@ -39,6 +39,7 @@ const Register = () => {
         const userInfo = {
             name: name,
             email: email,
+            photo: "https://i.ibb.co.com/WWrPS5F/demo-user.png"
         };
 
         setIsSubmitting(true);
@@ -50,7 +51,7 @@ const Register = () => {
                 photoURL: "https://i.ibb.co.com/WWrPS5F/demo-user.png",
             })
                 .then(() => {
-                    axiosPublic.post("http://localhost:5000/users", userInfo)
+                    axiosPublic.post("/users", userInfo)
                         .then((res) => {
 
                             if (res.data.insertedId) {

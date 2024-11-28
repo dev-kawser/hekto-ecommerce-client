@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import axiosPublic from "../../hooks/useAxiosPublic";
 
 
 const SocialLogin = () => {
@@ -23,10 +24,21 @@ const SocialLogin = () => {
                     photo: result.user?.photoURL,
                 };
 
-                console.log(userInfo);
+                axiosPublic.post("/users", userInfo)
+                    .then((res) => {
 
-                toast.success("Successfully Google Login");
-                navigate(location?.state ? location.state : "/");
+                        if (res.data.insertedId) {
+                            toast.success("Successfully Google Login");
+                            navigate(location?.state ? location.state : "/");
+                        }
+
+                    })
+                    .catch((error) => {
+                        if (error.response?.data?.message === "User already exists") {
+                            toast.success("Successfully Google Login");
+                        }
+                    });
+
             })
             .catch(() => {
                 toast.error("Google Sign-In failed");
