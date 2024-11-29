@@ -29,12 +29,13 @@ const SocialLogin = () => {
 
                         if (res.data.insertedId) {
                             toast.success("Successfully Google Login");
-                            navigate(location?.state ? location.state : "/");
+                            navigate(location?.state ? location.state : "/account");
                         }
 
                     })
                     .catch((error) => {
                         if (error.response?.data?.message === "User already exists") {
+                            navigate(location?.state ? location.state : "/");
                             toast.success("Successfully Google Login");
                         }
                     });

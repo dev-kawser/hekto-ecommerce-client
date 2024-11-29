@@ -57,7 +57,7 @@ const Register = () => {
                             if (res.data.insertedId) {
                                 setIsSubmitting(false);
                                 toast.success("Successfully Registered");
-                                navigate(location?.state ? location.state : "/");
+                                navigate(location?.state ? location.state : "/account");
                             }
 
                         })

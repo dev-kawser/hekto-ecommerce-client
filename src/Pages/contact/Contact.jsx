@@ -2,8 +2,41 @@ import Lottie from "lottie-react";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import contactAnimation from "../../../public/contactAnimation.json"
+import toast from "react-hot-toast";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
 
 const Contact = () => {
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                import.meta.env.VITE_EMAIL_JS_SERVICE_KEY,
+                import.meta.env.VITE_EMAIL_JS_TEMPLATE_KEY,
+                form.current,
+                {
+                    publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
+                }
+            )
+            .then(
+                () => {
+                    toast.success("Email sent successfully!");
+                },
+                () => {
+                    toast.error("Failed to send email. Please try again.");
+                }
+            );
+
+        e.target.reset();
+    };
+
+
+
     return (
         <div>
             {/* Tiny Banner */}
@@ -12,14 +45,14 @@ const Contact = () => {
             {/* Contact Section */}
             <div className="container mt-10 lg:mt-20">
                 {/* Information and Contact Way */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-8">
                     {/* Left - Information About Us */}
                     <div>
                         <h2 className="text-2xl font-bold text-gray-800 mb-4">
                             Information About Us
                         </h2>
                         <p className="text-gray-600 leading-relaxed mb-6 lato">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices mattis aliquam, malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus vitae lobortis quis bibendum quam.
+                            Welcome to our online store, where convenience meets quality. We offer a wide range of products carefully selected to meet your needs, whether you&apos;re shopping for the latest tech gadgets, trendy fashion, or home essentials. Our user-friendly website ensures a smooth shopping experience, with secure payment options and fast delivery. Explore our collection and find what you&apos;re looking for today.
                         </p>
                         <div className="flex items-center space-x-4">
                             <span className="w-6 h-6 bg-blue rounded-full"></span>
@@ -36,15 +69,15 @@ const Contact = () => {
                         <ul className="space-y-4 lato">
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-purple rounded-full mr-3"></span>
-                                <span>Tel: 877-67-88-99</span>
+                                <span>Tel: +880 1709190412</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-blue rounded-full mr-3"></span>
-                                <span>E-Mail: shop@store.com</span>
+                                <span>E-Mail: hekto@store.com</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-yellow-400 rounded-full mr-3"></span>
-                                <span>20 Margaret st, London, Great Britain, 3NM98-LK</span>
+                                <span>20 Mahalla Moshjid rd, Tangail, Dhaka, Bangladesh</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-green-500 rounded-full mr-3"></span>
@@ -66,28 +99,26 @@ const Contact = () => {
                             Get In Touch
                         </h2>
                         <p className="text-gray-600 leading-relaxed mb-6 lato">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices tristique amet erat vitae eget dolor los vitae lobortis quis bibendum quam.
+                            We’d love to hear from you! Whether you have a question about our products, need help with your order, or just want to share your feedback, our customer support team is here to assist you. Feel free to reach out to us through our contact form, email, or social media channels. Your satisfaction is our priority, and we’re always ready to help!
                         </p>
-                        <form className="space-y-4">
+                        <form ref={form} onSubmit={sendEmail} className="space-y-4">
                             <div className="flex gap-4">
                                 <input
                                     type="text"
+                                    name="from_name"
                                     placeholder="Your Name*"
                                     className="w-1/2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                                 />
                                 <input
                                     type="email"
+                                    name="from_email"
                                     placeholder="Your E-mail*"
                                     className="w-1/2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                                 />
                             </div>
-                            <input
-                                type="text"
-                                placeholder="Subject*"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            />
                             <textarea
                                 placeholder="Type Your Message*"
+                                name="message"
                                 rows="4"
                                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             ></textarea>
@@ -97,11 +128,6 @@ const Contact = () => {
 
                     {/* Right - Illustration */}
                     <div className="relative">
-                        {/* <img
-                            src="https://via.placeholder.com/500x400"
-                            alt="Contact Illustration"
-                            className="rounded-lg shadow-lg"
-                        /> */}
                         <div className="w-72 lg:w-[500px] md:hidden lg:block mx-auto flex-shrink-0">
                             <Lottie animationData={contactAnimation} loop={true} />
                         </div>

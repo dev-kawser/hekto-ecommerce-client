@@ -1,4 +1,3 @@
-// import { TbTruckDelivery } from "react-icons/tb";
 import SectionTitle from "../../ui/shared/SectionTitle";
 
 
@@ -42,10 +41,10 @@ const HektoOffer = () => {
                     </div>
                     <div className="space-y-2">
                         <h4 className="text-navyBlue font-semibold">
-                            24/7 Support
+                            Efficient Shipping
                         </h4>
                         <p className="lato font-medium text-lightGray">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+                            Enjoy fast and reliable delivery on every order. We partner with top carriers to ensure your purchases arrive on time, wherever you are.
                         </p>
                     </div>
                 </div>
@@ -79,10 +78,10 @@ const HektoOffer = () => {
                     </div>
                     <div className="space-y-2">
                         <h4 className="text-navyBlue font-semibold">
-                            24/7 Support
+                            Easy Returns & Exchanges
                         </h4>
                         <p className="lato font-medium text-lightGray">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+                            Not completely satisfied? No worries! We make returns and exchanges simple and hassle-free. Your satisfaction is our priority.
                         </p>
                     </div>
                 </div>
@@ -113,10 +112,10 @@ const HektoOffer = () => {
                     </div>
                     <div className="space-y-2">
                         <h4 className="text-navyBlue font-semibold">
-                            24/7 Support
+                            Premium Quality Products
                         </h4>
                         <p className="lato font-medium text-lightGray">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+                            We offer a wide range of high-quality products that meet your needs and exceed expectations.
                         </p>
                     </div>
                 </div>
@@ -142,10 +141,10 @@ const HektoOffer = () => {
                     </div>
                     <div className="space-y-2">
                         <h4 className="text-navyBlue font-semibold">
-                            24/7 Support
+                            24/7 Customer Support
                         </h4>
                         <p className="lato font-medium text-lightGray">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+                            We&apos;re here for you at any time of day. Whether you need assistance with a product or have questions, our support team is ready to help, ensuring you&apos;re never left alone.
                         </p>
                     </div>
                 </div>
