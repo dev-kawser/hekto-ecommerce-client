@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function ProductDetailsSection() {
-    const [activeTab, setActiveTab] = useState("description"); // State to manage the active tab
+function ProductDetailsSection({product}) {
+
+    const [activeTab, setActiveTab] = useState("description");
+    console.log(product);
 
     const tabData = {
         description: (

@@ -48,7 +48,7 @@ const Offers = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
                     {currentProducts?.map((product) => (
                         <div
-                            key={product.id}
+                            key={product._id}
                             className="bg-white hover:bg-softGreen p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative group"
                         >
                             {/* Product Image */}
@@ -59,7 +59,9 @@ const Offers = () => {
                             />
                             {/* Product Info */}
                             <div className="mt-4 text-center">
-                                <Link className="text-lg group-hover:text-pink group-hover:underline font-bold text-gray-800 line-clamp-1 transition-all duration-150">
+                                <Link
+                                    to={`/product/${product?._id}`}
+                                    className="text-lg group-hover:text-pink group-hover:underline font-bold text-gray-800 line-clamp-1 transition-all duration-150">
                                     {product.productTitle}
                                 </Link>
                                 <div className="flex items-center justify-center gap-2">
@@ -71,13 +73,17 @@ const Offers = () => {
                             <div
                                 className="absolute bottom-24 left-4 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-navyBlue">
                                 <h5 className="bg-white rounded-full p-2">
-                                    <Link><FiShoppingCart /></Link>
+                                    <Link
+                                        title="Add to cart"><FiShoppingCart /></Link>
                                 </h5>
                                 <h5>
-                                    <Link><IoIosHeartEmpty /></Link>
+                                    <Link
+                                        title="Add Wishlist"><IoIosHeartEmpty /></Link>
                                 </h5>
                                 <h5>
-                                    <Link><IoEyeOutline /></Link>
+                                    <Link
+                                        title="Product Details"
+                                        to={`/product/${product?._id}`}><IoEyeOutline /></Link>
                                 </h5>
                             </div>
                         </div>
