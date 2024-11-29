@@ -33,6 +33,19 @@ const ProductDetails = () => {
         );
     }
 
+    const handleSubmitReview = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const comment = e.target.comment.value;
+
+        const reviewData = {
+            name,
+            comment,
+        }
+
+        console.log(reviewData);
+    };
+
     // Destructure product details
     const { productTitle, price, originalPrice, shortDescription, img1, img2, img3, brand, category, discount, color } = singleProduct;
 
@@ -84,6 +97,31 @@ const ProductDetails = () => {
                 </div>
 
                 <ProductDetailsSection product={singleProduct} />
+
+                {/* review section */}
+                <form onSubmit={handleSubmitReview} className="mt-6">
+                    <h3 className="text-lg font-semibold mb-3">Add a Review</h3>
+                    <input
+                        type="text"
+                        placeholder="Your Name"
+                        name="name"
+                        className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        required
+                    />
+                    <textarea
+                        placeholder="Your Comment"
+                        name="comment"
+                        className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        rows="4"
+                        required
+                    ></textarea>
+                    <button
+                        type="submit"
+                        className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300"
+                    >
+                        Submit Review
+                    </button>
+                </form>
 
             </div>
             <Newsletter />
