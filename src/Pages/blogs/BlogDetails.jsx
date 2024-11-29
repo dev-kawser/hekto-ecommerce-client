@@ -62,7 +62,7 @@ const BlogDetails = () => {
                     <img
                         src={image}
                         alt={title}
-                        className="w-full h-96 object-cover rounded-lg"
+                        className="w-full h-full rounded-lg"
                     />
                     <div className="mt-6">
                         <div className="text-sm text-navyBlue mb-4 flex items-center gap-4">
@@ -151,45 +151,59 @@ const BlogDetails = () => {
 export default BlogDetails;
 
 
-const blogs = [
-    {
-        id: 1,
-        title: "Mauris at orci non vulputate diam tincidunt nec.",
-        date: "Aug 02 2024",
-        author: "Kawser",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://via.placeholder.com/800x400",
-    },
-    {
-        id: 2,
-        title: "Aenean vitae in aliquam ultrices lectus. Etiam.",
-        date: "Aug 05 2024",
-        author: "Kawser",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://via.placeholder.com/800x400",
-    },
-    {
-        id: 3,
-        title: "Sit nam congue feugiat nisl, mauris amet nisi.",
-        date: "Aug 08 2024",
-        author: "Kawser",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://via.placeholder.com/800x400",
-    },
-    {
-        id: 4,
-        title: "Fusce venenatis lacus a massa ultrices commodo.",
-        date: "Aug 10 2024",
-        author: "Kawser",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://via.placeholder.com/800x400",
-    },
-    {
-        id: 5,
-        title: "Aliquam eget magna et sapien sagittis ultrices.",
-        date: "Aug 12 2024",
-        author: "Kawser",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://via.placeholder.com/800x400",
-    },
-];
+// const blogs = [
+//     {
+//         id: 1,
+//         title: "10 Tips for Choosing the Perfect Online Store Platform",
+//         date: "Oct 15 2024",
+//         author: "Kawser",
+//         description:
+//             "Choosing the right e-commerce platform is one of the most critical decisions for any online business. From ease of use to scalability, each platform offers unique features tailored to different needs. This blog explores essential tips, including evaluating your business size, considering integrations with payment gateways, understanding pricing models, and ensuring mobile responsiveness. We also highlight the top platforms in 2024 and discuss how to choose the one that aligns with your goals.",
+//         image: "https://i.ibb.co.com/dgZyddF/Home.png",
+//     },
+//     {
+//         id: 2,
+//         title: "How to Optimize Your Product Listings for More Sales",
+//         date: "Oct 20 2024",
+//         author: "Kawser",
+//         description:
+//             "A well-optimized product listing is the cornerstone of any successful e-commerce store. In this guide, we delve into the key components of a compelling listing, including crafting detailed and engaging product descriptions, using professional-grade images, and leveraging SEO keywords to improve visibility. Additionally, discover the importance of pricing strategies, product categorization, and customer reviews in boosting sales. Learn how to turn browsers into buyers with effective optimization techniques.",
+//         image: "https://i.ibb.co.com/h7Zzdd1/vu3h-Nj2-Y64-Kxhdf-X63-FNBg.webp",
+//     },
+//     {
+//         id: 3,
+//         title: "The Rise of Mobile Shopping: What Retailers Need to Know",
+//         date: "Oct 25 2024",
+//         author: "Kawser",
+//         description:
+//             "Mobile shopping is no longer a trend—it's the future of e-commerce. With over 70% of online transactions now happening on mobile devices, retailers must prioritize mobile optimization. This article covers the critical elements of a mobile-friendly site, including responsive design, streamlined checkout processes, and faster page load times. We also explore emerging technologies like voice shopping and mobile apps that can enhance the shopping experience for customers on the go.",
+//         image: "https://i.ibb.co.com/LggXKtr/1657263712909.jpg",
+//     },
+//     {
+//         id: 4,
+//         title: "Understanding Customer Reviews and Their Impact on Sales",
+//         date: "Nov 01 2024",
+//         author: "Kawser",
+//         description:
+//             "Customer reviews are a powerful tool for building trust and driving sales. Positive reviews act as social proof, reassuring potential buyers of the quality of your products. This blog dives into the psychology of reviews, why they matter, and how to encourage satisfied customers to leave feedback. You'll also learn how to respond to negative reviews constructively, and how to use review analytics to identify areas for improvement and refine your product offerings.",
+//         image: "https://i.ibb.co.com/syvgWHm/customer-reviews-63d8b1a454172-sej.webp",
+//     },
+//     {
+//         id: 5,
+//         title: "Top Trends in E-Commerce for 2024 You Need to Embrace",
+//         date: "Nov 05 2024",
+//         author: "Kawser",
+//         description:
+//             "The e-commerce landscape is constantly evolving, and staying ahead requires businesses to adapt to emerging trends. In 2024, some of the most prominent trends include the rise of AI-driven personalization, voice search optimization, and sustainable packaging. This article provides an in-depth look at these trends and offers actionable strategies to incorporate them into your business. Discover how to use data analytics, social commerce, and green initiatives to stay competitive in the market.",
+//         image: "https://i.ibb.co.com/rsJsF0j/download-9.png",
+//     },
+//     {
+//         id: 6,
+//         title: "The Importance of Fast Shipping in Building Customer Loyalty",
+//         date: "Nov 10 2024",
+//         author: "Kawser",
+//         description:
+//             "In the era of same-day delivery, fast and reliable shipping has become a top priority for customers. This blog explains why efficient shipping is vital for building trust and loyalty and how delayed shipments can negatively impact your brand's reputation. We also cover strategies to improve your logistics, such as partnering with reliable couriers, offering multiple shipping options, and utilizing warehouse management systems. Learn how to create a seamless delivery experience that keeps customers coming back.",
+//         image: "https://i.ibb.co.com/BsbYxPy/download-10.png",
+//     },
+// ];
