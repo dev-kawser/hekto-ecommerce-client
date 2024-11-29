@@ -45,18 +45,18 @@ const ProductDetails = () => {
                         <img
                             src={img1}
                             alt={productTitle}
-                            className="rounded-lg border p-3 object-cover w-56 lg:w-64 xl:w-80 mx-auto transition-transform duration-500 ease-in-out hover:scale-110"
+                            className="rounded-lg border p-3 object-cover size-56 lg:size-64 xl:size-80 mx-auto transition-transform duration-500 ease-in-out hover:scale-110"
                         />
                         <div className="flex items-center mx-auto gap-5 lg:gap-7">
                             <img
                                 src={img2}
                                 alt={productTitle}
-                                className="rounded-lg border p-3 object-cover w-32 lg:w-52 xl:w-72 transition-transform duration-500 ease-in-out hover:scale-110"
+                                className="rounded-lg border p-3 object-cover size-32 lg:size-52 xl:size-72 transition-transform duration-500 ease-in-out hover:scale-110"
                             />
                             <img
                                 src={img3}
                                 alt={productTitle}
-                                className="rounded-lg border p-3 object-cover w-32 lg:w-52 xl:w-72 transition-transform duration-500 ease-in-out hover:scale-110"
+                                className="rounded-lg border p-3 object-cover size-32 lg:size-52 xl:size-72 transition-transform duration-500 ease-in-out hover:scale-110"
                             />
                         </div>
                     </div>

@@ -1,49 +1,39 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function ProductDetailsSection({product}) {
+function ProductDetailsSection({ product }) {
 
     const [activeTab, setActiveTab] = useState("description");
-    console.log(product);
+
+    // Destructure product details
+    const { productTitle, bigDescription, shortDescription, reviews, additionalInformation } = product;
 
     const tabData = {
         description: (
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Varius tempor.</h2>
-                <p className="text-sm text-gray-700">
-                    Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel
-                    sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum.
+                <h2 className="text-xl font-bold">{productTitle}</h2>
+                <p className="text-sm text-black">
+                    {shortDescription}
                 </p>
-                <p className="text-sm text-gray-700">
-                    Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius
-                    proin sed urna, egestas consequat lorem diam tincidunt. Magna eget faucibus cras
-                    justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis
-                    justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverra.
+                <p className="text-sm text-black">
+                    {bigDescription}
                 </p>
-
-                <h3 className="text-lg font-semibold mt-6">More details</h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                    <li>→ Aliquam dis vulputate vulputate integer sagittis.</li>
-                    <li>→ Faucibus diam arcu, nulla lobortis justo netus dis.</li>
-                    <li>→ Eu in fringilla vulputate nunc nec.</li>
-                    <li>→ Dui, massa viverra.</li>
-                    <li>→ Aliquam dis vulputate vulputate integer sagittis.</li>
-                </ul>
             </div>
         ),
         additionalInfo: (
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Additional Information</h2>
-                <p className="text-sm text-gray-700">
-                    This product is made with high-quality materials and ensures durability.
+                <p className="text-sm text-black">
+                    {shortDescription}
                 </p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                     Specifications:
                     <ul className="list-disc pl-6">
-                        <li>Weight: 1.2kg</li>
-                        <li>Dimensions: 10x15x20 cm</li>
-                        <li>Material: Aluminum</li>
-                        <li>Warranty: 1 Year</li>
+                        {additionalInformation?.map((spec, index) => (
+                            <li key={index}>
+                                <strong>{spec.label}:</strong> {spec.value}
+                            </li>
+                        ))}
                     </ul>
                 </p>
             </div>
@@ -51,12 +41,14 @@ function ProductDetailsSection({product}) {
         reviews: (
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Customer Reviews</h2>
-                <p className="text-sm text-gray-700">
-                    ★★★★☆ - &quot;Great product! Highly recommend it.&quot; - Jane Doe
-                </p>
-                <p className="text-sm text-gray-700">
-                    ★★★☆☆ - &quot;Good, but could be improved in terms of packaging.&quot; - John Smith
-                </p>
+                {
+                    reviews?.map((review, idx) => (
+                        <div key={idx} className="space-y-2">
+                            <p className="text-sm text-black">{review.comment}</p>
+                            <p className="text-sm text-navyBlue font-semibold">By - {review.name}</p>
+                        </div>
+                    ))
+                }
             </div>
         ),
         video: (
