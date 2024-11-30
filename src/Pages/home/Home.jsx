@@ -6,7 +6,6 @@ import LatestAndTrending from "../../components/forHome/LatestAndTrending";
 import LatestBlogs from "../../components/forHome/LatestBlogs";
 import LatestProducts from "../../components/forHome/LatestProducts";
 import TopCategories from "../../components/forHome/TopCategories";
-import TrendingProducts from "../../components/forHome/TrendingProducts";
 import Newsletter from "../../components/Newsletter";
 
 
@@ -18,7 +17,6 @@ const Home = () => {
             <LatestProducts />
             <HektoOffer />
             <LatestAndTrending />
-            <TrendingProducts />
             <DiscountItem />
             <TopCategories />
             <Newsletter />

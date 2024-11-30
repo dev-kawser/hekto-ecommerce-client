@@ -24,7 +24,7 @@ const useMyCarts = () => {
     // Sort carts by date in descending order (recent first)
     const sortedMyCarts = myCarts?.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    return { sortedMyCarts, myCarts, myCartsRefetch: refetch };
+    return { sortedMyCarts, myCarts, myCartsRefetch: refetch, currentUser };
 };
 
 export default useMyCarts;

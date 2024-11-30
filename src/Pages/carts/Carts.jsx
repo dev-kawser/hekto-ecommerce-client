@@ -2,12 +2,37 @@ import { Link } from "react-router-dom";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import useMyCarts from "../../hooks/useMyCarts";
+import { useEffect, useState } from "react";
+import axiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const Carts = () => {
 
-    const { sortedMyCarts } = useMyCarts();
+    const { currentUser, sortedMyCarts, myCartsRefetch } = useMyCarts();
+    const [address, setAddress] = useState(false);
 
-    console.log(sortedMyCarts);
+    useEffect(() => {
+        if (currentUser?.address && currentUser?.apartment && currentUser?.mobileNumber) {
+            setAddress(true);
+        }
+    }, [currentUser?.address, currentUser?.apartment, currentUser?.mobileNumber])
+
+    const handleDeleteCarts = async () => {
+        try {
+            const response = await axiosPublic.delete(`/carts/delete/${currentUser?.email}`);
+
+            if (response.data.message) {
+                toast.success("All carts have been deleted successfully.");
+                myCartsRefetch();
+            } else {
+                toast.error("Failed to delete carts.");
+            }
+        } catch (error) {
+            toast.error("An error occurred while deleting carts.");
+            console.error("Error deleting carts:", error);
+        }
+    };
+
 
     return (
         <div>
@@ -71,8 +96,8 @@ const Carts = () => {
                             </table>
                         </div>
                         <div className="flex justify-between mt-6">
-                            <SecondaryButton title={"Update Cart"} />
-                            <SecondaryButton title={"Clear Cart"} />
+                            <SecondaryButton title={"Count Total"} />
+                            <SecondaryButton onClick={() => handleDeleteCarts()} title={"Clear Cart"} />
                         </div>
                     </div>
 
@@ -84,22 +109,26 @@ const Carts = () => {
                             <h2 className="text-lg font-semibold text-gray-800 mb-4">
                                 Cart Totals
                             </h2>
-                            <div className="flex justify-between text-gray-700 mb-2">
-                                <span>Subtotal:</span>
-                                <span>$160.00</span>
-                            </div>
                             <div className="flex justify-between text-gray-700 font-semibold mb-2">
                                 <span>Total:</span>
-                                <span>$192.00</span>
+                                <span>${ }</span>
                             </div>
                             <p className="text-sm text-gray-500 mb-4">
                                 ✅ Shipping & taxes calculated at checkout
                             </p>
-                            <Link to={"/order-complete"}>
-                                <button className="w-full bg-green-500 text-white py-3 rounded-md font-medium hover:bg-green-600 transition">
-                                    Proceed to Checkout
-                                </button>
-                            </Link>
+                            {
+                                address === false ?
+                                    <Link to={"/account"}>
+                                        <button className="w-full bg-pink text-white py-3 rounded-md font-medium hover:bg-red transition">
+                                            Add address to Checkout
+                                        </button>
+                                    </Link>
+                                    : <Link to={"/order-complete"}>
+                                        <button className="w-full bg-green-500 text-white py-3 rounded-md font-medium hover:bg-green-600 transition">
+                                            Proceed to Checkout
+                                        </button>
+                                    </Link>
+                            }
                         </div>
 
                         {/* Calculate Shipping */}
@@ -109,18 +138,21 @@ const Carts = () => {
                             </h2>
                             <input
                                 type="text"
-                                placeholder="Bangladesh"
-                                className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                readOnly
+                                value={currentUser?.address}
+                                className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-not-allowed"
                             />
                             <input
                                 type="text"
-                                placeholder="Mirpur Dhaka - 1200"
-                                className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                readOnly
+                                value={currentUser?.apartment}
+                                className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-not-allowed"
                             />
                             <input
-                                type="text"
-                                placeholder="Postal Code"
-                                className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                type="number"
+                                readOnly
+                                value={currentUser?.mobileNumber}
+                                className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-not-allowed"
                             />
                             <p className="mt-4 text-sm">
                                 Want to add address? Add address here{" "}
