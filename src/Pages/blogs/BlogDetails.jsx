@@ -5,6 +5,7 @@ import TinnyBanner from "../../ui/shared/TinnyBanner";
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../ui/shared/Loading";
+import NoDataFound from "../shared/NoDataFound";
 
 const BlogDetails = () => {
 
@@ -21,11 +22,7 @@ const BlogDetails = () => {
     if (isLoading) return <Loading />;
 
     if (!singleBlog) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <p>Blog not found!</p>
-            </div>
-        );
+        return <NoDataFound />
     }
 
     const handleCommentSubmit = async (e) => {

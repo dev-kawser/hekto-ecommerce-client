@@ -4,6 +4,7 @@ import Newsletter from "../../components/Newsletter";
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../ui/shared/Loading";
+import NoDataFound from "../shared/NoDataFound";
 
 const ProductDetails = () => {
 
@@ -26,11 +27,7 @@ const ProductDetails = () => {
     }
 
     if (!singleProduct) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <h3>Product not found!</h3>
-            </div>
-        );
+        return <NoDataFound />
     }
 
     const handleSubmitReview = (e) => {

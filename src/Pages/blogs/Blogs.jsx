@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../ui/shared/Loading";
+import NoDataFound from "../shared/NoDataFound";
 
 const Blogs = () => {
 
@@ -35,6 +36,10 @@ const Blogs = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    if (!blogs) {
+        return <NoDataFound />
+    }
 
     if (isLoading) return <Loading />;
 
