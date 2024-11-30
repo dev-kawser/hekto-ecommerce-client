@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const { data: singleProduct, isLoading } = useQuery({
         queryKey: "singleProduct",
         queryFn: async () => {
-            const response = await axiosPublic.get(`/offerProducts/${id}`);
+            const response = await axiosPublic.get(`/products/${id}`);
             return response.data;
         }
     })
