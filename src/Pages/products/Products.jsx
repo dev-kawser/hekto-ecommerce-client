@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import Newsletter from "../../components/Newsletter";
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
+import NoDataFound from "../shared/NoDataFound";
 
 const Shop = () => {
 
@@ -249,7 +250,7 @@ const Shop = () => {
                                     <ProductsCard key={product._id} product={product} />
                                 ))
                             ) : (
-                                <p>No products found.</p>
+                                <NoDataFound />
                             )}
                         </div>
 
