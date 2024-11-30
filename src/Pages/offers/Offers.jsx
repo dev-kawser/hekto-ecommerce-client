@@ -60,7 +60,7 @@ const Offers = () => {
                             {/* Product Info */}
                             <div className="mt-4 text-center">
                                 <Link
-                                    to={`/product/${product?._id}`}
+                                    to={`/offerProduct/${product?._id}`}
                                     className="text-lg group-hover:text-pink group-hover:underline font-bold text-gray-800 line-clamp-1 transition-all duration-150">
                                     {product.productTitle}
                                 </Link>

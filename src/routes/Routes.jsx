@@ -19,6 +19,7 @@ import Contact from "../Pages/contact/Contact";
 import Offers from "../Pages/offers/Offers";
 import Faq from "../Pages/faq/Faq";
 import BlogDetails from "../Pages/blogs/BlogDetails";
+import OfferProductDetails from "../Pages/offers/OfferProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: "/offers",
                 element: <Offers />
+            },
+            {
+                path: "/offerProduct/:id",
+                element: <OfferProductDetails />
             },
             {
                 path: "/blogs",
