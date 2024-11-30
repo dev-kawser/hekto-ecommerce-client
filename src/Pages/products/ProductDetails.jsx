@@ -5,8 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../ui/shared/Loading";
 import NoDataFound from "../shared/NoDataFound";
+import toast from "react-hot-toast";
+import useCurrentUser from "../../hooks/useCurrentUser";
 
 const ProductDetails = () => {
+
+    const { currentUser } = useCurrentUser()
 
     const { id } = useParams();
 
@@ -44,7 +48,39 @@ const ProductDetails = () => {
     };
 
     // Destructure product details
-    const { productTitle, price, originalPrice, shortDescription, img1, img2, img3, brand, category, discount, color } = singleProduct;
+    const { _id, productTitle, price, originalPrice, shortDescription, img1, img2, img3, brand, category, discount, color } = singleProduct;
+
+    // add to cart
+    const handleAddToCart = () => {
+
+        if (!currentUser) {
+            toast.error("You need to be logged in to add products to cart!");
+            return;
+        }
+
+        const cartData = {
+            user: currentUser,
+            email: currentUser.email,
+            productId: _id,
+            productTitle: productTitle,
+            productImage: img1,
+            productPrice: price,
+            productQuantity: 1,
+            date: new Date().toLocaleDateString(),
+        }
+
+        console.log(cartData);
+
+        axiosPublic.post("/carts", { cartData })
+            .then((res) => {
+                if (res.data) {
+                    toast.success("Product added to cart successfully!");
+                }
+            })
+            .catch((error) => {
+                console.error("Error adding product to cart:", error);
+            });
+    };
 
     return (
         <>
@@ -87,7 +123,9 @@ const ProductDetails = () => {
                         <p className="text-navyBlue lato">{shortDescription}</p>
 
                         {/* Call to Action */}
-                        <button className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300">
+                        <button
+                            onClick={() => handleAddToCart()}
+                            className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300">
                             Add to Cart
                         </button>
                     </div>

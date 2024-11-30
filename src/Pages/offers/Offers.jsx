@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import Newsletter from "../../components/Newsletter";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
-import { FiShoppingCart } from "react-icons/fi";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { IoEyeOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
+import CardIcons from "../../ui/shared/CardIcons";
 
 const Offers = () => {
 
@@ -70,22 +68,7 @@ const Offers = () => {
                                 </div>
                             </div>
                             {/* Icons */}
-                            <div
-                                className="absolute bottom-24 left-4 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-navyBlue">
-                                <h5 className="bg-white rounded-full p-2">
-                                    <Link
-                                        title="Add to cart"><FiShoppingCart /></Link>
-                                </h5>
-                                <h5>
-                                    <Link
-                                        title="Add Wishlist"><IoIosHeartEmpty /></Link>
-                                </h5>
-                                <h5>
-                                    <Link
-                                        title="Product Details"
-                                        to={`/product/${product?._id}`}><IoEyeOutline /></Link>
-                                </h5>
-                            </div>
+                            <CardIcons offer={true} product={product} />
                         </div>
                     ))}
                 </div>

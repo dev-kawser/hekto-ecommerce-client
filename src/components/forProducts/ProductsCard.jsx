@@ -20,11 +20,13 @@ const ShopCard = ({ product }) => {
 
         const cartData = {
             user: currentUser,
+            email: currentUser.email,
             productId: product._id,
             productTitle: product.productTitle,
             productImage: product.img1,
             productPrice: product.price,
-            productQuantity: 1
+            productQuantity: 1,
+            date: new Date().toLocaleDateString(),
         }
 
         axiosPublic.post("/carts", { cartData })
