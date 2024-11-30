@@ -3,6 +3,7 @@ import TinnyBanner from "../../ui/shared/TinnyBanner";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 
 const Carts = () => {
+
     return (
         <div>
             {/* Tiny Banner */}

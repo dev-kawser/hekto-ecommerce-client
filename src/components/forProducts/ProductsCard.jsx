@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import useMyCarts from "../../hooks/useMyCarts";
 
 const ShopCard = ({ product }) => {
     // Destructure product details
     const { _id, productTitle, price, originalPrice, shortDescription, img1 } = product;
 
-    const { currentUser } = useCurrentUser()
+    const { currentUser } = useCurrentUser();
+    const { myCartsRefetch } = useMyCarts();
 
     // add to cart
     const handleAddToCart = (product) => {
@@ -33,6 +35,7 @@ const ShopCard = ({ product }) => {
             .then((res) => {
                 if (res.data) {
                     toast.success("Product added to cart successfully!");
+                    myCartsRefetch();
                 }
             })
             .catch((error) => {

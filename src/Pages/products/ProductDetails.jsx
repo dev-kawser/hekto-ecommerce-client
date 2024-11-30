@@ -7,10 +7,12 @@ import Loading from "../../ui/shared/Loading";
 import NoDataFound from "../shared/NoDataFound";
 import toast from "react-hot-toast";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import useMyCarts from "../../hooks/useMyCarts";
 
 const ProductDetails = () => {
 
-    const { currentUser } = useCurrentUser()
+    const { currentUser } = useCurrentUser();
+    const { myCartsRefetch } = useMyCarts();
 
     const { id } = useParams();
 
@@ -75,6 +77,7 @@ const ProductDetails = () => {
             .then((res) => {
                 if (res.data) {
                     toast.success("Product added to cart successfully!");
+                    myCartsRefetch();
                 }
             })
             .catch((error) => {

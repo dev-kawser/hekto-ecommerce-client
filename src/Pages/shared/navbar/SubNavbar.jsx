@@ -6,11 +6,15 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { IoLogOutOutline } from "react-icons/io5";
+import useMyCarts from "../../../hooks/useMyCarts";
 
 
 const SubNavbar = () => {
 
     const { user, logout } = useAuth()
+    const { myCarts } = useMyCarts()
+
+    console.log(myCarts);
 
     return (
         <div className="bg-purple text-white xl:block lg:block hidden">
@@ -63,7 +67,7 @@ const SubNavbar = () => {
                                 <div className="relative w-fit">
                                     <FiShoppingCart className="text-xl" />
                                     <span className="absolute mx-auto -right-4 -top-2 flex size-5 items-center justify-center rounded-full bg-pink text-center text-[15px] text-white">
-                                        0
+                                        {myCarts?.length}
                                     </span>
                                 </div>
                             </Link>
