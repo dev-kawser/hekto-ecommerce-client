@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import SubNavbar from "./SubNavbar";
-import { IoLogOutOutline } from "react-icons/io5";
-import { IoMdMenu } from "react-icons/io";
+import { IoIosHeartEmpty, IoMdMenu } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
-import { LuUser2 } from "react-icons/lu";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -123,23 +122,29 @@ const Navbar = () => {
 
                 </ul>
 
-                <div className="xl:hidden lg:hidden flex items-center gap-3">
-                    {
-                        user ?
-                            <h5 className="flex items-center gap-1 font-medium bg-pink text-white px-2 py-1 rounded">
+                <div className="xl:hidden lg:hidden flex items-center gap-5">
+                    <div className="flex items-center gap-3">
+                        <div>
+                            <h5 className="flex items-center gap-1 text-xl">
                                 <span>
-                                    <IoLogOutOutline />
+                                    <IoIosHeartEmpty />
                                 </span>
-                                <button onClick={() => logout()}>Logout</button>
+                                <Link to={"/wishlist"}>Wishlist</Link>
                             </h5>
-                            :
-                            <h4 className="flex items-center gap-1 font-semibold">
-                                <span>
-                                    <LuUser2 />
-                                </span>
-                                <Link to={"/login"}>Login</Link>
-                            </h4>
-                    }
+                        </div>
+                        <div>
+                            <h5>
+                                <Link to={"/carts"}>
+                                    <div className="relative w-fit">
+                                        <FiShoppingCart className="text-xl" />
+                                        <span className="absolute mx-auto -right-4 -top-2 flex size-5 items-center justify-center rounded-full bg-pink text-center text-[15px] text-white">
+                                            0
+                                        </span>
+                                    </div>
+                                </Link>
+                            </h5>
+                        </div>
+                    </div>
                     <button
                         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                     >
@@ -196,6 +201,32 @@ const Navbar = () => {
                             >
                                 Blogs
                             </NavLink>
+                        </li>
+                        <li>
+                            {
+                                user ?
+                                    <li>
+                                        <NavLink
+                                            onClick={() => logout()}
+                                            className="text-white bg-pink p-1 rounded"
+                                        >
+                                            Logout
+                                        </NavLink>
+                                    </li>
+                                    :
+                                    <li>
+                                        <NavLink
+                                            to="/login"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? "text-pink"
+                                                    : "text-gray-900"
+                                            }
+                                        >
+                                            Login
+                                        </NavLink>
+                                    </li>
+                            }
                         </li>
                         {user && (
                             <li>

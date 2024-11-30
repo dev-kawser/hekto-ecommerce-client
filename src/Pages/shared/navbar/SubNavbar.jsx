@@ -54,19 +54,24 @@ const SubNavbar = () => {
                             <span>
                                 <IoIosHeartEmpty />
                             </span>
-                            <Link>Wishlist</Link>
+                            <Link to={"/wishlist"}>Wishlist</Link>
                         </h5>
                     </div>
                     <div>
                         <h5>
                             <Link to={"/carts"}>
-                                <FiShoppingCart />
+                                <div className="relative w-fit">
+                                    <FiShoppingCart className="text-xl" />
+                                    <span className="absolute mx-auto -right-4 -top-2 flex size-5 items-center justify-center rounded-full bg-pink text-center text-[15px] text-white">
+                                        0
+                                    </span>
+                                </div>
                             </Link>
                         </h5>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
