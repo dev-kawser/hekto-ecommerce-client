@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
+import useMyCarts from "../../hooks/useMyCarts";
 
 const Carts = () => {
+
+    const { sortedMyCarts } = useMyCarts();
+
+    console.log(sortedMyCarts);
 
     return (
         <div>
@@ -14,60 +19,63 @@ const Carts = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Cart Table */}
                     <div className="lg:col-span-2">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="text-gray-700 border-b border-gray-300">
-                                    <th className="py-3">Product</th>
-                                    <th className="py-3">Price</th>
-                                    <th className="py-3">Quantity</th>
-                                    <th className="py-3 md:pl-0 pl-3">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* Example Rows */}
-                                {[1, 2, 3, 4, 5].map((item, index) => (
-                                    <tr
-                                        key={index}
-                                        className="border-b border-gray-200"
-                                    >
-                                        <td className="py-4 flex items-center gap-4">
-                                            <img
-                                                src="https://via.placeholder.com/50"
-                                                alt="Product"
-                                                className="w-16 h-16 object-cover rounded-md"
-                                            />
-                                            <div>
-                                                <p className="font-semibold text-gray-800">
-                                                    Product Name {index + 1}
-                                                </p>
-                                                <p className="text-gray-500 text-sm">
-                                                    Color: Brown, Size: XL
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td className="py-4 text-gray-600">
-                                            $32.00
-                                        </td>
-                                        <td className="py-4">
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                defaultValue="1"
-                                                className="lg:w-16 w-10 md:ml-0 ml-3 p-2 border border-gray-300 rounded text-center focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                                            />
-                                        </td>
-                                        <td className="py-4 text-gray-800">
-                                            $32.00
-                                        </td>
+                        <div className="max-h-[530px] overflow-y-auto">
+                            <table className="w-full text-left border-collapse">
+                                <thead>
+                                    <tr className="text-gray-700 border-b border-gray-300">
+                                        <th className="py-3">Product</th>
+                                        <th className="py-3">Price</th>
+                                        <th className="py-3">Quantity</th>
+                                        <th className="py-3 md:pl-0 pl-3">Total</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {/* Example Rows */}
+                                    {sortedMyCarts?.map((item, index) => (
+                                        <tr
+                                            key={index}
+                                            className="border-b border-gray-200"
+                                        >
+                                            <td className="py-4 flex items-center gap-4">
+                                                <img
+                                                    src={item.cartData.productImage}
+                                                    alt="Product"
+                                                    className="w-16 h-16 object-cover rounded-md"
+                                                />
+                                                <div>
+                                                    <p className="font-semibold text-gray-800">
+                                                        {item.cartData.productTitle}
+                                                    </p>
+                                                    <p className="text-gray-500 text-sm">
+                                                        Date: {item.cartData.date}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td className="py-4 text-gray-600">
+                                                {item.cartData.productPrice}
+                                            </td>
+                                            <td className="py-4">
+                                                <input
+                                                    type="number"
+                                                    min="1"
+                                                    defaultValue={item.cartData.productQuantity}
+                                                    className="lg:w-16 w-10 md:ml-0 ml-3 p-2 border border-gray-300 rounded text-center focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                />
+                                            </td>
+                                            <td className="py-4 text-gray-800">
+                                                {item.cartData.productPrice}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                         <div className="flex justify-between mt-6">
                             <SecondaryButton title={"Update Cart"} />
                             <SecondaryButton title={"Clear Cart"} />
                         </div>
                     </div>
+
 
                     {/* Cart Totals & Shipping */}
                     <div className="space-y-6">
