@@ -10,7 +10,7 @@ import NoDataFound from "../shared/NoDataFound";
 const Shop = () => {
 
     const { data: allProducts } = useQuery({
-        queryKey: "allProducts",
+        queryKey: ["allProducts"],
         queryFn: async () => {
             const response = await axiosPublic.get("/products")
             return response.data;

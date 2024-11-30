@@ -17,7 +17,7 @@ const OfferProductDetails = () => {
     const { id } = useParams();
 
     const { data: singleProduct, isLoading } = useQuery({
-        queryKey: "singleProduct",
+        queryKey: ["singleProduct"],
         queryFn: async () => {
             const response = await axiosPublic.get(`/offerProducts/${id}`);
             return response.data;

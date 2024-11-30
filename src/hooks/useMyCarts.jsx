@@ -9,7 +9,7 @@ const useMyCarts = () => {
     const { currentUser } = useCurrentUser();
 
     const { data: myCarts, refetch, isLoading } = useQuery({
-        queryKey: "myCarts",
+        queryKey: ["myCarts"],
         queryFn: async () => {
             const response = await axiosPublic.get(`/carts/${currentUser?.email}`)
             return response.data;

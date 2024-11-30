@@ -12,7 +12,7 @@ const BlogDetails = () => {
     const { id } = useParams();
 
     const { data: singleBlog, isLoading } = useQuery({
-        queryKey: "singleBlog",
+        queryKey: ["singleBlog"],
         queryFn: async () => {
             const response = await axiosPublic.get(`/blogs/${id}`);
             return response.data;

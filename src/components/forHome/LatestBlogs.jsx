@@ -7,7 +7,7 @@ import SectionTitle from "../../ui/shared/SectionTitle";
 const LatestBlogs = () => {
 
     const { data: blogs } = useQuery({
-        queryKey: "blogs",
+        queryKey: ["blogs"],
         queryFn: async () => {
             const response = await axiosPublic.get("/blogs")
             return response.data;

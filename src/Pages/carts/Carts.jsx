@@ -10,12 +10,29 @@ const Carts = () => {
 
     const { currentUser, sortedMyCarts, myCartsRefetch } = useMyCarts();
     const [address, setAddress] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
+
+        let total = 0;
+
+        // Loop through sortedMyCarts to calculate total price
+        sortedMyCarts?.forEach((item) => {
+            total += item.cartData.productPrice * item.cartData.productQuantity;
+        });
+
+        // Set the total price in state
+        setTotalPrice(total);
+    }, [sortedMyCarts])
+
+    useEffect(() => {
+
+        myCartsRefetch()
+
         if (currentUser?.address && currentUser?.apartment && currentUser?.mobileNumber) {
             setAddress(true);
         }
-    }, [currentUser?.address, currentUser?.apartment, currentUser?.mobileNumber])
+    }, [currentUser?.address, currentUser?.apartment, currentUser?.mobileNumber, myCartsRefetch])
 
     const handleDeleteCarts = async () => {
         try {
@@ -33,6 +50,24 @@ const Carts = () => {
         }
     };
 
+    const handleQuantityUpdate = async (cartId, newQuantity) => {
+        try {
+            // Send the updated quantity to the backend
+            const response = await axiosPublic.patch(`/carts/${cartId}`, { newQuantity });
+
+            if (response.data.message) {
+                toast.success("Cart updated successfully!");
+                myCartsRefetch(); // Refetch updated cart data
+            } else {
+                toast.error("Failed to update cart.");
+            }
+        } catch (error) {
+            toast.error("An error occurred while updating the cart.");
+            console.error("Error updating cart:", error);
+        }
+    };
+
+
 
     return (
         <div>
@@ -44,60 +79,70 @@ const Carts = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Cart Table */}
                     <div className="lg:col-span-2">
-                        <div className="max-h-[530px] overflow-y-auto">
-                            <table className="w-full text-left border-collapse">
+                        <div className="max-h-[500px] overflow-y-auto">
+                            <table className="w-full border-collapse text-center">
                                 <thead>
                                     <tr className="text-gray-700 border-b border-gray-300">
-                                        <th className="py-3">Product</th>
-                                        <th className="py-3">Price</th>
-                                        <th className="py-3">Quantity</th>
-                                        <th className="py-3 md:pl-0 pl-3">Total</th>
+                                        <th className="py-3 text-sm md:text-base">Product</th>
+                                        <th className="py-3 text-sm md:text-base">Price</th>
+                                        <th className="py-3 text-sm md:text-base">Quantity</th>
+                                        <th className="py-3 text-sm md:text-base">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* Example Rows */}
                                     {sortedMyCarts?.map((item, index) => (
-                                        <tr
-                                            key={index}
-                                            className="border-b border-gray-200"
-                                        >
-                                            <td className="py-4 flex items-center gap-4">
+                                        <tr key={index} className="border-b border-gray-200 hover:bg-gray-100 transition">
+                                            <td className="py-4 px-2 flex items-center gap-4 justify-center text-sm">
                                                 <img
                                                     src={item.cartData.productImage}
                                                     alt="Product"
-                                                    className="w-16 h-16 object-cover rounded-md"
+                                                    className="w-12 h-12 object-cover rounded-md md:w-16 md:h-16"
                                                 />
-                                                <div>
-                                                    <p className="font-semibold text-gray-800">
-                                                        {item.cartData.productTitle}
-                                                    </p>
-                                                    <p className="text-gray-500 text-sm">
-                                                        Date: {item.cartData.date}
-                                                    </p>
+                                                <div className="text-left">
+                                                    <p className="font-medium text-gray-800 truncate md:text-base">{item.cartData.productTitle}</p>
+                                                    <p className="text-gray-500 text-xs md:text-sm">Date: {item.cartData.date}</p>
                                                 </div>
                                             </td>
-                                            <td className="py-4 text-gray-600">
-                                                {item.cartData.productPrice}
+                                            <td className="py-4 px-2 text-sm md:text-base text-gray-600">
+                                                ${item.cartData.productPrice.toFixed(2)}
                                             </td>
-                                            <td className="py-4">
+                                            <td className="py-4 px-2 flex items-center justify-center gap-2">
+                                                {/* Decrease Quantity Button */}
+                                                <button
+                                                    onClick={() => handleQuantityUpdate(item._id, item.cartData.productQuantity - 1)}
+                                                    className="w-8 h-8 bg-rose-500 text-white rounded-full hover:bg-rose-600 flex items-center justify-center"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                                                    </svg>
+                                                </button>
                                                 <input
                                                     type="number"
-                                                    min="1"
-                                                    defaultValue={item.cartData.productQuantity}
-                                                    className="lg:w-16 w-10 md:ml-0 ml-3 p-2 border border-gray-300 rounded text-center focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                    readOnly
+                                                    value={item.cartData.productQuantity}
+                                                    className="w-10 text-center border border-gray-300 rounded-md text-sm md:w-12 focus:outline-none"
                                                 />
+                                                {/* Increase Quantity Button */}
+                                                <button
+                                                    onClick={() => handleQuantityUpdate(item._id, item.cartData.productQuantity + 1)}
+                                                    className="w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600 flex items-center justify-center"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                                                    </svg>
+                                                </button>
                                             </td>
-                                            <td className="py-4 text-gray-800">
-                                                {item.cartData.productPrice}
+                                            <td className="py-4 px-2 text-sm md:text-base font-medium text-gray-800">
+                                                ${(item.cartData.productPrice * item.cartData.productQuantity).toFixed(2)}
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+
                         </div>
-                        <div className="flex justify-between mt-6">
-                            <SecondaryButton title={"Count Total"} />
-                            <SecondaryButton onClick={() => handleDeleteCarts()} title={"Clear Cart"} />
+                        <div className="flex justify-center mt-6">
+                            <SecondaryButton onClick={handleDeleteCarts} title={"Clear Cart"} />
                         </div>
                     </div>
 
@@ -111,7 +156,7 @@ const Carts = () => {
                             </h2>
                             <div className="flex justify-between text-gray-700 font-semibold mb-2">
                                 <span>Total:</span>
-                                <span>${ }</span>
+                                <span>${totalPrice.toFixed(2)}</span>
                             </div>
                             <p className="text-sm text-gray-500 mb-4">
                                 ✅ Shipping & taxes calculated at checkout

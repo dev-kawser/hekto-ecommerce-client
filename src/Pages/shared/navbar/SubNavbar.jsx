@@ -11,10 +11,8 @@ import useMyCarts from "../../../hooks/useMyCarts";
 
 const SubNavbar = () => {
 
-    const { user, logout } = useAuth()
-    const { myCarts } = useMyCarts()
-
-    console.log(myCarts);
+    const { user, logout } = useAuth();
+    const { myCarts } = useMyCarts();
 
     return (
         <div className="bg-purple text-white xl:block lg:block hidden">

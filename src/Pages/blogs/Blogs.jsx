@@ -11,7 +11,7 @@ const Blogs = () => {
 
 
     const { data: blogs, isLoading } = useQuery({
-        queryKey: "blogs",
+        queryKey: ["blogs"],
         queryFn: async () => {
             const response = await axiosPublic.get("/blogs")
             return response.data;

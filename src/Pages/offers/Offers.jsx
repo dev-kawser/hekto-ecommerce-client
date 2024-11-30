@@ -9,7 +9,7 @@ import CardIcons from "../../ui/shared/CardIcons";
 const Offers = () => {
 
     const { data: offerProducts } = useQuery({
-        queryKey: "offerProducts",
+        queryKey: ["offerProducts"],
         queryFn: async () => {
             const response = await axiosPublic.get("/offerProducts")
             return response.data;
