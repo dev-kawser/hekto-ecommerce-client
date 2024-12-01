@@ -1,7 +1,7 @@
 import Banner from "../../components/forHome/Banner";
 import DiscountItem from "../../components/forHome/DiscountItem";
 import FeaturedProducts from "../../components/forHome/FeaturedProducts";
-import HektoOffer from "../../components/forHome/HektoOffer";
+import BazaarNestOffer from "../../components/forHome/BazaarNestOffer";
 import LatestAndTrending from "../../components/forHome/LatestAndTrending";
 import LatestBlogs from "../../components/forHome/LatestBlogs";
 import LatestProducts from "../../components/forHome/LatestProducts";
@@ -15,7 +15,7 @@ const Home = () => {
             <Banner />
             <FeaturedProducts />
             <LatestProducts />
-            <HektoOffer />
+            <BazaarNestOffer />
             <LatestAndTrending />
             <DiscountItem />
             <TopCategories />

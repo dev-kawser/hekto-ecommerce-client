@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HektoOffer from "../../components/forHome/HektoOffer";
+import BazaarNestOffer from "../../components/forHome/BazaarNestOffer";
 import Newsletter from "../../components/Newsletter";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
@@ -31,7 +31,7 @@ const About = () => {
                             Know About Our E-commerce <br /> Business and History
                         </h2>
                         <p className="text-gray-600 leading-relaxed mb-6">
-                            At Hekto, we’re dedicated to providing a seamless and enjoyable shopping experience for our customers. Founded in [Year], our mission has always been to offer high-quality products at affordable prices. We started as a small online store specializing in [specific product category], and over the years, we’ve expanded our offerings to include a wide range of items, from electronics to fashion and home goods. With a commitment to customer satisfaction, fast delivery, and secure shopping, we’ve built a loyal customer base that continues to grow. We’re proud of the journey we&apos;ve taken, and we look forward to continuing to serve our customers for many years to come.
+                            At BazaarNest, we’re dedicated to providing a seamless and enjoyable shopping experience for our customers. Founded in [Year], our mission has always been to offer high-quality products at affordable prices. We started as a small online store specializing in [specific product category], and over the years, we’ve expanded our offerings to include a wide range of items, from electronics to fashion and home goods. With a commitment to customer satisfaction, fast delivery, and secure shopping, we’ve built a loyal customer base that continues to grow. We’re proud of the journey we&apos;ve taken, and we look forward to continuing to serve our customers for many years to come.
                         </p>
                         <Link to={"/contact"}>
                             <SecondaryButton title={"Contact us"} />
@@ -41,7 +41,7 @@ const About = () => {
             </div>
 
             {/* Additional Components */}
-            <HektoOffer />
+            <BazaarNestOffer />
             <Newsletter />
         </div>
     );

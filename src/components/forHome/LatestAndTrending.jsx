@@ -8,8 +8,7 @@ const LatestAndTrending = () => {
                 <div className="card-img-bg rounded-full">
                     <img
                         data-aos="flip-down"
-                        data-aos-duration="900"
-                        data-aos-offset="400"
+                        data-aos-duration="700"
                         className="xl:w-[500px] xl:h-[500px] lg:w-[400px] lg:h-[400px] md:w-[300px] md:h-[300px] w-[260px] h-[260px]"
                         src="https://i.ibb.co.com/543xPJD/Home-Stylish-Club-Sofa-Chair-Pleated-Sofa-Armchair-with-Golden-Legs-1.png" alt="" />
                 </div>

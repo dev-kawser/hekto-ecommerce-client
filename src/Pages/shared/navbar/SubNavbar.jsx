@@ -6,7 +6,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useMyCarts from "../../../hooks/useMyCarts";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useCurrentUser from "../../../hooks/useCurrentUser";
 
 const SubNavbar = () => {
@@ -14,8 +14,22 @@ const SubNavbar = () => {
     const { currentUser } = useCurrentUser();
     const { myCarts } = useMyCarts();
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+    const closeDropdown = (e) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setDropdownOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", closeDropdown);
+        return () => {
+            document.removeEventListener("mousedown", closeDropdown);
+        };
+    }, []);
 
     return (
         <div className="bg-purple text-white xl:block lg:block hidden">
@@ -38,9 +52,9 @@ const SubNavbar = () => {
                     {
                         !currentUser && (
                             <div>
-                                <h5 className="flex items-center gap-1">
+                                <h5 className="flex items-center gap-1 text-lg">
                                     <span>
-                                        <LuUser2 />
+                                        <LuUser2 className="text-xl" />
                                     </span>
                                     <Link to={"/login"}>Login</Link>
                                 </h5>
@@ -48,9 +62,9 @@ const SubNavbar = () => {
                         )
                     }
                     <div>
-                        <h5 className="flex items-center gap-1">
+                        <h5 className="flex items-center gap-1 text-lg">
                             <span>
-                                <IoIosHeartEmpty />
+                                <IoIosHeartEmpty className="text-xl" />
                             </span>
                             <Link to={"/wishlist"}>Wishlist</Link>
                         </h5>
@@ -69,7 +83,7 @@ const SubNavbar = () => {
                     </div>
                     {
                         currentUser && (
-                            <div className="relative">
+                            <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={toggleDropdown}
                                     className="w-10 h-10 rounded-full bg-cover object-cover bg-no-repeat bg-center border-2 border-white"

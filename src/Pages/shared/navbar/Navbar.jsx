@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import SubNavbar from "./SubNavbar";
-import { IoIosHeartEmpty, IoMdMenu } from "react-icons/io";
+import { IoMdMenu } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { FiShoppingCart } from "react-icons/fi";
@@ -9,7 +9,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [dropDownState, setDropDownState] = useState(false);
-    const dropDownMenuRef = useRef();
+    const dropDownMenuRef = useRef(null);
     const { user, logout } = useAuth();
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Navbar = () => {
             <nav className="container flex items-center justify-between py-3">
                 {/* Logo */}
                 <Link to={"/"}>
-                    <h3>Hekto</h3>
+                    <h3>BazaarNest</h3>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -109,34 +109,15 @@ const Navbar = () => {
                             Blogs
                         </NavLink>
                     </li>
-                    {user && (
-                        <li className="hover:underline">
-                            <NavLink
-                                to="/account"
-                                className={({ isActive }) => (isActive ? "text-pink" : "")}
-                            >
-                                Account
-                            </NavLink>
-                        </li>
-                    )}
-
                 </ul>
 
-                <div className="xl:hidden lg:hidden flex items-center gap-5">
+                <div className="xl:hidden lg:hidden flex items-center gap-6">
                     <div className="flex items-center gap-3">
-                        <div>
-                            <h5 className="flex items-center gap-1 text-xl">
-                                <span>
-                                    <IoIosHeartEmpty />
-                                </span>
-                                <Link to={"/wishlist"}>Wishlist</Link>
-                            </h5>
-                        </div>
                         <div>
                             <h5>
                                 <Link to={"/carts"}>
                                     <div className="relative w-fit">
-                                        <FiShoppingCart className="text-xl" />
+                                        <FiShoppingCart className="text-2xl" />
                                         <span className="absolute mx-auto -right-4 -top-2 flex size-5 items-center justify-center rounded-full bg-pink text-center text-[15px] text-white">
                                             0
                                         </span>
@@ -161,12 +142,12 @@ const Navbar = () => {
                     data-aos-duration="700"
                     className="lg:hidden bg-purple text-white p-5"
                 >
-                    <ul className="space-y-4 lato uppercase">
+                    <ul className="space-y-4 lato text-lg">
                         <li>
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
-                                    isActive ? "text-pink" : "text-gray-900"
+                                    isActive ? "text-pink font-semibold" : "text-gray-900"
                                 }
                             >
                                 Home
@@ -176,7 +157,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/products"
                                 className={({ isActive }) =>
-                                    isActive ? "text-pink" : "text-gray-900"
+                                    isActive ? "text-pink font-semibold" : "text-gray-900"
                                 }
                             >
                                 Products
@@ -186,7 +167,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/offers"
                                 className={({ isActive }) =>
-                                    isActive ? "text-pink" : "text-gray-900"
+                                    isActive ? "text-pink font-semibold" : "text-gray-900"
                                 }
                             >
                                 Offers
@@ -194,9 +175,19 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
+                                to="/wishlists"
+                                className={({ isActive }) =>
+                                    isActive ? "text-pink font-semibold" : "text-gray-900"
+                                }
+                            >
+                                Wishlists
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
                                 to="/dashboard"
                                 className={({ isActive }) =>
-                                    isActive ? "text-pink" : "text-gray-900"
+                                    isActive ? "text-pink font-semibold" : "text-gray-900"
                                 }
                             >
                                 Dashboard
@@ -207,7 +198,7 @@ const Navbar = () => {
                                 <NavLink
                                     to="/account"
                                     className={({ isActive }) =>
-                                        isActive ? "text-pink" : "text-gray-900"
+                                        isActive ? "text-pink font-semibold" : "text-gray-900"
                                     }
                                 >
                                     Account
@@ -220,7 +211,7 @@ const Navbar = () => {
                                     <li>
                                         <NavLink
                                             onClick={() => logout()}
-                                            className="text-white bg-pink p-1 rounded"
+                                            className="text-white bg-pink py-1 px-3 rounded"
                                         >
                                             Logout
                                         </NavLink>

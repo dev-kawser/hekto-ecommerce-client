@@ -1,10 +1,10 @@
 import SectionTitle from "../../ui/shared/SectionTitle";
 
 
-const HektoOffer = () => {
+const BazaarNestOffer = () => {
     return (
         <div className="container">
-            <SectionTitle title={"What Hekto Offer!"} />
+            <SectionTitle title={"What BazaarNest Offer!"} />
             <div
                 data-aos="fade-up"
                 data-aos-duration="900"
@@ -153,4 +153,4 @@ const HektoOffer = () => {
     );
 };
 
-export default HektoOffer;
+export default BazaarNestOffer;

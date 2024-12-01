@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="bg-sky-blue-gradient mt-10 lg:mt-20">
             <div className="container lg:p-14 p-9 flex flex-wrap gap-6 md:gap-10 lg:gap-20">
                 <div className="space-y-2">
-                    <h3>Hekto</h3>
+                    <h3>BazaarNest</h3>
                     <div className="flex">
                         <input
                             type="text"
@@ -55,7 +55,7 @@ const Footer = () => {
             </div>
             <div className="card-img-bg">
                 <div className="container flex justify-around py-5">
-                    <h6 className="lato">© Hekto - All Rights Reserved</h6>
+                    <h6 className="lato">© BazaarNest - All Rights Reserved</h6>
                     <div className="flex items-center gap-3 text-navyBlue">
                         <Link className="text-12"><BsFacebook /></Link>
                         <Link className="text-12"><FaInstagram /></Link>

@@ -73,7 +73,7 @@ const Contact = () => {
                             </li>
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-blue rounded-full mr-3"></span>
-                                <span>E-Mail: hekto@store.com</span>
+                                <span>E-Mail: bazaarnest@store.com</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="w-4 h-4 bg-yellow-400 rounded-full mr-3"></span>

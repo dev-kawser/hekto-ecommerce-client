@@ -7,9 +7,11 @@ import axios from "axios";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const Account = () => {
     const { currentUser } = useCurrentUser();
+    const { user } = useAuth()
     const [imageUrl, setImageUrl] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
@@ -50,7 +52,7 @@ const Account = () => {
             city: e.target.elements["city"].value,
             postalCode: e.target.elements["postalCode"].value,
             country: "Bangladesh",
-            photo: imageUrl || null,
+            photo: imageUrl || user?.photoURL,
         };
 
         console.log("Updating with data:", formData);
