@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import useMyCarts from "../../hooks/useMyCarts";
 import { useEffect, useState } from "react";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import NoDataFound from "../shared/NoDataFound";
 
 const Carts = () => {
 
     const { currentUser, sortedMyCarts, myCartsRefetch } = useMyCarts();
     const [address, setAddress] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -57,7 +59,7 @@ const Carts = () => {
 
             if (response.data.message) {
                 toast.success("Cart updated successfully!");
-                myCartsRefetch(); // Refetch updated cart data
+                myCartsRefetch();
             } else {
                 toast.error("Failed to update cart.");
             }
@@ -67,7 +69,45 @@ const Carts = () => {
         }
     };
 
+    const handleOrder = async () => {
 
+        const orderData = {
+            userId: currentUser?._id,
+            name: currentUser?.name,
+            email: currentUser?.email,
+            apartment: currentUser?.apartment,
+            mobileNumber: currentUser?.mobileNumber,
+            address: currentUser?.address,
+            totalPrice: totalPrice,
+            cartItems: sortedMyCarts?.map((item) => ({
+                productId: item.cartData.productId,
+                productTitle: item.cartData.productTitle,
+                productPrice: item.cartData.productPrice,
+                productQuantity: item.cartData.productQuantity
+            }))
+        };
+
+        console.log(orderData);
+
+        try {
+            // Send the order data to the backend
+            const response = await axiosPublic.post("/orders", orderData);
+            if (response.data.message) {
+                toast.success("Order placed successfully!");
+                myCartsRefetch();
+                navigate("/order-complete");
+
+            } else {
+                toast.error("Failed to place order.");
+            }
+        }
+        catch (error) {
+            toast.error("An error occurred while placing the order.");
+            console.error("Error placing order:", error);
+        }
+    }
+
+    if (!sortedMyCarts?.length > 0) return <NoDataFound />
 
     return (
         <div>
@@ -165,14 +205,15 @@ const Carts = () => {
                                 address === false ?
                                     <Link to={"/account"}>
                                         <button className="w-full bg-pink text-white py-3 rounded-md font-medium hover:bg-red transition">
-                                            Add address to Checkout
+                                            Add address to Order
                                         </button>
                                     </Link>
-                                    : <Link to={"/order-complete"}>
-                                        <button className="w-full bg-green-500 text-white py-3 rounded-md font-medium hover:bg-green-600 transition">
-                                            Proceed to Checkout
-                                        </button>
-                                    </Link>
+                                    :
+                                    <button
+                                        onClick={handleOrder}
+                                        className="w-full bg-green-500 text-white py-3 rounded-md font-medium hover:bg-green-600 transition">
+                                        Complete Order
+                                    </button>
                             }
                         </div>
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Newsletter from "../../components/Newsletter";
 import SecondaryButton from "../../ui/shared/SecondaryButton";
 import TinnyBanner from "../../ui/shared/TinnyBanner";
@@ -30,7 +31,9 @@ const OrderComplete = () => {
                                 be completed within 3-6 hours. You will receive an email
                                 confirmation when your order is completed.
                             </p>
-                            <SecondaryButton title={"Continue Shopping"} />
+                            <Link to={"/products"}>
+                                <SecondaryButton title={"Continue Shopping"} />
+                            </Link>
                         </div>
 
                         {/* Right Icon */}
