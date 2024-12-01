@@ -9,7 +9,7 @@ import axiosPublic from "../../hooks/useAxiosPublic";
 import useMyCarts from "../../hooks/useMyCarts";
 
 
-const CardIcons = ({ product, offer }) => {
+const CardIcons = ({ product, offer, isInCart }) => {
 
     const { currentUser } = useCurrentUser();
     const { myCartsRefetch } = useMyCarts();
@@ -48,8 +48,11 @@ const CardIcons = ({ product, offer }) => {
     return (
         <div
             className="absolute bottom-24 left-4 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-navyBlue">
-            <h5 className="bg-white rounded-full p-2 cursor-pointer" onClick={() => handleAddToCart(product)}>
+            {/* <h5 className="bg-white rounded-full p-2 cursor-pointer" onClick={() => handleAddToCart(product)}>
                 <FiShoppingCart />
+            </h5> */}
+            <h5 className={`bg-white rounded-full p-2 ${isInCart ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => !isInCart && handleAddToCart(product)}>
+                <FiShoppingCart className={isInCart ? "text-gray-400" : ""} />
             </h5>
             <h5>
                 <Link

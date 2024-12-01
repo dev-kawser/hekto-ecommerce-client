@@ -5,8 +5,11 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import CardIcons from "../../ui/shared/CardIcons";
+import useMyCarts from "../../hooks/useMyCarts";
 
 const Offers = () => {
+
+    const { myCarts } = useMyCarts();
 
     const { data: offerProducts } = useQuery({
         queryKey: ["offerProducts"],
@@ -15,6 +18,9 @@ const Offers = () => {
             return response.data;
         }
     })
+
+    // Check if the product exists in the cart
+    const isInCart = (productId) => myCarts?.some((cartItem) => cartItem?.cartData.productId === productId);
 
     // Sort products by publicationDate in descending order (recent first)
     const sortedProducts = offerProducts?.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
@@ -68,7 +74,7 @@ const Offers = () => {
                                 </div>
                             </div>
                             {/* Icons */}
-                            <CardIcons offer={true} product={product} />
+                            <CardIcons offer={true} product={product} isInCart={isInCart(product._id)} />
                         </div>
                     ))}
                 </div>

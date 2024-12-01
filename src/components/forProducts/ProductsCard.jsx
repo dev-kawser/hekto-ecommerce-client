@@ -10,7 +10,9 @@ const ShopCard = ({ product }) => {
     const { _id, productTitle, price, originalPrice, shortDescription, img1 } = product;
 
     const { currentUser } = useCurrentUser();
-    const { myCartsRefetch } = useMyCarts();
+    const { myCartsRefetch, myCarts } = useMyCarts();
+
+    const isInCart = myCarts?.some((cartItem) => cartItem?.cartData.productId === _id);
 
     // add to cart
     const handleAddToCart = (product) => {
@@ -74,8 +76,9 @@ const ShopCard = ({ product }) => {
             <Link className="w-full">
                 <button
                     onClick={() => handleAddToCart(product)}
-                    className="bg-purple hover:bg-offPurple transition-all duration-300 text-white py-1 lg:py-2 lg:px-8 px-3 rounded gap-2 w-full">
-                    Add To Cart
+                    disabled={isInCart}
+                    className={`lg:py-2 py-1 lg:px-8 px-3 rounded gap-2 w-full transition-all duration-300 text-white ${isInCart ? "bg-gray cursor-not-allowed" : "bg-purple hover:bg-offPurple"}`}>
+                    {isInCart ? "Added" : "Add to Cart"}
                 </button>
             </Link>
         </div>

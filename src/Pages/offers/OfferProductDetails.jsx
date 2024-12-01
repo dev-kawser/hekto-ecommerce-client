@@ -12,9 +12,11 @@ import useMyCarts from "../../hooks/useMyCarts";
 const OfferProductDetails = () => {
 
     const { currentUser } = useCurrentUser();
-    const { myCartsRefetch } = useMyCarts();
+    const { myCartsRefetch, myCarts } = useMyCarts();
 
     const { id } = useParams();
+
+    const isInCart = myCarts?.some((cartItem) => cartItem?.cartData.productId === id);
 
     const { data: singleProduct, isLoading } = useQuery({
         queryKey: ["singleProduct"],
@@ -126,9 +128,10 @@ const OfferProductDetails = () => {
 
                         {/* Call to Action */}
                         <button
-                            onClick={() => handleAddToCart()}
-                            className="px-6 py-2 bg-purple text-white rounded-lg hover:bg-navyBlue transition-all duration-300">
-                            Add to Cart
+                            onClick={handleAddToCart}
+                            disabled={isInCart}
+                            className={`px-6 py-2 rounded-lg transition-all duration-300 text-white ${isInCart ? "bg-gray cursor-not-allowed" : "px-6 py-2 bg-purple hover:bg-navyBlue"}`}>
+                            {isInCart ? "Already in Cart" : "Add to Cart"}
                         </button>
                     </div>
                 </div>
