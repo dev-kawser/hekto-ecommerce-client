@@ -30,7 +30,7 @@ const Navbar = () => {
             <SubNavbar />
 
             {/* Main Navbar */}
-            <nav className="container flex items-center justify-between py-4">
+            <nav className="container flex items-center justify-between py-3">
                 {/* Logo */}
                 <Link to={"/"}>
                     <h3>Hekto</h3>
@@ -194,14 +194,26 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/blogs"
+                                to="/dashboard"
                                 className={({ isActive }) =>
                                     isActive ? "text-pink" : "text-gray-900"
                                 }
                             >
-                                Blogs
+                                Dashboard
                             </NavLink>
                         </li>
+                        {user && (
+                            <li>
+                                <NavLink
+                                    to="/account"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-pink" : "text-gray-900"
+                                    }
+                                >
+                                    Account
+                                </NavLink>
+                            </li>
+                        )}
                         <li>
                             {
                                 user ?
@@ -228,18 +240,6 @@ const Navbar = () => {
                                     </li>
                             }
                         </li>
-                        {user && (
-                            <li>
-                                <NavLink
-                                    to="/account"
-                                    className={({ isActive }) =>
-                                        isActive ? "text-pink" : "text-gray-900"
-                                    }
-                                >
-                                    Account
-                                </NavLink>
-                            </li>
-                        )}
                     </ul>
                 </div>
             )}

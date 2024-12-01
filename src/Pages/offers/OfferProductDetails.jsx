@@ -52,7 +52,7 @@ const OfferProductDetails = () => {
     };
 
     // Destructure product details
-    const { _id, productTitle, price, originalPrice, shortDescription, img1, img2, img3, brand, category, discount, color } = singleProduct;
+    const { _id, productTitle, price, originalPrice, bigDescription, img1, img2, img3, brand, category, discount, color } = singleProduct;
 
     const handleAddToCart = () => {
 
@@ -124,7 +124,7 @@ const OfferProductDetails = () => {
                             </span>
                             <span className="text-red ml-2">-{discount}%</span>
                         </p>
-                        <p className="text-navyBlue lato">{shortDescription}</p>
+                        <p className="text-navyBlue lato">{bigDescription}</p>
 
                         {/* Call to Action */}
                         <button
@@ -132,6 +132,10 @@ const OfferProductDetails = () => {
                             disabled={isInCart}
                             className={`px-6 py-2 rounded-lg transition-all duration-300 text-white ${isInCart ? "bg-gray cursor-not-allowed" : "px-6 py-2 bg-purple hover:bg-navyBlue"}`}>
                             {isInCart ? "Already in Cart" : "Add to Cart"}
+                        </button>
+                        <button
+                            className="px-6 py-2 rounded-lg transition-all duration-300 text-white bg-purple hover:bg-navyBlue ml-2">
+                            Add to Wishlist
                         </button>
                     </div>
                 </div>

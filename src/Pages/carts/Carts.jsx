@@ -96,6 +96,7 @@ const Carts = () => {
                 toast.success("Order placed successfully!");
                 myCartsRefetch();
                 navigate("/order-complete");
+                handleDeleteCarts();
 
             } else {
                 toast.error("Failed to place order.");
