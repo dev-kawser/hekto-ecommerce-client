@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import CardIcons from "../../ui/shared/CardIcons";
 import useMyCarts from "../../hooks/useMyCarts";
+import NoDataFound from "../shared/NoDataFound";
 
 const Offers = () => {
 
@@ -41,6 +42,8 @@ const Offers = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    if (!offerProducts?.length > 0) return <NoDataFound />;
 
     return (
         <div>

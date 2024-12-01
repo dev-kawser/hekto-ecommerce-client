@@ -199,6 +199,9 @@ const Shop = () => {
 
     const totalPages = Math.ceil(filteredProducts?.length / itemsPerPage);
 
+
+    if (!allProducts?.length > 0) return <NoDataFound />;
+
     return (
         <div>
             <TinnyBanner title={"Products Page"} />
@@ -245,13 +248,11 @@ const Shop = () => {
 
                         {/* Product List */}
                         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-6">
-                            {currentProducts?.length > 0 ? (
+                            {
                                 currentProducts?.map((product) => (
                                     <ProductsCard key={product._id} product={product} />
                                 ))
-                            ) : (
-                                <NoDataFound />
-                            )}
+                            }
                         </div>
 
                         {/* Pagination */}
