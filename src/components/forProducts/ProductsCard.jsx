@@ -47,11 +47,11 @@ const ShopCard = ({ product }) => {
 
     return (
         <div className="bg-white shadow-md rounded-lg p-5 group flex flex-col">
-            <div className="lg:size-48 md:size-40 size-32 mx-auto mb-4">
+            <div className="lg:size-48 md:size-40 size-32 mx-auto mb-4 relative overflow-hidden">
                 <img
                     src={img1 || "https://via.placeholder.com/150"}
                     alt={productTitle}
-                    className="size-full mx-auto object-cover rounded-md"
+                    className="size-full mx-auto object-cover rounded-md transition-transform duration-500 ease-in-out hover:scale-110"
                 />
             </div>
 
