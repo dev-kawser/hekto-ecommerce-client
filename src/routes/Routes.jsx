@@ -20,6 +20,7 @@ import Offers from "../Pages/offers/Offers";
 import Faq from "../Pages/faq/Faq";
 import BlogDetails from "../Pages/blogs/BlogDetails";
 import OfferProductDetails from "../Pages/offers/OfferProductDetails";
+import Dashboard from "../layout/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -99,6 +100,13 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
+        children: [
+            // Add dashboard routes here
+        ]
+    }
 ]);
 
 export default router;
