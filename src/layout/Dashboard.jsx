@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import useCurrentUser from "../hooks/useCurrentUser";
 import useAuth from "../hooks/useAuth";
@@ -26,9 +26,9 @@ const Dashboard = () => {
                         {isOpen ? "<" : ">"}
                     </button>
                     <div className="flex flex-col gap-2 px-2 mt-3">
-                        <h2 className="text-lg font-bold text-center text-white">
-                            {isOpen ? "Dashboard" : "DB"}
-                        </h2>
+                        <Link to={"/"} className="lg:text-xl text-lg lato font-bold text-center text-white underline">
+                            Back Home
+                        </Link>
                         <nav className="mt-6">
                             <ul className="flex flex-col gap-2">
                                 {/* Links for Users */}
@@ -120,7 +120,7 @@ const Dashboard = () => {
                         {isOpen && (
                             <div>
                                 <p className="font-semibold uppercase">{currentUser?.name || "User"}</p>
-                                <p className="text-sm text-gray-300">{currentUser?.email}</p>
+                                <p className="text-sm text-gray-300 lato">{currentUser?.email}</p>
                             </div>
                         )
                         }
@@ -141,7 +141,7 @@ const Dashboard = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 p-5">
+            <div className="flex-1 lg:p-5 p-2">
                 <Outlet />
             </div>
         </div>
