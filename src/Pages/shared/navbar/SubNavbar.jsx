@@ -99,7 +99,7 @@ const SubNavbar = () => {
                                         <ul>
                                             <li>
                                                 <Link
-                                                    to="/dashboard"
+                                                    to="/dashboard/welcome"
                                                     className="block font-semibold px-4 py-2 text-white hover:bg-navyBlue">
                                                     Dashboard
                                                 </Link>

@@ -21,6 +21,12 @@ import Faq from "../Pages/faq/Faq";
 import BlogDetails from "../Pages/blogs/BlogDetails";
 import OfferProductDetails from "../Pages/offers/OfferProductDetails";
 import Dashboard from "../layout/Dashboard";
+import ManageUsers from "../Pages/dashboard/forAdmin/ManageUsers";
+import ManageProducts from "../Pages/dashboard/forAdmin/ManageProducts";
+import ManageOfferProducts from "../Pages/dashboard/forAdmin/ManageOfferProducts";
+import ManageOrders from "../Pages/dashboard/forAdmin/ManageOrders";
+import MyOrders from "../Pages/dashboard/forUser/MyOrders";
+import Welcome from "../Pages/dashboard/Welcome";
 
 const router = createBrowserRouter([
     {
@@ -102,11 +108,39 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute>
+            <Dashboard />
+        </PrivateRoute>,
         children: [
-            // Add dashboard routes here
-        ]
-    }
+            {
+                path: "welcome",
+                element: <Welcome />,
+            },
+            // For User routes
+            {
+                path: "my-orders",
+                element: <MyOrders />,
+            },
+
+            // For Admin routes
+            {
+                path: "manage-users",
+                element: <ManageUsers />,
+            },
+            {
+                path: "manage-products",
+                element: <ManageProducts />,
+            },
+            {
+                path: "manage-offer-products",
+                element: <ManageOfferProducts />,
+            },
+            {
+                path: "manage-orders",
+                element: <ManageOrders />,
+            },
+        ],
+    },
 ]);
 
 export default router;
