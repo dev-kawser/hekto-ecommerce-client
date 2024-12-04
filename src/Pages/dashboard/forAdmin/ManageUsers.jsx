@@ -37,7 +37,7 @@ const ManageUsers = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user, index) => (
+                            {users?.map((user, index) => (
                                 <tr key={user._id} className="text-center">
                                     <td className="p-3 border border-gray-300">{index + 1}</td>
                                     <td className="p-3 border border-gray-300">
@@ -52,8 +52,8 @@ const ManageUsers = () => {
                                     <td className="p-3 border border-gray-300 capitalize">
                                         <span
                                             className={`px-3 py-1 rounded-full text-sm ${user.role === "admin"
-                                                    ? "bg-green-400 text-green-900"
-                                                    : "bg-blue text-white"
+                                                ? "bg-green-400 text-green-900"
+                                                : "bg-blue text-white"
                                                 }`}>
                                             {user.role === "admin" ? "Admin" : "User"}
                                         </span>
