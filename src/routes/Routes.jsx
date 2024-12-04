@@ -28,6 +28,7 @@ import ManageOrders from "../Pages/dashboard/forAdmin/ManageOrders";
 import MyOrders from "../Pages/dashboard/forUser/MyOrders";
 import Welcome from "../Pages/dashboard/Welcome";
 import OrderDetails from "../Pages/dashboard/forAdmin/OrderDetails";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
     {
@@ -126,23 +127,33 @@ const router = createBrowserRouter([
             // For Admin routes
             {
                 path: "manage-users",
-                element: <ManageUsers />,
+                element: <AdminRoutes>
+                    <ManageUsers />
+                </AdminRoutes>,
             },
             {
                 path: "order-details/:id",
-                element: <OrderDetails />,
+                element: <AdminRoutes>
+                    <OrderDetails />
+                </AdminRoutes>,
             },
             {
                 path: "manage-products",
-                element: <ManageProducts />,
+                element: <AdminRoutes>
+                    <ManageProducts />
+                </AdminRoutes>,
             },
             {
                 path: "manage-offer-products",
-                element: <ManageOfferProducts />,
+                element: <AdminRoutes>
+                    <ManageOfferProducts />
+                </AdminRoutes>,
             },
             {
                 path: "manage-orders",
-                element: <ManageOrders />,
+                element: <AdminRoutes>
+                    <ManageOrders />
+                </AdminRoutes>,
             },
         ],
     },
