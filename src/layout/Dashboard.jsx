@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import useCurrentUser from "../hooks/useCurrentUser";
 import useAuth from "../hooks/useAuth";
@@ -17,13 +17,13 @@ const Dashboard = () => {
     return (
         <div className="flex min-h-screen bg-lightPurple">
             {/* Sidebar for large screens */}
-            <div className="xl:w-64 lg:w-52 lg:flex hidden bg-purple text-white flex-col justify-between">
+            <div className="xl:w-64 lg:w-52 lg:flex sticky top-0 left-0 h-screen hidden bg-purple text-white flex-col justify-between">
                 {/* Sidebar Header */}
                 <div>
                     <div className="flex flex-col gap-2 px-2 mt-3">
-                        <Link to={"/"} className="lg:text-xl text-lg lato font-bold text-center text-white underline">
-                            Back Home
-                        </Link>
+                        <h3 className="lg:text-xl text-lg lato font-bold text-center text-white">
+                            Dashboard
+                        </h3>
                         <nav className="mt-6">
                             <ul className="flex flex-col gap-2">
                                 {currentUser?.role === "admin" ? (
@@ -124,7 +124,7 @@ const Dashboard = () => {
                     <div className="flex items-center gap-3">
                         <div>
                             <p className="font-semibold uppercase">{currentUser?.name || "User"}</p>
-                            <p className="text-sm text-gray-300">{currentUser?.email}</p>
+                            <p className="xl:text-sm lg:text-xs text-gray-300">{currentUser?.email}</p>
                         </div>
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
@@ -248,7 +248,7 @@ const Dashboard = () => {
             </button>
 
             {/* Main Content */}
-            <div className="flex-1 lg:p-5 p-2 overflow-x-auto">
+            <div className="flex-1 lg:p-5 p-2 overflow-x-auto overflow-y-auto">
                 <Outlet />
             </div>
         </div>
