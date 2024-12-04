@@ -133,9 +133,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "order-details/:id",
-                element: <AdminRoutes>
-                    <OrderDetails />
-                </AdminRoutes>,
+                element: <OrderDetails />,
             },
             {
                 path: "manage-products",
