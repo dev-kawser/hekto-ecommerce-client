@@ -13,6 +13,8 @@ const ManageOrders = () => {
         },
     });
 
+    const sortedOrders = allOrders?.sort((a, b) => new Date(b.date) - new Date(a.date));
+
     const handleStatusChange = async (orderId, newStatus) => {
         try {
             const response = await axiosPublic.patch("/orders/status", { orderId, newStatus });
@@ -46,7 +48,7 @@ const ManageOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {allOrders?.map((order, index) => (
+                        {sortedOrders?.map((order, index) => (
                             <tr key={order._id} className="text-center">
                                 <td className="p-3 border border-gray-300">{index + 1}</td>
                                 <td className="p-3 border border-gray-300">{order.date}</td>
@@ -57,16 +59,20 @@ const ManageOrders = () => {
                                     ${order.totalPrice.toFixed(2)}
                                 </td>
                                 <td className="p-3 border border-gray-300">
-                                    <select
-                                        defaultValue={order.status}
-                                        onChange={(e) => handleStatusChange(order._id, e.target.value)}
-                                        className="p-1 border border-gray-300 rounded">
-                                        <option value="pending">Pending</option>
-                                        <option value="processing">Processing</option>
-                                        <option value="shipped">Shipped</option>
-                                        <option value="completed">Completed</option>
-                                    </select>
+                                    {order.status === "canceled" ? (
+                                        <span className="px-3 py-1 bg-red text-white rounded">Canceled</span>
+                                    ) : (
+                                        <select
+                                            onChange={(e) => handleStatusChange(order._id, e.target.value)}
+                                            className="p-1 border border-gray-300 rounded">
+                                            <option value="pending" selected={order.status === "pending"}>Pending</option>
+                                            <option value="processing" selected={order.status === "processing"}>Processing</option>
+                                            <option value="shipped" selected={order.status === "shipped"}>Shipped</option>
+                                            <option value="completed" selected={order.status === "completed"}>Completed</option>
+                                        </select>
+                                    )}
                                 </td>
+
                                 <td className="p-3 border border-gray-300">
                                     <button
                                         onClick={() => console.log("View Details")}
