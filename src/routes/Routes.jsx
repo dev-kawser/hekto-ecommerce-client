@@ -27,6 +27,7 @@ import ManageOfferProducts from "../Pages/dashboard/forAdmin/ManageOfferProducts
 import ManageOrders from "../Pages/dashboard/forAdmin/ManageOrders";
 import MyOrders from "../Pages/dashboard/forUser/MyOrders";
 import Welcome from "../Pages/dashboard/Welcome";
+import OrderDetails from "../Pages/dashboard/forAdmin/OrderDetails";
 
 const router = createBrowserRouter([
     {
@@ -126,6 +127,10 @@ const router = createBrowserRouter([
             {
                 path: "manage-users",
                 element: <ManageUsers />,
+            },
+            {
+                path: "order-details/:id",
+                element: <OrderDetails />,
             },
             {
                 path: "manage-products",

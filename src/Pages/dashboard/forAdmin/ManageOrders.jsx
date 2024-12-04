@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../../hooks/useAxiosPublic";
 import Loading from "../../../ui/shared/Loading";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const ManageOrders = () => {
     // Fetch all orders
@@ -74,11 +75,13 @@ const ManageOrders = () => {
                                 </td>
 
                                 <td className="p-3 border border-gray-300">
-                                    <button
-                                        onClick={() => console.log("View Details")}
-                                        className="px-3 py-1 bg-blue text-white rounded">
-                                        Details
-                                    </button>
+                                    <Link to={`/dashboard/order-details/${order._id}`}>
+                                        <button
+                                            onClick={() => console.log("View Details")}
+                                            className="px-3 py-1 bg-blue text-white rounded">
+                                            Details
+                                        </button>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
