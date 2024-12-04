@@ -31,7 +31,7 @@ const OrderComplete = () => {
                                 be completed within 3-6 hours. You will receive an email
                                 confirmation when your order is completed.
                             </p>
-                            <Link to={"/products"}>
+                            <Link to={"/products"} className="flex items-center justify-center">
                                 <SecondaryButton title={"Continue Shopping"} />
                             </Link>
                         </div>

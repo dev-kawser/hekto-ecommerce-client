@@ -69,7 +69,7 @@ const OfferProductDetails = () => {
             productImage: img1,
             productPrice: price,
             productQuantity: 1,
-            date: new Date().toLocaleDateString(),
+            date: new Date().toLocaleString(),
         }
 
         console.log(cartData);

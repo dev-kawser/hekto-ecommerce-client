@@ -30,7 +30,7 @@ const CardIcons = ({ product, offer, isInCart }) => {
             productImage: product.img1,
             productPrice: product.price,
             productQuantity: 1,
-            date: new Date().toLocaleDateString(),
+            date: new Date().toLocaleString(),
         }
 
         axiosPublic.post("/carts", { cartData })

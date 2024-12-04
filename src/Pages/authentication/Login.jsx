@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import PrimaryButton from "../../ui/shared/PrimaryButton";
 import SocialLogin from "../../ui/shared/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { IoIosLogIn } from "react-icons/io";
+import SecondaryButton from "../../ui/shared/SecondaryButton";
 
 const Login = () => {
 
@@ -34,7 +34,7 @@ const Login = () => {
             .then(() => {
                 setIsSubmitting(false)
                 toast.success("Successfully Login!");
-                navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/dashboard/welcome");
             })
             .catch((error) => {
                 setIsSubmitting(false)
@@ -129,7 +129,7 @@ const Login = () => {
                         </div>
 
                         <div className="flex items-center justify-center">
-                            <PrimaryButton
+                            <SecondaryButton
                                 icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
                                 title={"Login"} />
                         </div>

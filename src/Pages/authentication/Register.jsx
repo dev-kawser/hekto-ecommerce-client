@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import PrimaryButton from "../../ui/shared/PrimaryButton";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -9,6 +8,7 @@ import { updateProfile } from "firebase/auth";
 import SocialLogin from "../../ui/shared/SocialLogin";
 import { IoIosLogIn } from "react-icons/io";
 import axiosPublic from "../../hooks/useAxiosPublic";
+import SecondaryButton from "../../ui/shared/SecondaryButton";
 
 const Register = () => {
     const { emailRegister } = useAuth();
@@ -198,7 +198,7 @@ const Register = () => {
                         </div>
 
                         <div className="flex items-center justify-center">
-                            <PrimaryButton
+                            <SecondaryButton
                                 icon={isSubmitting ? <div className="w-4 h-4 animate-[spin_2s_linear_infinite] rounded-full border-2 border-dashed border-white"></div> : <IoIosLogIn />}
                                 title={"Register"} />
                         </div>

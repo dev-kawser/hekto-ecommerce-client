@@ -79,6 +79,8 @@ const Carts = () => {
             mobileNumber: currentUser?.mobileNumber,
             address: currentUser?.address,
             totalPrice: totalPrice,
+            status: "pending",
+            date: new Date().toLocaleString(),
             cartItems: sortedMyCarts?.map((item) => ({
                 productId: item.cartData.productId,
                 productTitle: item.cartData.productTitle,
@@ -86,8 +88,6 @@ const Carts = () => {
                 productQuantity: item.cartData.productQuantity
             }))
         };
-
-        console.log(orderData);
 
         try {
             // Send the order data to the backend
