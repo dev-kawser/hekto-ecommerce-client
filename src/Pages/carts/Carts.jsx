@@ -150,8 +150,9 @@ const Carts = () => {
                                             <td className="py-4 px-2 flex items-center justify-center gap-2">
                                                 {/* Decrease Quantity Button */}
                                                 <button
+                                                    disabled={item.cartData.productQuantity === 1}
                                                     onClick={() => handleQuantityUpdate(item._id, item.cartData.productQuantity - 1)}
-                                                    className="w-8 h-8 bg-rose-500 text-white rounded-full hover:bg-rose-600 flex items-center justify-center"
+                                                    className={`w-8 h-8 bg-rose-500 text-white rounded-full  flex items-center justify-center ${item.cartData.productQuantity === 1 ? "cursor-not-allowed hover:bg-gray" : "hover:bg-rose-600"}`}
                                                 >
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
