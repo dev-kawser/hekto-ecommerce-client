@@ -22,6 +22,7 @@ const SocialLogin = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     photo: result.user?.photoURL,
+                    date: new Date().toLocaleString(),
                 };
 
                 axiosPublic.post("/users", userInfo)

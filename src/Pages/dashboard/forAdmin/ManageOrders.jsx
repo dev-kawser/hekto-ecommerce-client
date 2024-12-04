@@ -50,7 +50,7 @@ const ManageOrders = () => {
                     </thead>
                     <tbody>
                         {sortedOrders?.map((order, index) => (
-                            <tr key={order._id} className="text-center">
+                            <tr key={order._id} className="text-center lato">
                                 <td className="p-3 border border-gray-300">{index + 1}</td>
                                 <td className="p-3 border border-gray-300">{order.date}</td>
                                 <td className="p-3 border border-gray-300">

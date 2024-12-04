@@ -2,12 +2,11 @@ import { NavLink } from "react-router-dom";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import axiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../../ui/shared/Loading";
 
 const Welcome = () => {
     const { currentUser } = useCurrentUser();
 
-    const { data: myOrders, isLoading } = useQuery({
+    const { data: myOrders } = useQuery({
         queryKey: ["myOrders", currentUser?.email],
         queryFn: async () => {
             const response = await axiosPublic.get(`/orders/${currentUser?.email}`);
@@ -18,14 +17,100 @@ const Welcome = () => {
 
     const sortedOrders = myOrders?.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    if (isLoading) {
-        return <Loading />;
-    }
+    const { data: allOrders } = useQuery({
+        queryKey: ["allOrders"],
+        queryFn: async () => {
+            const response = await axiosPublic.get(`/orders`);
+            return response.data;
+        },
+    });
+
+    const sortedAllOrders = allOrders?.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return (
         <div>
             {currentUser?.role === "admin" ? (
-                "admin"
+                <div className="flex-1 lg:p-5 p-2 bg-lightPurple">
+                    <div className="rounded-lg shadow-lg p-6 bg-white mb-8">
+                        {/* Admin Welcome Section */}
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <h2 className="lg:text-2xl text-lg font-bold text-navyBlue">
+                                    <span className="lg:text-lg text-base">Welcome Back,</span>{" "}
+                                    {currentUser?.name || "Admin"}!
+                                </h2>
+                                <p className="text-gray lato">
+                                    Ready to manage your platform? Here&apos;s a quick overview:
+                                </p>
+                            </div>
+                            <div
+                                className="w-16 h-16 md:block hidden rounded-full bg-cover bg-center"
+                                style={{
+                                    backgroundImage: `url(${currentUser?.photo || "https://via.placeholder.com/150"})`,
+                                }}
+                            ></div>
+                        </div>
+                    </div>
+
+                    {/* Admin Dashboard Shortcuts */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div className="bg-purple text-white rounded-lg p-6 shadow-lg hover:scale-105 transform transition-all">
+                            <h3 className="lg:text-xl text-lg font-semibold">Manage Users</h3>
+                            <p className="text-sm mt-2">View and manage all platform users.</p>
+                            <NavLink
+                                to="/dashboard/manage-users"
+                                className="mt-4 inline-block text-sm font-medium text-white underline"
+                            >
+                                View Users
+                            </NavLink>
+                        </div>
+
+                        <div className="bg-navyBlue text-white rounded-lg p-6 shadow-lg hover:scale-105 transform transition-all">
+                            <h3 className="lg:text-xl text-lg font-semibold">Manage Products</h3>
+                            <p className="text-sm mt-2">View, add, or edit products.</p>
+                            <NavLink
+                                to="/dashboard/manage-products"
+                                className="mt-4 inline-block text-sm font-medium text-white underline"
+                            >
+                                Manage Products
+                            </NavLink>
+                        </div>
+
+                        <div className="bg-green-500 text-white rounded-lg p-6 shadow-lg hover:scale-105 transform transition-all">
+                            <h3 className="lg:text-xl text-lg font-semibold">Manage Orders</h3>
+                            <p className="text-sm mt-2">Manage all orders.</p>
+                            <NavLink
+                                to="/dashboard/manage-orders"
+                                className="mt-4 inline-block text-sm font-medium text-white underline"
+                            >
+                                Manage Orders
+                            </NavLink>
+                        </div>
+                    </div>
+
+                    {/* Orders Widget */}
+                    <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Recent Orders</h3>
+                        <div className="space-y-4 lato">
+                            {sortedAllOrders?.slice(0, 10).map((order, idx) => (
+                                <div key={idx} className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-gray-700">
+                                            Order placed on {order?.date}
+                                        </p>
+                                        <p className="text-sm text-gray-500">Total Price: <b>${order?.totalPrice}</b></p>
+                                    </div>
+                                    <NavLink
+                                        to={`/dashboard/order-details/${order?._id}`}
+                                        className="text-sm font-medium text-purple underline"
+                                    >
+                                        View Details
+                                    </NavLink>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             ) : (
                 <div className="flex-1 lg:p-5 p-2 bg-lightPurple">
                     <div className="rounded-lg shadow-lg p-6 bg-white mb-8">

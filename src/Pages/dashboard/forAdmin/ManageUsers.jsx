@@ -11,6 +11,8 @@ const ManageUsers = () => {
         },
     });
 
+    const sortedUsers = users?.sort((a, b) => new Date(b.date) - new Date(a.date));
+
     if (isLoading) return <Loading />;
     if (isError)
         return (
@@ -33,12 +35,12 @@ const ManageUsers = () => {
                                 <th className="p-3 border border-gray-300">Email</th>
                                 <th className="p-3 border border-gray-300">Role</th>
                                 <th className="p-3 border border-gray-300">Address</th>
-                                <th className="p-3 border border-gray-300">Actions</th>
+                                <th className="p-3 border border-gray-300">Number</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users?.map((user, index) => (
-                                <tr key={user._id} className="text-center">
+                            {sortedUsers?.map((user, index) => (
+                                <tr key={user._id} className="text-center lato">
                                     <td className="p-3 border border-gray-300">{index + 1}</td>
                                     <td className="p-3 border border-gray-300">
                                         <img
@@ -62,10 +64,7 @@ const ManageUsers = () => {
                                         {user.address}, {user.city}, {user.mobileNumber}
                                     </td>
                                     <td className="p-3 border border-gray-300">
-                                        <button
-                                            className="bg-red text-white px-3 py-1 rounded hover:bg-red-700">
-                                            Delete
-                                        </button>
+                                        {user.mobileNumber}
                                     </td>
                                 </tr>
                             ))}

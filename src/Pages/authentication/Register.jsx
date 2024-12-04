@@ -39,6 +39,7 @@ const Register = () => {
         const userInfo = {
             name: name,
             email: email,
+            date: new Date().toLocaleString(),
             photo: "https://i.ibb.co.com/WWrPS5F/demo-user.png"
         };
 
