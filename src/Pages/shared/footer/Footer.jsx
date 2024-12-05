@@ -19,7 +19,7 @@ const Footer = () => {
                             Subscribe
                         </button>
                     </div>
-                    <p className="lato pt-2">17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                    <p className="lato pt-2">Mahalla Moshjid, Malanco Road, Tangail</p>
                 </div>
                 <div>
                     <h4 className="font-semibold">Category</h4>
@@ -38,7 +38,7 @@ const Footer = () => {
                         <Link to={'/offer'}>Discount</Link>
                         <Link to={'/dashboard/my-orders'}>Orders History</Link>
                         <Link>Our Policy</Link>
-                        <a href="https://kawserrahman.netlify.app/" target="_blank">Website Developer</a>
+                        <a href="https://devsafix.vercel.app/" target="_blank">Website Developer</a>
                     </div>
                 </div>
                 <div>
@@ -56,7 +56,7 @@ const Footer = () => {
                 <div className="container flex justify-around py-5">
                     <div>
                         <h6 className="lato">© BazaarNest - All Rights Reserved</h6>
-                        <h5 className="lato">This Website Developed By <a href="https://kawserrahman.netlify.app/" target="_blank" className="font-bold text-base underline text-pink">Kawser</a></h5>
+                        <h5 className="lato">This Website Developed By <a href="https://devsafix.vercel.app/" target="_blank" className="font-bold text-base underline text-pink">Kawser</a></h5>
                     </div>
                     <div className="flex items-center gap-3 text-navyBlue">
                         <a href="https://www.linkedin.com/in/devsafix/"
