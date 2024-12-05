@@ -76,7 +76,31 @@ const ManageOfferProducts = () => {
         }
     };
 
-    
+    const handleDeleteProduct = (productId) => {
+        try {
+            Swal.fire({
+                title: "<span style='color: red;'>Are you sure?</span>",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axiosPublic.delete(`/offerProducts/delete/${productId}`).then((res) => {
+                        if (res.status === 200) {
+                            Swal.fire("Deleted!", "Product has been deleted.", "success");
+                            refetch();
+                        }
+                    });
+                }
+            })
+        } catch (error) {
+            console.error("Failed to delete product", error);
+            toast.error("Failed to delete product. Please try again.");
+        }
+    };
 
     if (isLoading) {
         return <Loading />;
