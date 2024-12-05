@@ -28,7 +28,7 @@ const Banner = () => {
                                 <div>
                                     <p
                                         data-aos="fade-up"
-                                        data-aos-duration="500" className="text-pink">{item.subTitle}</p>
+                                        data-aos-duration="500" className="text-pink lato">{item.subTitle}</p>
                                 </div>
                                 <div
                                     data-aos="fade-up"
@@ -38,7 +38,7 @@ const Banner = () => {
                                 <div
                                     data-aos="fade-up"
                                     data-aos-duration="900">
-                                    <p>{item.description}</p>
+                                    <p className="lato">{item.description}</p>
                                 </div>
                                 <div className="mt-5">
                                     <Link to={"/products"}>
@@ -47,13 +47,14 @@ const Banner = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className="card-img-bg rounded-full">
-                                    <img
-                                        className="xl:w-[400px] lg:w-[350px] md:w-[280px] w-[260px] xl:h-[400px] lg:h-[350px] md:h-[280px] h-[260px] pb-4"
-                                        src={item.image}
-                                        alt=""
-                                    />
-                                </div>
+                                <img
+                                    data-aos="fade"
+                                    data-aos-duration="700"
+                                    className="xl:w-[400px] lg:w-[350px] md:w-[280px] w-[260px] xl:h-[400px] lg:h-[350px] md:h-[280px] h-[260px] object-contain rounded-full border-4 border-purple"
+                                    src={item.image}
+                                    alt=""
+                                />
+
                             </div>
                         </div>
                     </SwiperSlide>
@@ -69,22 +70,24 @@ const Banner = () => {
 export default Banner;
 
 const data = [
+
     {
-        subTitle: "Explore the Latest Furniture Collection Trends for 2024!",
-        title: "New Furniture Collection Trends in 2024",
-        description: "Transform your living space with our exquisite furniture collection. From modern minimalist designs to classic elegance, we offer a variety of pieces that fit every style.",
-        image: "https://i.ibb.co.com/3BLsxrG/Shell-Shaped-Armchair-Pink-Velvet-Fabric-One-Seater-Sofa-for-Living-Room-1.png"
+        subTitle: "Upgrade Your Everyday Look with Premium T-Shirts!",
+        title: "Trendy Men's T-Shirts for 2024",
+        description: "Discover our latest collection of men's t-shirts designed for ultimate comfort and style. From bold graphic prints to classic solids, find the perfect tee for every occasion.",
+        image: "https://i.ibb.co.com/ggHc3g3/Half-sleve-t-shirt-8.jpg"
     },
     {
-        subTitle: "Unleash Your Inner Fashionista with Our Women's Collection!",
-        title: "Chic Women's Wear Trends for 2024",
-        description: "From elegant dresses to stylish blouses, explore the versatile pieces that empower your wardrobe. Embrace comfort without compromising on style.",
-        image: "https://png.pngtree.com/png-vector/20240207/ourmid/pngtree-beautiful-fashion-girl-png-image_11730271.png"
+        subTitle: "Stay Warm and Stylish this Winter Season!",
+        title: "Top Men's Jackets for 2024",
+        description: "Browse our range of jackets for men that combine functionality and fashion. From sleek leather jackets to cozy puffers, we offer versatile outerwear for every occasion. Stay comfortable and on-trend, no matter the weather.",
+        image: "https://i.ibb.co.com/tKJGVxD/71-NQCXAVTBL.jpg"
     },
     {
-        subTitle: "Step Up Your Wardrobe with Our Men's Fashion Collection!",
-        title: "Men's Fashion Trends for 2024",
-        description: "Explore the latest in men&apos;s fashion, where sophistication meets comfort. Our curated selection includes tailored suits, versatile casual wear, and standout accessories to elevate your style for any occasion.",
-        image: "https://i.ibb.co.com/Fs4VDdD/vecteezy-ai-generated-young-stylish-man-posing-isolated-on-white-36420980.png"
-    },
+        subTitle: "Elevate Your Style with Comfortable and Trendy Pants!",
+        title: "Men's Pants Collection 2024",
+        description: "Our men's pants collection offers a perfect blend of comfort and elegance. From tailored trousers to casual chinos and joggers, find your ideal fit for every occasion.",
+        image: "https://i.ibb.co.com/0Bg4fLX/pp.jpg"
+    }
+
 ];

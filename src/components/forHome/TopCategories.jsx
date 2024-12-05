@@ -19,23 +19,19 @@ export default TopCategories;
 
 const categoriesData = [
     {
-        name: "Mini LCW Chair",
-        price: "$56.00",
-        image: "https://i.ibb.co.com/rkZRfJ0/image-20.png",
+        name: "T-Shirts",
+        image: "https://i.ibb.co.com/9s3hFqB/download-27.jpg",
     },
     {
-        name: "Modern Sofa",
-        price: "$120.00",
-        image: "https://i.ibb.co.com/rkZRfJ0/image-20.png",
+        name: "Jacket",
+        image: "https://i.ibb.co.com/SP3RJ6k/download-28.jpg",
     },
     {
-        name: "Dining Table",
-        price: "$300.00",
-        image: "https://i.ibb.co.com/rkZRfJ0/image-20.png",
+        name: "Pants",
+        image: "https://i.ibb.co.com/dcJWmLs/download-29.jpg",
     },
     {
-        name: "Office Desk",
-        price: "$75.00",
-        image: "https://i.ibb.co.com/rkZRfJ0/image-20.png",
+        name: "Shirts",
+        image: "https://i.ibb.co.com/rxjqyWb/images.jpg",
     },
 ];

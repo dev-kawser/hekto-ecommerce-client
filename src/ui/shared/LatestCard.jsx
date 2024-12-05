@@ -3,20 +3,59 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
+import toast from "react-hot-toast";
+import axiosPublic from "../../hooks/useAxiosPublic";
+import useCurrentUser from "../../hooks/useCurrentUser";
+import useMyCarts from "../../hooks/useMyCarts";
 
-const LatestCard = ({ product }) => {
+const LatestCard = ({ product, isInCart }) => {
+
+    const { currentUser } = useCurrentUser();
+    const { myCartsRefetch } = useMyCarts();
+
+    // add to cart
+    const handleAddToCart = (product) => {
+
+        if (!currentUser) {
+            toast.error("You need to be logged in to add products to cart!");
+            return;
+        }
+
+        const cartData = {
+            user: currentUser,
+            email: currentUser.email,
+            productId: product._id,
+            productTitle: product.productTitle,
+            productImage: product.img1,
+            productPrice: product.price,
+            productQuantity: 1,
+            date: new Date().toLocaleString(),
+        }
+
+        axiosPublic.post("/carts", { cartData })
+            .then((res) => {
+                if (res.data) {
+                    toast.success("Product added to cart successfully!");
+                    myCartsRefetch();
+                }
+            })
+            .catch((error) => {
+                console.error("Error adding product to cart:", error);
+            });
+    };
+
+
     return (
         <div
+            data-aos="fade"
+            data-aos-duration="500"
             className="flex flex-col p-3 shadow-md outline-none relative group">
             <div className="bg-lightPurple group-hover:bg-white px-5 py-10">
-                <img className="w-[250px] h-[250px] mx-auto" src={product?.image} alt={product?.name} />
+                <img className="w-[250px] h-[250px] mx-auto bg-cover bg-center object-cover rounded" src={product?.img1} alt={product?.productTitle} />
             </div>
             <div className="flex items-center justify-between px-3 py-4 space-y-2 transition-all duration-500">
-                <h5 className="text-navyBlue">{product?.name}</h5>
-                <div className="flex items-center gap-2">
-                    <h5>{product?.offerPrice}</h5>
-                    <h5 className="text-red line-through">{product?.price}</h5>
-                </div>
+                <h5 className="text-navyBlue font-semibold">{product?.productTitle}</h5>
+                <h5>${product?.price}</h5>
             </div>
 
             {/* Sale Label */}
@@ -30,14 +69,16 @@ const LatestCard = ({ product }) => {
             </div>
             {/* Icons */}
             <div className="absolute bottom-24 left-4 flex flex-col justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-navyBlue">
-                <h5 className="card-img-bg rounded-full p-2">
-                    <Link><FiShoppingCart /></Link>
-                </h5>
+            <h5
+                title="Add To Cart"
+                className={`bg-white rounded-full p-2 ${isInCart ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => !isInCart && handleAddToCart(product)}>
+                <FiShoppingCart className={isInCart ? "text-gray-400" : ""} />
+            </h5>
                 <h5>
                     <Link><IoIosHeartEmpty /></Link>
                 </h5>
                 <h5>
-                    <Link><IoEyeOutline /></Link>
+                    <Link to={`/product/${product?._id}`}><IoEyeOutline /></Link>
                 </h5>
             </div>
         </div>

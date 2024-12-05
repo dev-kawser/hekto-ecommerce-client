@@ -181,6 +181,39 @@ const UpdateProduct = () => {
                 </label>
 
                 <label className="block">
+                    <span className="text-gray-700">Img1</span>
+                    <input
+                        type="url"
+                        name="img1"
+                        required
+                        value={updateProduct.img1 || ""}
+                        onChange={handleInputChange}
+                        className="p-2 border rounded w-full"
+                    />
+                </label>
+                <label className="block">
+                    <span className="text-gray-700">Img1</span>
+                    <input
+                        type="url"
+                        name="img2"
+                        required
+                        value={updateProduct.img2 || ""}
+                        onChange={handleInputChange}
+                        className="p-2 border rounded w-full"
+                    />
+                </label>
+                <label className="block">
+                    <span className="text-gray-700">Img1</span>
+                    <input
+                        type="url"
+                        name="img3"
+                        required
+                        value={updateProduct.img3 || ""}
+                        onChange={handleInputChange}
+                        className="p-2 border rounded w-full"
+                    />
+                </label>
+                <label className="block">
                     <span className="text-gray-700">Price</span>
                     <input
                         type="number"
