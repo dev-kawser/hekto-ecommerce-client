@@ -119,9 +119,9 @@ const ProductDetails = () => {
                         <p className="lato"><span className="text-navyBlue font-semibold">Category:</span> {category}</p>
                         <p className="lato"><span className="text-navyBlue font-semibold">Color:</span> {color}</p>
                         <p className="text-lg font-semibold text-navyBlue">
-                            Price: <span className="text-green-500">${price.toFixed(2)}</span>{" "}
+                            Price: <span className="text-green-500">${price}</span>{" "}
                             <span className="line-through text-gray">
-                                ${originalPrice.toFixed(2)}
+                                ${originalPrice}
                             </span>
                             <span className="text-red ml-2">-{discount}%</span>
                         </p>

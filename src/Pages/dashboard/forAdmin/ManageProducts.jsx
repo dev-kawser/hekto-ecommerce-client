@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../../../hooks/useAxiosPublic";
 import { useState } from "react";
 import Loading from "../../../ui/shared/Loading";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageProducts = () => {
     const [showForm, setShowForm] = useState(false);
@@ -19,7 +22,7 @@ const ManageProducts = () => {
         price: 0,
         originalPrice: 0,
         discount: 0,
-        publicationDate: new Date().toISOString(),
+        publicationDate: new Date().toLocaleString(),
     });
 
     const { data: allProducts, isLoading, refetch } = useQuery({
@@ -42,7 +45,13 @@ const ManageProducts = () => {
     const handleAddProduct = async (e) => {
         e.preventDefault();
         try {
-            await axiosPublic.post("/products", newProduct);
+            const response = await axiosPublic.post("/products", newProduct);
+
+            if (response.status === 201) {
+                toast.success("Product added successfully");
+            } else {
+                toast.error("Failed to add product. Please try again.");
+            }
             refetch(); // Refresh the product list
             setShowForm(false); // Hide the form
             setNewProduct({
@@ -63,6 +72,32 @@ const ManageProducts = () => {
             });
         } catch (error) {
             console.error("Failed to add product", error);
+        }
+    };
+
+    const handleDeleteProduct = (productId) => {
+        try {
+            Swal.fire({
+                title: "<span style='color: red;'>Are you sure?</span>",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axiosPublic.delete(`/products/delete/${productId}`).then((res) => {
+                        if (res.status === 200) {
+                            Swal.fire("Deleted!", "Product has been deleted.", "success");
+                            refetch();
+                        }
+                    });
+                }
+            })
+        } catch (error) {
+            console.error("Failed to delete product", error);
+            toast.error("Failed to delete product. Please try again.");
         }
     };
 
@@ -111,19 +146,21 @@ const ManageProducts = () => {
                                         <td className="p-3 border border-gray-300">{product.category}</td>
                                         <td className="p-3 border border-gray-300">
                                             ${product.price}{" "}
-                                            <span className="line-through text-red-500">
+                                            <span className="line-through text-red">
                                                 ${product.originalPrice}
                                             </span>
                                         </td>
                                         <td className="p-3 border border-gray-300 space-x-2">
-                                            <button className="px-3 py-1 bg-red text-white rounded">
+                                            <button
+                                                onClick={() => handleDeleteProduct(product?._id)}
+                                                className="px-3 py-1 bg-red text-white rounded">
                                                 Delete
                                             </button>
                                             <button className="px-3 py-1 md:mt-0 mt-1 bg-blue text-white rounded">
                                                 Edit
                                             </button>
                                             <button className="px-3 py-1 xl:mt-0 mt-1 bg-green-500 text-white rounded">
-                                                Details
+                                                <Link to={`/product/${product._id}`}>Details</Link>
                                             </button>
                                         </td>
                                     </tr>
@@ -141,6 +178,7 @@ const ManageProducts = () => {
                             <input
                                 type="text"
                                 name="productTitle"
+                                required
                                 placeholder="Product Title"
                                 value={newProduct.productTitle}
                                 onChange={handleInputChange}
@@ -153,6 +191,7 @@ const ManageProducts = () => {
                             <input
                                 type="text"
                                 name="brand"
+                                required
                                 placeholder="Brand"
                                 value={newProduct.brand}
                                 onChange={handleInputChange}
@@ -165,6 +204,7 @@ const ManageProducts = () => {
                             <input
                                 type="text"
                                 name="category"
+                                required
                                 placeholder="Category"
                                 value={newProduct.category}
                                 onChange={handleInputChange}
@@ -188,6 +228,7 @@ const ManageProducts = () => {
                             <span className="text-gray-700">Short Description</span>
                             <textarea
                                 name="shortDescription"
+                                required
                                 placeholder="Short Description"
                                 value={newProduct.shortDescription}
                                 onChange={handleInputChange}
@@ -199,6 +240,7 @@ const ManageProducts = () => {
                             <span className="text-gray-700">Big Description</span>
                             <textarea
                                 name="bigDescription"
+                                required
                                 placeholder="Big Description"
                                 value={newProduct.bigDescription}
                                 onChange={handleInputChange}
@@ -211,6 +253,7 @@ const ManageProducts = () => {
                             <input
                                 type="url"
                                 name="img1"
+                                required
                                 placeholder="Image URL 1"
                                 value={newProduct.img1}
                                 onChange={handleInputChange}
@@ -276,7 +319,7 @@ const ManageProducts = () => {
                                                 updatedInfo.splice(index, 1);
                                                 setNewProduct({ ...newProduct, additionalInformation: updatedInfo });
                                             }}
-                                            className="bg-red-500 text-white px-2 py-1 rounded"
+                                            className="bg-red text-white px-2 py-1 rounded"
                                         >
                                             Remove
                                         </button>
@@ -302,6 +345,7 @@ const ManageProducts = () => {
                             <input
                                 type="number"
                                 name="price"
+                                required
                                 placeholder="Price"
                                 value={newProduct.price}
                                 onChange={handleInputChange}
@@ -314,6 +358,7 @@ const ManageProducts = () => {
                             <input
                                 type="number"
                                 name="originalPrice"
+                                required
                                 placeholder="Original Price"
                                 value={newProduct.originalPrice}
                                 onChange={handleInputChange}
