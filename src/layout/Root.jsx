@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Pages/shared/navbar/Navbar";
 import Footer from "../Pages/shared/footer/Footer";
-import { Toaster } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
@@ -35,7 +34,6 @@ const Root = () => {
             <Navbar />
             <Outlet />
             <Footer />
-            <Toaster />
 
             {/* Scroll to Top Button */}
             {showButton && (

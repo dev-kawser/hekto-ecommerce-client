@@ -29,6 +29,7 @@ import MyOrders from "../Pages/dashboard/forUser/MyOrders";
 import Welcome from "../Pages/dashboard/Welcome";
 import OrderDetails from "../Pages/dashboard/forAdmin/OrderDetails";
 import AdminRoutes from "./AdminRoutes";
+import UpdateProduct from "../Pages/dashboard/forAdmin/UpdateProduct";
 
 const router = createBrowserRouter([
     {
@@ -139,6 +140,12 @@ const router = createBrowserRouter([
                 path: "manage-products",
                 element: <AdminRoutes>
                     <ManageProducts />
+                </AdminRoutes>,
+            },
+            {
+                path: "update-product/:id",
+                element: <AdminRoutes>
+                    <UpdateProduct />
                 </AdminRoutes>,
             },
             {

@@ -17,9 +17,13 @@ const Shop = () => {
         }
     })
 
+    const sortedProducts = allProducts?.sort(
+        (a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)
+    );
+
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredProducts, setFilteredProducts] = useState(allProducts);
+    const [filteredProducts, setFilteredProducts] = useState(sortedProducts);
     const [filters, setFilters] = useState({
         brand: [],
         category: [],
@@ -70,7 +74,7 @@ const Shop = () => {
     }, []);
 
     useEffect(() => {
-        let filtered = allProducts;
+        let filtered = sortedProducts;
 
         // Apply search filter
         if (searchQuery) {
@@ -103,13 +107,13 @@ const Shop = () => {
         }
 
         setFilteredProducts(filtered);
-    }, [allProducts, filters, searchQuery]);
+    }, [sortedProducts, filters, searchQuery]);
 
     const FilterSection = () => {
         // Extract unique filter options dynamically from product data
-        const brands = [...new Set(allProducts?.map((product) => product.brand))];
-        const categories = [...new Set(allProducts?.map((product) => product.category))];
-        const discounts = [...new Set(allProducts?.map((product) => product.discount))];
+        const brands = [...new Set(sortedProducts?.map((product) => product.brand))];
+        const categories = [...new Set(sortedProducts?.map((product) => product.category))];
+        const discounts = [...new Set(sortedProducts?.map((product) => product.discount))];
         const priceRanges = ["0-100", "101-200", "201-300", "300-400"];
 
         return (
@@ -200,7 +204,7 @@ const Shop = () => {
     const totalPages = Math.ceil(filteredProducts?.length / itemsPerPage);
 
 
-    if (!allProducts?.length > 0) return <NoDataFound />;
+    if (!sortedProducts?.length > 0) return <NoDataFound />;
 
     return (
         <div>

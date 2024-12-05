@@ -157,7 +157,7 @@ const ManageProducts = () => {
                                                 Delete
                                             </button>
                                             <button className="px-3 py-1 md:mt-0 mt-1 bg-blue text-white rounded">
-                                                Edit
+                                                <Link to={`/dashboard/update-product/${product._id}`}>Edit</Link>
                                             </button>
                                             <button className="px-3 py-1 xl:mt-0 mt-1 bg-green-500 text-white rounded">
                                                 <Link to={`/product/${product._id}`}>Details</Link>
