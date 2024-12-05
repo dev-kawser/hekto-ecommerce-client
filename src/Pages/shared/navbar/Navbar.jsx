@@ -175,16 +175,6 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/wishlists"
-                                className={({ isActive }) =>
-                                    isActive ? "text-pink font-semibold" : "text-gray-900"
-                                }
-                            >
-                                Wishlists
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
                                 to="/dashboard"
                                 className={({ isActive }) =>
                                     isActive ? "text-pink font-semibold" : "text-gray-900"

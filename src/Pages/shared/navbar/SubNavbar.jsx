@@ -1,6 +1,5 @@
 import { CiPhone } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
-import { IoIosHeartEmpty } from "react-icons/io";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -62,12 +61,6 @@ const SubNavbar = () => {
                         )
                     }
                     <div>
-                        <h5 className="flex items-center gap-1 text-lg">
-                            <span>
-                                <IoIosHeartEmpty className="text-xl" />
-                            </span>
-                            <Link to={"/wishlist"}>Wishlist</Link>
-                        </h5>
                     </div>
                     <div>
                         <h5>

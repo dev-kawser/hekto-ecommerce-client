@@ -1,6 +1,5 @@
-import { BsFacebook } from "react-icons/bs";
-import { FaInstagram } from "react-icons/fa";
-import { IoLogoTwitter } from "react-icons/io";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { TbWorld } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 
@@ -25,41 +24,50 @@ const Footer = () => {
                 <div>
                     <h4 className="font-semibold">Category</h4>
                     <div className="flex flex-col gap-2 mt-3 text-gray lato">
-                        <Link>Laptops & Computers</Link>
-                        <Link>Cameras & Photography</Link>
-                        <Link>Smart Phones & Tablets</Link>
-                        <Link>Video Games & Consoles</Link>
-                        <Link>Waterproof Headphones</Link>
+                        <Link>T-Shirts</Link>
+                        <Link>Pant</Link>
+                        <Link>Jackets</Link>
+                        <Link>Underwear</Link>
+                        <Link>Shirts</Link>
                     </div>
                 </div>
                 <div>
                     <h4 className="font-semibold">Customer Care</h4>
                     <div className="flex flex-col gap-2 mt-3 text-gray lato">
-                        <Link>My Account</Link>
-                        <Link>Discount</Link>
-                        <Link>Returns</Link>
-                        <Link>Orders History</Link>
-                        <Link>Order Tracking</Link>
+                        <Link to={'/account'}>My Account</Link>
+                        <Link to={'/offer'}>Discount</Link>
+                        <Link to={'/dashboard/my-orders'}>Orders History</Link>
+                        <Link>Our Policy</Link>
+                        <a href="https://kawserrahman.netlify.app/" target="_blank">Website Developer</a>
                     </div>
                 </div>
                 <div>
                     <h4 className="font-semibold">Pages</h4>
                     <div className="flex flex-col gap-2 mt-3 text-gray lato">
-                        <Link>Blog</Link>
-                        <Link>Browse the Shop</Link>
-                        <Link>Pre-Built Pages</Link>
-                        <Link>Visual Composer Elements</Link>
-                        <Link>WooCommerce Pages</Link>
+                        <Link to={'/blogs'}>Blog</Link>
+                        <Link to={'/products'}>Browse the Shop</Link>
+                        <Link to={'/about'}>About US</Link>
+                        <Link to={'/faq'}>FAQ</Link>
+                        <Link to={'/contact'}>Contact US</Link>
                     </div>
                 </div>
             </div>
             <div className="card-img-bg">
                 <div className="container flex justify-around py-5">
-                    <h6 className="lato">© BazaarNest - All Rights Reserved</h6>
+                    <div>
+                        <h6 className="lato">© BazaarNest - All Rights Reserved</h6>
+                        <h5 className="lato">This Website Developed By <a href="https://kawserrahman.netlify.app/" target="_blank" className="font-bold text-base underline text-pink">Kawser</a></h5>
+                    </div>
                     <div className="flex items-center gap-3 text-navyBlue">
-                        <Link className="text-12"><BsFacebook /></Link>
-                        <Link className="text-12"><FaInstagram /></Link>
-                        <Link className="text-12"><IoLogoTwitter /></Link>
+                        <a href="https://www.linkedin.com/in/devsafix/"
+                            target="_blank"
+                            className="text-xl"><FaLinkedinIn /></a>
+                        <a href="https://github.com/devsafix"
+                            target="_blank"
+                            className="text-xl"><FaGithub /></a>
+                        <a href="https://devsafix.vercel.app/"
+                            target="_blank"
+                            className="text-xl"><TbWorld /></a>
                     </div>
                 </div>
             </div>
