@@ -1,9 +1,348 @@
-
+import { useQuery } from "@tanstack/react-query";
+import axiosPublic from "../../../hooks/useAxiosPublic";
+import { useState } from "react";
+import Loading from "../../../ui/shared/Loading";
 
 const ManageProducts = () => {
+    const [showForm, setShowForm] = useState(false);
+    const [newProduct, setNewProduct] = useState({
+        productTitle: "",
+        brand: "",
+        category: "",
+        color: "",
+        shortDescription: "",
+        bigDescription: "",
+        img1: "",
+        img2: "",
+        img3: "",
+        additionalInformation: [],
+        price: 0,
+        originalPrice: 0,
+        discount: 0,
+        publicationDate: new Date().toISOString(),
+    });
+
+    const { data: allProducts, isLoading, refetch } = useQuery({
+        queryKey: ["allProducts"],
+        queryFn: async () => {
+            const response = await axiosPublic.get("/products");
+            return response.data;
+        },
+    });
+
+    const sortedProducts = allProducts?.sort(
+        (a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)
+    );
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewProduct({ ...newProduct, [name]: value });
+    };
+
+    const handleAddProduct = async (e) => {
+        e.preventDefault();
+        try {
+            await axiosPublic.post("/products", newProduct);
+            refetch(); // Refresh the product list
+            setShowForm(false); // Hide the form
+            setNewProduct({
+                productTitle: "",
+                brand: "",
+                category: "",
+                color: "",
+                shortDescription: "",
+                bigDescription: "",
+                img1: "",
+                img2: "",
+                img3: "",
+                additionalInformation: [],
+                price: 0,
+                originalPrice: 0,
+                discount: 0,
+                publicationDate: new Date().toISOString(),
+            });
+        } catch (error) {
+            console.error("Failed to add product", error);
+        }
+    };
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
-        <div>
-            
+        <div className="p-5">
+            <div className="flex justify-end">
+                <button
+                    className="bg-blue text-white px-4 py-2 rounded"
+                    onClick={() => setShowForm(!showForm)}
+                >
+                    {showForm ? "Show All Products" : "Add Product"}
+                </button>
+            </div>
+
+            {!showForm ? (
+                <div>
+                    <h2 className="text-2xl font-semibold mb-5">All Products</h2>
+                    <div className="overflow-x-auto">
+                        <table className="table-auto w-full border-collapse border border-gray-300">
+                            <thead className="bg-purple text-white">
+                                <tr>
+                                    <th className="p-3 border border-gray-300">#</th>
+                                    <th className="p-3 border border-gray-300">Image</th>
+                                    <th className="p-3 border border-gray-300">Title</th>
+                                    <th className="p-3 border border-gray-300">Category</th>
+                                    <th className="p-3 border border-gray-300">Price</th>
+                                    <th className="p-3 border border-gray-300">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {sortedProducts?.map((product, index) => (
+                                    <tr key={product._id} className="text-center">
+                                        <td className="p-3 border border-gray-300">{index + 1}</td>
+                                        <td className="p-3 border border-gray-300">
+                                            <img
+                                                src={product.img1}
+                                                alt={product.productTitle}
+                                                className="h-16 w-16 object-cover rounded"
+                                            />
+                                        </td>
+                                        <td className="p-3 border border-gray-300">{product.productTitle}</td>
+                                        <td className="p-3 border border-gray-300">{product.category}</td>
+                                        <td className="p-3 border border-gray-300">
+                                            ${product.price}{" "}
+                                            <span className="line-through text-red-500">
+                                                ${product.originalPrice}
+                                            </span>
+                                        </td>
+                                        <td className="p-3 border border-gray-300 space-x-2">
+                                            <button className="px-3 py-1 bg-red text-white rounded">
+                                                Delete
+                                            </button>
+                                            <button className="px-3 py-1 md:mt-0 mt-1 bg-blue text-white rounded">
+                                                Edit
+                                            </button>
+                                            <button className="px-3 py-1 xl:mt-0 mt-1 bg-green-500 text-white rounded">
+                                                Details
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <h2 className="text-xl font-bold mb-4">Add New Product</h2>
+                    <form onSubmit={handleAddProduct} className="grid gap-4">
+                        <label className="block">
+                            <span className="text-gray-700">Product Title</span>
+                            <input
+                                type="text"
+                                name="productTitle"
+                                placeholder="Product Title"
+                                value={newProduct.productTitle}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Brand</span>
+                            <input
+                                type="text"
+                                name="brand"
+                                placeholder="Brand"
+                                value={newProduct.brand}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Category</span>
+                            <input
+                                type="text"
+                                name="category"
+                                placeholder="Category"
+                                value={newProduct.category}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Color</span>
+                            <input
+                                type="text"
+                                name="color"
+                                placeholder="Color"
+                                value={newProduct.color}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Short Description</span>
+                            <textarea
+                                name="shortDescription"
+                                placeholder="Short Description"
+                                value={newProduct.shortDescription}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            ></textarea>
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Big Description</span>
+                            <textarea
+                                name="bigDescription"
+                                placeholder="Big Description"
+                                value={newProduct.bigDescription}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            ></textarea>
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Image URL 1</span>
+                            <input
+                                type="url"
+                                name="img1"
+                                placeholder="Image URL 1"
+                                value={newProduct.img1}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Image URL 2</span>
+                            <input
+                                type="url"
+                                name="img2"
+                                placeholder="Image URL 2"
+                                value={newProduct.img2}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Image URL 3</span>
+                            <input
+                                type="url"
+                                name="img3"
+                                placeholder="Image URL 3"
+                                value={newProduct.img3}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Additional Information</span>
+                            <div className="space-y-2">
+                                {newProduct.additionalInformation.map((info, index) => (
+                                    <div key={index} className="flex space-x-4 items-center">
+                                        <input
+                                            type="text"
+                                            placeholder="Label (e.g., Weight)"
+                                            value={info.label}
+                                            onChange={(e) => {
+                                                const updatedInfo = [...newProduct.additionalInformation];
+                                                updatedInfo[index].label = e.target.value;
+                                                setNewProduct({ ...newProduct, additionalInformation: updatedInfo });
+                                            }}
+                                            className="p-2 border rounded w-1/2"
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Value (e.g., 1.5kg)"
+                                            value={info.value}
+                                            onChange={(e) => {
+                                                const updatedInfo = [...newProduct.additionalInformation];
+                                                updatedInfo[index].value = e.target.value;
+                                                setNewProduct({ ...newProduct, additionalInformation: updatedInfo });
+                                            }}
+                                            className="p-2 border rounded w-1/2"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                const updatedInfo = [...newProduct.additionalInformation];
+                                                updatedInfo.splice(index, 1);
+                                                setNewProduct({ ...newProduct, additionalInformation: updatedInfo });
+                                            }}
+                                            className="bg-red-500 text-white px-2 py-1 rounded"
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
+                                ))}
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const updatedInfo = [...newProduct.additionalInformation];
+                                        updatedInfo.push({ label: "", value: "" });
+                                        setNewProduct({ ...newProduct, additionalInformation: updatedInfo });
+                                    }}
+                                    className="bg-blue text-white px-3 py-1 rounded"
+                                >
+                                    Add New Info
+                                </button>
+                            </div>
+                        </label>
+
+
+                        <label className="block">
+                            <span className="text-gray-700">Price</span>
+                            <input
+                                type="number"
+                                name="price"
+                                placeholder="Price"
+                                value={newProduct.price}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Original Price</span>
+                            <input
+                                type="number"
+                                name="originalPrice"
+                                placeholder="Original Price"
+                                value={newProduct.originalPrice}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <label className="block">
+                            <span className="text-gray-700">Discount (%)</span>
+                            <input
+                                type="number"
+                                name="discount"
+                                placeholder="Discount (%)"
+                                value={newProduct.discount}
+                                onChange={handleInputChange}
+                                className="p-2 border rounded w-full"
+                            />
+                        </label>
+
+                        <button
+                            type="submit"
+                            className="bg-green-500 text-white px-4 py-2 rounded"
+                        >
+                            Add Product
+                        </button>
+                    </form>
+
+                </div>
+            )}
         </div>
     );
 };
