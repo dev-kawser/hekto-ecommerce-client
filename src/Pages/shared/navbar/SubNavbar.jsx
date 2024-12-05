@@ -47,7 +47,7 @@ const SubNavbar = () => {
                         <a href="tel:+8801709190412">+88 01709190412</a>
                     </h5>
                 </div>
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-3">
                     {
                         !currentUser && (
                             <div>
