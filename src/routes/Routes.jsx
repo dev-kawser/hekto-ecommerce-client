@@ -30,6 +30,7 @@ import Welcome from "../Pages/dashboard/Welcome";
 import OrderDetails from "../Pages/dashboard/forAdmin/OrderDetails";
 import AdminRoutes from "./AdminRoutes";
 import UpdateProduct from "../Pages/dashboard/forAdmin/UpdateProduct";
+import UpdateOfferProduct from "../Pages/dashboard/forAdmin/UpdateOfferProduct";
 
 const router = createBrowserRouter([
     {
@@ -152,6 +153,12 @@ const router = createBrowserRouter([
                 path: "manage-offer-products",
                 element: <AdminRoutes>
                     <ManageOfferProducts />
+                </AdminRoutes>,
+            },
+            {
+                path: "update-offerProduct/:id",
+                element: <AdminRoutes>
+                    <UpdateOfferProduct />
                 </AdminRoutes>,
             },
             {
