@@ -65,15 +65,15 @@ const Offers = () => {
                                 className="size-40 object-cover mx-auto rounded-t-lg"
                             />
                             {/* Product Info */}
-                            <div className="mt-4 text-center">
+                            <div className="mt-4 text-center lato">
                                 <Link
                                     to={`/offerProduct/${product?._id}`}
                                     className="text-lg group-hover:text-pink group-hover:underline font-bold text-gray-800 line-clamp-1 transition-all duration-150">
                                     {product.productTitle}
                                 </Link>
                                 <div className="flex items-center justify-center gap-2">
-                                    <p className="text-pink-500 font-bold mt-1">{product.price}</p>
-                                    <p className="text-gray-400 line-through text-red">{product.originalPrice}</p>
+                                    <p className="text-pink-500 font-bold mt-1">${product.price}</p>
+                                    <p className="text-gray-400 line-through text-red">${product.originalPrice}</p>
                                 </div>
                             </div>
                             {/* Icons */}
