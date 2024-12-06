@@ -30,7 +30,7 @@ To set up this project locally, follow these steps:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/username/BazaarNest.git
+   git clone https://github.com/devsafix/BazaarNest.git
    cd BazaarNest
 
 1. Install dependencies for both client and server:  
