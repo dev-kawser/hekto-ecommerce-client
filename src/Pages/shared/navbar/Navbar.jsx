@@ -5,8 +5,11 @@ import { IoMdMenu } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { FiShoppingCart } from "react-icons/fi";
+import useMyCarts from "../../../hooks/useMyCarts";
 
 const Navbar = () => {
+
+    const { myCarts } = useMyCarts();
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [dropDownState, setDropDownState] = useState(false);
     const dropDownMenuRef = useRef(null);
@@ -119,7 +122,7 @@ const Navbar = () => {
                                     <div className="relative w-fit">
                                         <FiShoppingCart className="text-2xl" />
                                         <span className="absolute mx-auto -right-4 -top-2 flex size-5 items-center justify-center rounded-full bg-pink text-center text-[15px] text-white">
-                                            0
+                                            {myCarts?.length}
                                         </span>
                                     </div>
                                 </Link>

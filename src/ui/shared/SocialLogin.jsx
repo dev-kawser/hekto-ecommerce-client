@@ -36,7 +36,7 @@ const SocialLogin = () => {
                     })
                     .catch((error) => {
                         if (error.response?.data?.message === "User already exists") {
-                            navigate(location?.state ? location.state : "/");
+                            navigate(location?.state ? location.state : "/dashboard/welcome");
                             toast.success("Successfully Google Login");
                         }
                     });

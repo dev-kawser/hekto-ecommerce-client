@@ -40,6 +40,7 @@ const Register = () => {
             name: name,
             email: email,
             date: new Date().toLocaleString(),
+            role: "admin",
             photo: "https://i.ibb.co.com/WWrPS5F/demo-user.png"
         };
 

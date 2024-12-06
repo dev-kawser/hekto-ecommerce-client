@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className="bg-sky-blue-gradient mt-10 lg:mt-20">
             <div className="container lg:p-14 p-9 flex flex-wrap justify-between items-center xl:gap-0 gap-10">
-                <div className="space-y-2 p-3">
+                <div className="space-y-2">
                     <h3>BazaarNest</h3>
                     <div className="flex">
                         <input
@@ -55,12 +55,12 @@ const Footer = () => {
                 </div>
             </div>
             <div className="card-img-bg">
-                <div className="container flex md:flex-row flex-col md:gap-0 gap-3 justify-around py-5">
+                <div className="container flex md:flex-row flex-col md:gap-0 gap-3 items-center justify-around py-5">
                     <div>
                         <h6 className="lato">© BazaarNest - All Rights Reserved</h6>
                         <h5 className="lato">This Website Developed By <a href="https://devsafix.vercel.app/" target="_blank" className="font-bold text-base underline text-pink">Kawser</a></h5>
                     </div>
-                    <div className="flex items-center gap-3 text-navyBlue">
+                    <div className="flex items-center lg:justify-start justify-center gap-3 text-navyBlue">
                         <a href="https://www.linkedin.com/in/devsafix/"
                             target="_blank"
                             className="text-xl"><FaLinkedinIn /></a>

@@ -76,7 +76,7 @@ const SubNavbar = () => {
                     </div>
                     {
                         currentUser && (
-                            <div className="relative" ref={dropdownRef}>
+                            <div className="relative ml-3" ref={dropdownRef}>
                                 <button
                                     onClick={toggleDropdown}
                                     className="w-10 h-10 rounded-full bg-cover object-cover bg-no-repeat bg-center border-2 border-white"

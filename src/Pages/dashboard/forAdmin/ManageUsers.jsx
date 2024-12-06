@@ -24,7 +24,7 @@ const ManageUsers = () => {
     return (
         <div className="p-5">
             <h2 className="text-2xl font-semibold mb-5">Manage Users</h2>
-            {users?.length > 0 ? (
+            {sortedUsers?.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="table-auto w-full border-collapse border border-gray-300">
                         <thead className="bg-purple text-white">
