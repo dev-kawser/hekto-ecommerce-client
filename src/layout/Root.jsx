@@ -39,7 +39,7 @@ const Root = () => {
             {showButton && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-6 right-6 bg-purple text-white p-3 rounded-full shadow-lg hover:bg-navyBlue transition-all transform hover:scale-110 duration-300"
+                    className="fixed bottom-6 right-6 bg-purple text-white p-3 rounded-full shadow-lg hover:bg-navyBlue transition-all transform hover:scale-110 duration-300 z-50"
                     aria-label="Scroll to top"
                 >
                     <FaArrowUp />
